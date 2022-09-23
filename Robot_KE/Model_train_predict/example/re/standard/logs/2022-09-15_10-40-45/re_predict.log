@@ -1,0 +1,2238 @@
+[2022-09-15 10:40:45,706][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:40:46,813][__main__][INFO] - device: cpu
+[2022-09-15 10:40:48,777][__main__][INFO] - model name: lm
+[2022-09-15 10:40:48,778][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:40:48,844][__main__][INFO] - "pip方式" 和 "MindSpore Ascend" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:40:48,844][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:40:49,874][__main__][INFO] - device: cpu
+[2022-09-15 10:40:51,648][__main__][INFO] - model name: lm
+[2022-09-15 10:40:51,648][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:40:51,710][__main__][INFO] - "pip方式" 和 "910" 在句中关系为："版本"，置信度为0.99。
+[2022-09-15 10:40:51,710][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:40:52,759][__main__][INFO] - device: cpu
+[2022-09-15 10:40:54,555][__main__][INFO] - model name: lm
+[2022-09-15 10:40:54,555][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:40:54,598][__main__][INFO] - "MindSpore Ascend" 和 "910" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:40:54,599][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:40:55,647][__main__][INFO] - device: cpu
+[2022-09-15 10:40:57,408][__main__][INFO] - model name: lm
+[2022-09-15 10:40:57,408][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:40:57,475][__main__][INFO] - "pip方式" 和 "MindSpore" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:40:57,475][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:40:58,513][__main__][INFO] - device: cpu
+[2022-09-15 10:41:00,294][__main__][INFO] - model name: lm
+[2022-09-15 10:41:00,294][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:00,345][__main__][INFO] - "pip方式" 和 "Ascend" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:41:00,345][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:01,436][__main__][INFO] - device: cpu
+[2022-09-15 10:41:03,225][__main__][INFO] - model name: lm
+[2022-09-15 10:41:03,225][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:03,285][__main__][INFO] - "pip方式" 和 "91" 在句中关系为："版本"，置信度为0.99。
+[2022-09-15 10:41:03,286][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:04,320][__main__][INFO] - device: cpu
+[2022-09-15 10:41:06,015][__main__][INFO] - model name: lm
+[2022-09-15 10:41:06,016][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:06,057][__main__][INFO] - "pip方式" 和 "mindspore-ascend" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:41:06,058][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:07,087][__main__][INFO] - device: cpu
+[2022-09-15 10:41:08,783][__main__][INFO] - model name: lm
+[2022-09-15 10:41:08,784][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:08,835][__main__][INFO] - "pip方式" 和 "910" 在句中关系为："版本"，置信度为0.99。
+[2022-09-15 10:41:08,835][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:09,865][__main__][INFO] - device: cpu
+[2022-09-15 10:41:11,657][__main__][INFO] - model name: lm
+[2022-09-15 10:41:11,657][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:11,709][__main__][INFO] - "pip方式" 和 "版本" 在句中关系为："安装"，置信度为0.95。
+[2022-09-15 10:41:11,710][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:12,749][__main__][INFO] - device: cpu
+[2022-09-15 10:41:14,505][__main__][INFO] - model name: lm
+[2022-09-15 10:41:14,506][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:14,565][__main__][INFO] - "MindSpore" 和 "Ascend" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:41:14,566][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:15,602][__main__][INFO] - device: cpu
+[2022-09-15 10:41:17,409][__main__][INFO] - model name: lm
+[2022-09-15 10:41:17,410][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:17,476][__main__][INFO] - "MindSpore" 和 "91" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:17,476][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:18,501][__main__][INFO] - device: cpu
+[2022-09-15 10:41:20,274][__main__][INFO] - model name: lm
+[2022-09-15 10:41:20,275][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:20,334][__main__][INFO] - "MindSpore" 和 "mindspore-ascend" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:41:20,335][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:21,371][__main__][INFO] - device: cpu
+[2022-09-15 10:41:23,054][__main__][INFO] - model name: lm
+[2022-09-15 10:41:23,054][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:23,111][__main__][INFO] - "MindSpore" 和 "910" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:23,111][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:24,147][__main__][INFO] - device: cpu
+[2022-09-15 10:41:25,915][__main__][INFO] - model name: lm
+[2022-09-15 10:41:25,916][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:25,973][__main__][INFO] - "MindSpore" 和 "版本" 在句中关系为："使用安装"，置信度为0.78。
+[2022-09-15 10:41:25,974][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:27,004][__main__][INFO] - device: cpu
+[2022-09-15 10:41:28,693][__main__][INFO] - model name: lm
+[2022-09-15 10:41:28,694][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:28,751][__main__][INFO] - "Ascend" 和 "91" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:28,752][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:29,778][__main__][INFO] - device: cpu
+[2022-09-15 10:41:31,442][__main__][INFO] - model name: lm
+[2022-09-15 10:41:31,443][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:31,500][__main__][INFO] - "Ascend" 和 "mindspore-ascend" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:41:31,501][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:32,573][__main__][INFO] - device: cpu
+[2022-09-15 10:41:34,310][__main__][INFO] - model name: lm
+[2022-09-15 10:41:34,310][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:34,349][__main__][INFO] - "Ascend" 和 "910" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:34,349][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:35,389][__main__][INFO] - device: cpu
+[2022-09-15 10:41:37,376][__main__][INFO] - model name: lm
+[2022-09-15 10:41:37,377][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:37,425][__main__][INFO] - "Ascend" 和 "版本" 在句中关系为："使用安装"，置信度为0.90。
+[2022-09-15 10:41:37,426][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:38,446][__main__][INFO] - device: cpu
+[2022-09-15 10:41:40,207][__main__][INFO] - model name: lm
+[2022-09-15 10:41:40,207][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:40,276][__main__][INFO] - "91" 和 "mindspore-ascend" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:40,276][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:41,309][__main__][INFO] - device: cpu
+[2022-09-15 10:41:43,001][__main__][INFO] - model name: lm
+[2022-09-15 10:41:43,001][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:43,042][__main__][INFO] - "91" 和 "910" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:43,043][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:44,067][__main__][INFO] - device: cpu
+[2022-09-15 10:41:45,730][__main__][INFO] - model name: lm
+[2022-09-15 10:41:45,731][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:45,772][__main__][INFO] - "91" 和 "版本" 在句中关系为："版本"，置信度为0.98。
+[2022-09-15 10:41:45,773][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:46,780][__main__][INFO] - device: cpu
+[2022-09-15 10:41:48,566][__main__][INFO] - model name: lm
+[2022-09-15 10:41:48,566][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:48,608][__main__][INFO] - "mindspore-ascend" 和 "910" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:41:48,608][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:49,607][__main__][INFO] - device: cpu
+[2022-09-15 10:41:51,536][__main__][INFO] - model name: lm
+[2022-09-15 10:41:51,537][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:51,604][__main__][INFO] - "mindspore-ascend" 和 "版本" 在句中关系为："安装"，置信度为0.55。
+[2022-09-15 10:41:51,605][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:52,609][__main__][INFO] - device: cpu
+[2022-09-15 10:41:54,314][__main__][INFO] - model name: lm
+[2022-09-15 10:41:54,314][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:54,355][__main__][INFO] - "910" 和 "版本" 在句中关系为："版本"，置信度为0.99。
+[2022-09-15 10:41:54,356][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:55,371][__main__][INFO] - device: cpu
+[2022-09-15 10:41:57,091][__main__][INFO] - model name: lm
+[2022-09-15 10:41:57,091][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:57,156][__main__][INFO] - "Open MPI" 和 "open-mpi-" 在句中关系为："工具安装"，置信度为0.99。
+[2022-09-15 10:41:57,157][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:41:58,160][__main__][INFO] - device: cpu
+[2022-09-15 10:41:59,916][__main__][INFO] - model name: lm
+[2022-09-15 10:41:59,917][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:41:59,957][__main__][INFO] - "MindSpore" 和 "版本" 在句中关系为："使用安装"，置信度为0.99。
+[2022-09-15 10:41:59,957][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:00,954][__main__][INFO] - device: cpu
+[2022-09-15 10:42:02,677][__main__][INFO] - model name: lm
+[2022-09-15 10:42:02,677][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:02,733][__main__][INFO] - "版本" 和 "mindspore" 在句中关系为："使用安装"，置信度为0.99。
+[2022-09-15 10:42:02,733][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:03,724][__main__][INFO] - device: cpu
+[2022-09-15 10:42:05,471][__main__][INFO] - model name: lm
+[2022-09-15 10:42:05,471][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:05,529][__main__][INFO] - "https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend_install_pip.md" 和 "https://mindspore-website.obs.cn-north-4.myhuaweicloud.com/website-images/r1.7/resource/_static/logo_source.png" 在句中关系为："使用参考"，置信度为0.84。
+[2022-09-15 10:42:05,530][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:06,822][__main__][INFO] - device: cpu
+[2022-09-15 10:42:08,533][__main__][INFO] - model name: lm
+[2022-09-15 10:42:08,533][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:08,592][__main__][INFO] - "Ascend" 和 "910" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:42:08,593][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:09,637][__main__][INFO] - device: cpu
+[2022-09-15 10:42:11,377][__main__][INFO] - model name: lm
+[2022-09-15 10:42:11,377][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:11,416][__main__][INFO] - "Ascend" 和 "Linux" 在句中关系为："上面安装"，置信度为0.98。
+[2022-09-15 10:42:11,417][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:12,412][__main__][INFO] - device: cpu
+[2022-09-15 10:42:14,129][__main__][INFO] - model name: lm
+[2022-09-15 10:42:14,130][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:14,187][__main__][INFO] - "Ascend" 和 "pip方式" 在句中关系为："安装"，置信度为0.65。
+[2022-09-15 10:42:14,188][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:15,201][__main__][INFO] - device: cpu
+[2022-09-15 10:42:16,990][__main__][INFO] - model name: lm
+[2022-09-15 10:42:16,990][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:17,037][__main__][INFO] - "Ascend" 和 "MindSpore" 在句中关系为："上面安装"，置信度为0.96。
+[2022-09-15 10:42:17,037][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:18,191][__main__][INFO] - device: cpu
+[2022-09-15 10:42:20,031][__main__][INFO] - model name: lm
+[2022-09-15 10:42:20,031][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:20,099][__main__][INFO] - "910" 和 "Linux" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:42:20,100][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:21,206][__main__][INFO] - device: cpu
+[2022-09-15 10:42:23,067][__main__][INFO] - model name: lm
+[2022-09-15 10:42:23,068][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:23,135][__main__][INFO] - "910" 和 "pip方式" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:42:23,136][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:24,230][__main__][INFO] - device: cpu
+[2022-09-15 10:42:26,058][__main__][INFO] - model name: lm
+[2022-09-15 10:42:26,059][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:26,124][__main__][INFO] - "910" 和 "MindSpore" 在句中关系为："版本"，置信度为1.00。
+[2022-09-15 10:42:26,125][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:27,215][__main__][INFO] - device: cpu
+[2022-09-15 10:42:29,055][__main__][INFO] - model name: lm
+[2022-09-15 10:42:29,056][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:29,098][__main__][INFO] - "Linux" 和 "pip方式" 在句中关系为："安装"，置信度为0.51。
+[2022-09-15 10:42:29,098][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:30,188][__main__][INFO] - device: cpu
+[2022-09-15 10:42:32,017][__main__][INFO] - model name: lm
+[2022-09-15 10:42:32,017][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:32,082][__main__][INFO] - "Linux" 和 "MindSpore" 在句中关系为："上面安装"，置信度为0.98。
+[2022-09-15 10:42:32,083][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:33,168][__main__][INFO] - device: cpu
+[2022-09-15 10:42:35,010][__main__][INFO] - model name: lm
+[2022-09-15 10:42:35,010][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:35,059][__main__][INFO] - "pip方式" 和 "MindSpore" 在句中关系为："安装"，置信度为0.99。
+[2022-09-15 10:42:35,060][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:36,167][__main__][INFO] - device: cpu
+[2022-09-15 10:42:37,973][__main__][INFO] - model name: lm
+[2022-09-15 10:42:37,974][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:38,040][__main__][INFO] - "昇腾AI处理器配套软件包" 和 "EulerOS 2.8" 在句中关系为："上面安装"，置信度为0.99。
+[2022-09-15 10:42:38,041][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:39,150][__main__][INFO] - device: cpu
+[2022-09-15 10:42:40,966][__main__][INFO] - model name: lm
+[2022-09-15 10:42:40,967][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:41,016][__main__][INFO] - "昇腾AI处理器配套软件包" 和 "pip" 在句中关系为："工具安装"，置信度为0.98。
+[2022-09-15 10:42:41,017][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:42,099][__main__][INFO] - device: cpu
+[2022-09-15 10:42:43,958][__main__][INFO] - model name: lm
+[2022-09-15 10:42:43,959][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:44,037][__main__][INFO] - "昇腾AI处理器配套软件包" 和 "MindSpore" 在句中关系为："工具安装"，置信度为0.99。
+[2022-09-15 10:42:44,038][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:45,155][__main__][INFO] - device: cpu
+[2022-09-15 10:42:46,994][__main__][INFO] - model name: lm
+[2022-09-15 10:42:46,995][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:47,061][__main__][INFO] - "昇腾AI处理器配套软件包" 和 "脚本" 在句中关系为："使用安装"，置信度为0.99。
+[2022-09-15 10:42:47,062][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:48,160][__main__][INFO] - device: cpu
+[2022-09-15 10:42:49,975][__main__][INFO] - model name: lm
+[2022-09-15 10:42:49,975][__main__][INFO] - 
+ LM(
+  (bert): BertModel(
+    (embeddings): BertEmbeddings(
+      (word_embeddings): Embedding(21128, 768, padding_idx=0)
+      (position_embeddings): Embedding(512, 768)
+      (token_type_embeddings): Embedding(2, 768)
+      (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (encoder): BertEncoder(
+      (layer): ModuleList(
+        (0): BertLayer(
+          (attention): BertAttention(
+            (self): BertSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (output): BertSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+          )
+          (intermediate): BertIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+          )
+          (output): BertOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (pooler): BertPooler(
+      (dense): Linear(in_features=768, out_features=768, bias=True)
+      (activation): Tanh()
+    )
+  )
+  (bilstm): RNN(
+    (rnn): LSTM(768, 50, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (fc): Linear(in_features=100, out_features=15, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+)
+[2022-09-15 10:42:50,041][__main__][INFO] - "昇腾AI处理器配套软件包" 和 "https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-pip.sh" 在句中关系为："使用参考"，置信度为0.76。
+[2022-09-15 10:42:50,042][deepke.relation_extraction.standard.tools.preprocess][INFO] - use bert tokenizer...
+[2022-09-15 10:42:51,134][__main__][INFO] - device: cpu

@@ -1,0 +1,24 @@
+{
+    "os": "Linux-4.15.0-136-generic-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2022-08-31T14:49:17.739549",
+    "startedAt": "2022-08-31T14:49:14.226302",
+    "docker": null,
+    "gpu": "Tesla V100-PCIE-32GB",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "run_lstmcrf.py",
+    "codePath": "example/ner/standard/run_lstmcrf.py",
+    "git": {
+        "remote": "https://github.com/zjunlp/DeepKE.git",
+        "commit": "4b9511a30c8e89a6e4b9f96aaae455508bf64127"
+    },
+    "email": null,
+    "root": "/home/zzx/deepke/DeepKE",
+    "host": "ecs-v100",
+    "username": "zzx",
+    "executable": "/home/zzx/anaconda3/envs/deepke/bin/python"
+}

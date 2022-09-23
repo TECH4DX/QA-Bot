@@ -1,0 +1,88 @@
+[2022-09-14 16:42:29,205][__main__][INFO] - start sentence preprocess...
+[2022-09-14 16:42:29,205][__main__][INFO] - 
+sentence: # pip方式安装MindSpore Ascend 910版本
+
+chinese_split: True
+replace_entity_with_type:  True
+replace_entity_with_scope: True
+tokens:    ['#', 'HEAD_MET', '安装', 'TAIL_TOO', '910', '版本']
+token2idx: [18, 1, 12, 1, 428, 14]
+length:    6
+head_idx:  1
+tail_idx:  3
+[2022-09-14 16:42:29,205][__main__][INFO] - device: cpu
+[2022-09-14 16:42:29,212][__main__][INFO] - model name: transformer
+[2022-09-14 16:42:29,212][__main__][INFO] - 
+ Transformer(
+  (embedding): Embedding(
+    (wordEmbed): Embedding(445, 60, padding_idx=0)
+    (entityPosEmbed): Embedding(62, 60, padding_idx=0)
+    (attribute_keyPosEmbed): Embedding(62, 60, padding_idx=0)
+    (layer_norm): LayerNorm((60,), eps=1e-05, elementwise_affine=True)
+  )
+  (transformer): Transformer(
+    (layer): ModuleList(
+      (0): TransformerLayer(
+        (attention): TransformerAttention(
+          (multihead_attention): MultiHeadAttention(
+            (q_in): Linear(in_features=60, out_features=60, bias=True)
+            (k_in): Linear(in_features=60, out_features=60, bias=True)
+            (v_in): Linear(in_features=60, out_features=60, bias=True)
+            (attention): DotAttention()
+            (out): Linear(in_features=60, out_features=60, bias=True)
+          )
+          (dense): Linear(in_features=60, out_features=60, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layerNorm): LayerNorm((60,), eps=1e-12, elementwise_affine=True)
+        )
+        (output): TransformerOutput(
+          (zoom_in): Linear(in_features=60, out_features=256, bias=True)
+          (zoom_out): Linear(in_features=256, out_features=60, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layerNorm): LayerNorm((60,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (1): TransformerLayer(
+        (attention): TransformerAttention(
+          (multihead_attention): MultiHeadAttention(
+            (q_in): Linear(in_features=60, out_features=60, bias=True)
+            (k_in): Linear(in_features=60, out_features=60, bias=True)
+            (v_in): Linear(in_features=60, out_features=60, bias=True)
+            (attention): DotAttention()
+            (out): Linear(in_features=60, out_features=60, bias=True)
+          )
+          (dense): Linear(in_features=60, out_features=60, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layerNorm): LayerNorm((60,), eps=1e-12, elementwise_affine=True)
+        )
+        (output): TransformerOutput(
+          (zoom_in): Linear(in_features=60, out_features=256, bias=True)
+          (zoom_out): Linear(in_features=256, out_features=60, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layerNorm): LayerNorm((60,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+      (2): TransformerLayer(
+        (attention): TransformerAttention(
+          (multihead_attention): MultiHeadAttention(
+            (q_in): Linear(in_features=60, out_features=60, bias=True)
+            (k_in): Linear(in_features=60, out_features=60, bias=True)
+            (v_in): Linear(in_features=60, out_features=60, bias=True)
+            (attention): DotAttention()
+            (out): Linear(in_features=60, out_features=60, bias=True)
+          )
+          (dense): Linear(in_features=60, out_features=60, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layerNorm): LayerNorm((60,), eps=1e-12, elementwise_affine=True)
+        )
+        (output): TransformerOutput(
+          (zoom_in): Linear(in_features=60, out_features=256, bias=True)
+          (zoom_out): Linear(in_features=256, out_features=60, bias=True)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (layerNorm): LayerNorm((60,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (fc): Linear(in_features=60, out_features=15, bias=True)
+)

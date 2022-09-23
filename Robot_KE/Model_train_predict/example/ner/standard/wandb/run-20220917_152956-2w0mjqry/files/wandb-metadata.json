@@ -1,0 +1,18 @@
+{
+    "os": "Linux-4.15.0-136-generic-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2022-09-17T07:29:58.343053",
+    "startedAt": "2022-09-17T07:29:56.361595",
+    "docker": null,
+    "gpu": "Tesla V100-PCIE-32GB",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "run.py",
+    "codePath": "run.py",
+    "host": "ecs-v100",
+    "username": "zzx",
+    "executable": "/home/zzx/anaconda3/envs/deepke/bin/python"
+}

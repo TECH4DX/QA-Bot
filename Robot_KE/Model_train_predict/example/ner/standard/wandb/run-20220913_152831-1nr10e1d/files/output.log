@@ -1,0 +1,21 @@
+/home/zzx/anaconda3/envs/deepke/lib/python3.8/site-packages/hydra_core-1.0.6-py3.8.egg/hydra/plugins/config_source.py:190: UserWarning:
+Missing @package directive hydra/output/custom.yaml in file:///home/zzx/deepke/DeepKE/example/ner/standard/conf.
+See https://hydra.cc/docs/next/upgrades/0.11_to_1.0/adding_a_package_directive
+  warnings.warn(message=msg, category=UserWarning)
+/home/zzx/anaconda3/envs/deepke/lib/python3.8/site-packages/hydra_core-1.0.6-py3.8.egg/hydra/plugins/config_source.py:190: UserWarning:
+Missing @package directive train.yaml in file:///home/zzx/deepke/DeepKE/example/ner/standard/conf.
+See https://hydra.cc/docs/next/upgrades/0.11_to_1.0/adding_a_package_directive
+  warnings.warn(message=msg, category=UserWarning)
+/home/zzx/anaconda3/envs/deepke/lib/python3.8/site-packages/hydra_core-1.0.6-py3.8.egg/hydra/plugins/config_source.py:190: UserWarning:
+Missing @package directive predict.yaml in file:///home/zzx/deepke/DeepKE/example/ner/standard/conf.
+See https://hydra.cc/docs/next/upgrades/0.11_to_1.0/adding_a_package_directive
+  warnings.warn(message=msg, category=UserWarning)
+/home/zzx/anaconda3/envs/deepke/lib/python3.8/site-packages/hydra_core-1.0.6-py3.8.egg/hydra/plugins/config_source.py:190: UserWarning:
+Missing @package directive hydra/model/bert.yaml in file:///home/zzx/deepke/DeepKE/example/ner/standard/conf.
+See https://hydra.cc/docs/next/upgrades/0.11_to_1.0/adding_a_package_directive
+  warnings.warn(message=msg, category=UserWarning)
+Traceback (most recent call last):
+  File "run_bert.py", line 83, in main
+    raise ValueError("Output directory ({}) already exists and is not empty.".format(utils.get_original_cwd()+'/'+cfg.output_dir))
+ValueError: Output directory (/home/zzx/deepke/DeepKE/example/ner/standard/checkpoints) already exists and is not empty.
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

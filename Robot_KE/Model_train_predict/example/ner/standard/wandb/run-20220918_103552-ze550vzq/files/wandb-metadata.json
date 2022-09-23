@@ -1,0 +1,24 @@
+{
+    "os": "Linux-4.15.0-136-generic-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2022-09-18T02:35:54.349703",
+    "startedAt": "2022-09-18T02:35:52.288086",
+    "docker": null,
+    "gpu": "Tesla V100-PCIE-32GB",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "run.py",
+    "codePath": "Model_train_predict/example/ner/standard/run.py",
+    "git": {
+        "remote": "https://gitee.com/zhangzhaoxin123/es-project.git",
+        "commit": "a89585b5917ddf67922105e62544fc2bb1aa8d71"
+    },
+    "email": null,
+    "root": "/home/zzx/es_project/es-project -v2",
+    "host": "ecs-v100",
+    "username": "zzx",
+    "executable": "/home/zzx/anaconda3/envs/deepke/bin/python"
+}

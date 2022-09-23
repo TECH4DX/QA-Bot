@@ -1,0 +1,163 @@
+[2022-09-10 17:17:49,823][__main__][INFO] - 
+cwd: /home/zzx/deepke/DeepKE/example/re/standard
+preprocess: true
+data_path: data/origin
+out_path: data/out
+chinese_split: true
+replace_entity_with_type: true
+replace_entity_with_scope: true
+min_freq: 3
+pos_limit: 60
+seed: 1
+use_gpu: true
+gpu_id: 0
+epoch: 150
+batch_size: 32
+learning_rate: 0.0003
+lr_factor: 0.7
+lr_patience: 3
+weight_decay: 0.001
+early_stopping_patience: 6
+train_log: true
+log_interval: 10
+show_plot: true
+only_comparison_plot: false
+plot_utils: matplot
+predict_plot: false
+vocab_size: ???
+word_dim: 60
+pos_size: 122
+pos_dim: 10
+dim_strategy: sum
+num_relations: 15
+fp: /home/zzx/deepke/DeepKE/example/re/standard/checkpoints/2022-09-05_15-16-06/lm_epoch150.pth
+model_name: capsule
+share_weights: true
+num_iterations: 5
+dropout: 0.3
+input_dim_capsule: ???
+dim_capsule: 50
+num_capsule: ???
+in_channels: ???
+out_channels: 100
+kernel_sizes:
+- 9
+activation: lrelu
+keep_length: false
+pooling_strategy: cls
+
+[2022-09-10 17:17:54,194][__main__][INFO] - device: cuda:0
+[2022-09-10 17:17:54,194][deepke.relation_extraction.standard.tools.preprocess][INFO] - ===== start preprocess data =====
+[2022-09-10 17:17:54,194][deepke.relation_extraction.standard.tools.preprocess][INFO] - load raw files...
+[2022-09-10 17:17:54,194][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/train.csv
+[2022-09-10 17:17:54,197][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/valid.csv
+[2022-09-10 17:17:54,197][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/test.csv
+[2022-09-10 17:17:54,198][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/relation.csv
+[2022-09-10 17:17:54,198][deepke.relation_extraction.standard.tools.preprocess][INFO] - clean data...
+[2022-09-10 17:17:54,202][deepke.relation_extraction.standard.tools.preprocess][INFO] - convert relation into index...
+[2022-09-10 17:17:54,203][deepke.relation_extraction.standard.tools.preprocess][INFO] - verify whether use pretrained language models...
+[2022-09-10 17:17:54,203][deepke.relation_extraction.standard.tools.preprocess][INFO] - serialize sentence into tokens...
+[2022-09-10 17:17:55,526][deepke.relation_extraction.standard.tools.preprocess][INFO] - build vocabulary...
+[2022-09-10 17:17:55,554][deepke.relation_extraction.standard.tools.vocab][INFO] - vocab after be trimmed, keep words [436 / 561] = 77.72%
+[2022-09-10 17:17:55,569][deepke.relation_extraction.standard.tools.preprocess][INFO] - convert tokens into index...
+[2022-09-10 17:17:55,578][deepke.relation_extraction.standard.tools.preprocess][INFO] - build position sequence...
+[2022-09-10 17:17:55,689][deepke.relation_extraction.standard.tools.preprocess][INFO] - save data for backup...
+[2022-09-10 17:17:55,690][utils.ioUtils][INFO] - save data in /home/zzx/deepke/DeepKE/example/re/standard/data/out/train.pkl
+[2022-09-10 17:17:55,695][utils.ioUtils][INFO] - save data in /home/zzx/deepke/DeepKE/example/re/standard/data/out/valid.pkl
+[2022-09-10 17:17:55,696][utils.ioUtils][INFO] - save data in /home/zzx/deepke/DeepKE/example/re/standard/data/out/test.pkl
+[2022-09-10 17:17:55,698][utils.ioUtils][INFO] - save data in /home/zzx/deepke/DeepKE/example/re/standard/data/out/vocab.pkl
+[2022-09-10 17:17:55,698][deepke.relation_extraction.standard.tools.preprocess][INFO] - save vocab in txt file, for watching...
+[2022-09-10 17:17:55,698][deepke.relation_extraction.standard.tools.preprocess][INFO] - ===== end preprocess data =====
+[2022-09-10 17:17:55,700][deepke.relation_extraction.standard.utils.ioUtils][INFO] - load data from /home/zzx/deepke/DeepKE/example/re/standard/data/out/vocab.pkl
+[2022-09-10 17:17:55,700][utils.ioUtils][INFO] - load data from /home/zzx/deepke/DeepKE/example/re/standard/data/out/train.pkl
+[2022-09-10 17:17:55,705][utils.ioUtils][INFO] - load data from /home/zzx/deepke/DeepKE/example/re/standard/data/out/valid.pkl
+[2022-09-10 17:17:55,706][utils.ioUtils][INFO] - load data from /home/zzx/deepke/DeepKE/example/re/standard/data/out/test.pkl
+[2022-09-10 17:17:59,000][__main__][INFO] - 
+ Capsule(
+  (embedding): Embedding(
+    (wordEmbed): Embedding(445, 60, padding_idx=0)
+    (entityPosEmbed): Embedding(122, 60, padding_idx=0)
+    (attribute_keyPosEmbed): Embedding(122, 60, padding_idx=0)
+    (layer_norm): LayerNorm((60,), eps=1e-05, elementwise_affine=True)
+  )
+  (cnn): CNN(
+    (convs): ModuleList(
+      (0): Conv1d(60, 100, kernel_size=(9,), stride=(1,), bias=False)
+    )
+    (activations): ModuleDict(
+      (relu): ReLU()
+      (lrelu): LeakyReLU(negative_slope=0.01)
+      (prelu): PReLU(num_parameters=1)
+      (selu): SELU()
+      (celu): CELU(alpha=1.0)
+      (gelu): GELU()
+      (sigmoid): Sigmoid()
+      (tanh): Tanh()
+    )
+    (dropout): Dropout(p=0.3, inplace=False)
+  )
+  (capsule): Capsule()
+)
+[2022-09-10 17:17:59,001][__main__][INFO] - ========== Start training ==========
+[2022-09-10 17:17:59,162][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 1: [320/577 (55%)]	Loss: 0.636295
+[2022-09-10 17:17:59,162][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 1: Acc: 16.88%	macro metrics: [p: 0.0603, r:0.0870, f1:0.0660]
+[2022-09-10 17:17:59,267][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 1: [577/577 (100%)]	Loss: 0.794683
+[2022-09-10 17:17:59,267][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 1: Acc: 20.80%	macro metrics: [p: 0.0711, r:0.0911, f1:0.0712]
+[2022-09-10 17:17:59,305][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 1: [93/93](100%)	 Loss: 0.604985
+[2022-09-10 17:17:59,306][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 1: Acc: 43.01%	macro metrics: [p: 0.1564, r:0.2044, f1:0.1560]
+[2022-09-10 17:17:59,434][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 2: [320/577 (55%)]	Loss: 0.546246
+[2022-09-10 17:17:59,434][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 2: Acc: 31.87%	macro metrics: [p: 0.2406, r:0.1505, f1:0.1353]
+[2022-09-10 17:17:59,545][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 2: [577/577 (100%)]	Loss: 0.768223
+[2022-09-10 17:17:59,545][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 2: Acc: 31.54%	macro metrics: [p: 0.2998, r:0.1691, f1:0.1629]
+[2022-09-10 17:17:59,567][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 2: [93/93](100%)	 Loss: 0.478304
+[2022-09-10 17:17:59,567][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 2: Acc: 58.06%	macro metrics: [p: 0.3703, r:0.4501, f1:0.3953]
+[2022-09-10 17:17:59,700][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 3: [320/577 (55%)]	Loss: 0.525573
+[2022-09-10 17:17:59,701][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 3: Acc: 39.06%	macro metrics: [p: 0.3332, r:0.3093, f1:0.2739]
+[2022-09-10 17:17:59,802][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 3: [577/577 (100%)]	Loss: 0.846302
+[2022-09-10 17:17:59,803][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 3: Acc: 41.59%	macro metrics: [p: 0.3448, r:0.3147, f1:0.2914]
+[2022-09-10 17:17:59,824][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 3: [93/93](100%)	 Loss: 0.397700
+[2022-09-10 17:17:59,825][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 3: Acc: 40.86%	macro metrics: [p: 0.3054, r:0.3797, f1:0.2811]
+[2022-09-10 17:17:59,956][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 4: [320/577 (55%)]	Loss: 0.407675
+[2022-09-10 17:17:59,956][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 4: Acc: 36.56%	macro metrics: [p: 0.3657, r:0.2946, f1:0.2548]
+[2022-09-10 17:18:00,063][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 4: [577/577 (100%)]	Loss: 0.501965
+[2022-09-10 17:18:00,064][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 4: Acc: 43.33%	macro metrics: [p: 0.3745, r:0.3333, f1:0.3009]
+[2022-09-10 17:18:00,086][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 4: [93/93](100%)	 Loss: 0.353547
+[2022-09-10 17:18:00,086][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 4: Acc: 63.44%	macro metrics: [p: 0.4178, r:0.4857, f1:0.4066]
+[2022-09-10 17:18:00,218][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 5: [320/577 (55%)]	Loss: 0.360881
+[2022-09-10 17:18:00,218][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 5: Acc: 54.37%	macro metrics: [p: 0.5528, r:0.4086, f1:0.3828]
+[2022-09-10 17:18:00,325][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 5: [577/577 (100%)]	Loss: 0.334442
+[2022-09-10 17:18:00,325][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 5: Acc: 56.85%	macro metrics: [p: 0.5556, r:0.4198, f1:0.3914]
+[2022-09-10 17:18:00,347][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 5: [93/93](100%)	 Loss: 0.325226
+[2022-09-10 17:18:00,348][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 5: Acc: 69.89%	macro metrics: [p: 0.5881, r:0.6099, f1:0.5535]
+[2022-09-10 17:18:00,484][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 6: [320/577 (55%)]	Loss: 0.309512
+[2022-09-10 17:18:00,484][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 6: Acc: 63.44%	macro metrics: [p: 0.5014, r:0.5220, f1:0.4721]
+[2022-09-10 17:18:00,591][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 6: [577/577 (100%)]	Loss: 0.033578
+[2022-09-10 17:18:00,591][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 6: Acc: 66.72%	macro metrics: [p: 0.7697, r:0.5826, f1:0.5729]
+[2022-09-10 17:18:00,613][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 6: [93/93](100%)	 Loss: 0.276005
+[2022-09-10 17:18:00,614][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 6: Acc: 69.89%	macro metrics: [p: 0.6487, r:0.5836, f1:0.5607]
+[2022-09-10 17:18:00,743][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 7: [320/577 (55%)]	Loss: 0.208650
+[2022-09-10 17:18:00,743][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 7: Acc: 68.75%	macro metrics: [p: 0.7949, r:0.5644, f1:0.5541]
+[2022-09-10 17:18:00,854][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 7: [577/577 (100%)]	Loss: 0.270278
+[2022-09-10 17:18:00,854][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 7: Acc: 70.88%	macro metrics: [p: 0.8228, r:0.5946, f1:0.6069]
+[2022-09-10 17:18:00,876][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 7: [93/93](100%)	 Loss: 0.250085
+[2022-09-10 17:18:00,876][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 7: Acc: 69.89%	macro metrics: [p: 0.6595, r:0.5708, f1:0.5709]
+[2022-09-10 17:18:01,005][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 8: [320/577 (55%)]	Loss: 0.154364
+[2022-09-10 17:18:01,005][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 8: Acc: 66.88%	macro metrics: [p: 0.8240, r:0.5538, f1:0.5826]
+[2022-09-10 17:18:01,112][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 8: [577/577 (100%)]	Loss: 0.446546
+[2022-09-10 17:18:01,112][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 8: Acc: 74.00%	macro metrics: [p: 0.8491, r:0.6545, f1:0.6888]
+[2022-09-10 17:18:01,137][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 8: [93/93](100%)	 Loss: 0.207318
+[2022-09-10 17:18:01,137][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 8: Acc: 77.42%	macro metrics: [p: 0.7006, r:0.6803, f1:0.6374]
+[2022-09-10 17:18:01,264][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 9: [320/577 (55%)]	Loss: 0.145447
+[2022-09-10 17:18:01,264][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 9: Acc: 83.44%	macro metrics: [p: 0.8871, r:0.7839, f1:0.7989]
+[2022-09-10 17:18:01,376][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 9: [577/577 (100%)]	Loss: 0.799909
+[2022-09-10 17:18:01,376][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 9: Acc: 82.32%	macro metrics: [p: 0.8887, r:0.7692, f1:0.7905]
+[2022-09-10 17:18:01,398][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 9: [93/93](100%)	 Loss: 0.179701
+[2022-09-10 17:18:01,398][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 9: Acc: 80.65%	macro metrics: [p: 0.7094, r:0.6982, f1:0.6592]
+[2022-09-10 17:18:01,526][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 10: [320/577 (55%)]	Loss: 0.121490
+[2022-09-10 17:18:01,527][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 10: Acc: 86.25%	macro metrics: [p: 0.9030, r:0.8255, f1:0.8443]
+[2022-09-10 17:18:01,640][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 10: [577/577 (100%)]	Loss: 0.152314
+[2022-09-10 17:18:01,640][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 10: Acc: 88.21%	macro metrics: [p: 0.9163, r:0.8393, f1:0.8584]
+[2022-09-10 17:18:01,663][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 10: [93/93](100%)	 Loss: 0.140339
+[2022-09-10 17:18:01,663][deepke.relation_extraction.standard.tools.trainer][INFO] - Valid Epoch 10: Acc: 86.02%	macro metrics: [p: 0.7208, r:0.7478, f1:0.7170]
+[2022-09-10 17:18:01,789][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 11: [320/577 (55%)]	Loss: 0.106531
+[2022-09-10 17:18:01,789][deepke.relation_extraction.standard.tools.trainer][INFO] - Train Epoch 11: Acc: 88.75%	macro metrics: [p: 0.9246, r:0.8370, f1:0.8548]

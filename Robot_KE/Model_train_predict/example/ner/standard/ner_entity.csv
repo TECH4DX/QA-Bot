@@ -1,0 +1,835 @@
+name,name_type
+pip方式,安装方式
+MindSpore Ascend,工具
+910,数字
+MindSpore,工具
+Ascend,工具
+91,数字
+mindspore-ascend,工具
+版本,系统名词
+Open MPI,工具
+open-mpi-,工具
+mindspore,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend_install_pip.md,链接
+https://mindspore-website.obs.cn-north-4.myhuaweicloud.com/website-images/r1.7/resource/_static/logo_source.png,链接
+Linux,系统
+昇腾AI处理器配套软件包,工具
+EulerOS 2.8,系统
+pip,工具
+脚本,系统名词
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-pip.sh,链接
+依赖,系统名词
+系统,系统名词
+Ubuntu 18.04,系统
+CentOS 7.6,系统
+OpenEuler 20.03,系统
+KylinV10 SP1,系统
+Python,工具
+GCC,工具
+昇腾ai处理器配套软件包,工具
+命令,系统名词
+1.6.0,数字
+wge,命令
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-pip.sh
+",链接
+1.7.0,数字
+Python ,工具
+3.7,数字
+3.9,数字
+路径,系统名词
+/home/xxx/Ascend,链接
+gmp,工具
+APT,安装方式
+pip3,工具
+OPENMPI,工具
+终端窗口,系统名词
+环境变量,系统名词
+虚拟环境,系统名词
+系统环境,系统名词
+软件名称,系统名词
+编译运行M,系统
+re,工具
+3.7-3.9,数字
+环境,系统名词
+python,工具
+AI计算库,系统名词
+7.3.0,数字
+C++,工具
+gcc,工具
+6.1.2,数字
+多精度算术库,系统名词
+open-mpi,工具
+4.0.3,数字
+高性能消息传递库,系统名词
+单机多卡,系统名词
+多机多卡,系统名词
+https://www.python.org/,链接
+Conda,工具
+cur,命令
+"https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh
+",链接
+清华源,系统名词
+https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/,链接
+3.7.5,数字
+ARM,系统名词
+19.3,数字
+Ascend Data Center Solution,工具
+22.0,数字
+https://support.huawei.com/enterprise/zh/doc/EDOC1100246310,链接
+用户,人物
+权限,系统名词
+root用户,人物
+用户组,人物
+whl,工具
+指令,系统名词
+pip install /usr/local/Ascend/ascend-toolkit/latest/fwkacllib/lib64/topi-*-py3-none-any,命令
+".whl
+",链接
+install,工具
+gcc-7,工具
+CentOS 7,系统
+GCC ,工具
+EulerOS,系统
+OpenEuler,系统
+https://www.open-mpi.org/,链接
+curl,命令
+"https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.3.tar.gz
+",链接
+https://www.mindspore.cn/versions,链接
+SHA-256,工具
+系统架构,系统名词
+x86_64,系统名词
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/x86_64/mindspore_ascend-${MS_VERSION/-/}-cp37-cp37m-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+3.8,数字
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/x86_64/mindspore_ascend-${MS_VERSION/-/}-cp38-cp38-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/x86_64/mindspore_ascend-${MS_VERSION/-/}-cp39-cp39-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+aarch64,系统名词
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/aarch64/mindspore_ascend-${MS_VERSION/-/}-cp37-cp37m-linux_aarch64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/aarch64/mindspore_ascend-${MS_VERSION/-/}-cp38-cp38-linux_aarch64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/aarch64/mindspore_ascend-${MS_VERSION/-/}-cp39-cp39-linux_aarch64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+安装包,系统名词
+https://gitee.com/mindspore/mindspore/blob/r1.7/setup.py,链接
+ModelZoo,工具
+https://gitee.com/mindspore/models/tree/r1.7/,链接
+https://gitee.com/mindspore/mindspore/blob/r1.7/requirements.txt,链接
+Runtime,系统名词
+ptions,工具
+tation,工具
+tool,工具
+path,工具
+AICPU,工具
+compilation tool,工具
+"path
+",工具
+librmplementation depends on,工具
+version,工具
+mport,工具
+mpy,工具
+poTensor,工具
+por,工具
+context,工具
+Tensor,工具
+p.one,工具
+one,工具
+源码编译方式,安装方式
+MindSpore CPU,工具
+macOS,系统名词
+mindspore-cpu,工具
+macos,系统名词
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_mac_install_source.md,链接
+芯片,系统名词
+计算架构,系统名词
+11.3,数字
+3.8-3.9,数字
+Inte,工具
+10.15,数字
+https://www.python.org/ftp/python/3.7.5/python-3.7.5-macosx10.9.pkg,链接
+https://repo.huaweicloud.com/python/3.7.5/python-3.7.5-macosx10.9.pkg,链接
+3.8.0,数字
+it,工具
+https://www.python.org/ftp/python/3.8.0/python-3.8.0-macosx10.9.pkg,链接
+https://repo.huaweicloud.com/python/3.8.0/python-3.8.0-macosx10.9.pkg,链接
+3.9.0,数字
+https://www.python.org/ftp/python/3.9.0/python-3.9.0-macosx10.9.pkg,链接
+https://repo.huaweicloud.com/python/3.9.0/python-3.9.0-macosx10.9.pkg,链接
+code,工具
+https://xcodereleases.com/,链接
+3.0,数字
+13.0,数字
+Command,工具
+Line,工具
+Tools,工具
+or,工具
+ools,工具
+CMake,工具
+3.18.3,数字
+https://cmake.org/download/,链接
+patch,工具
+.5,工具
+https://ftp.gnu.org/gnu/patch/,链接
+wheel,工具
+0.32.0,数字
+https://pypi.org/project/wheel/,链接
+whee,工具
+源码,系统名词
+cpCPU性,工具
+多线程方式,安装方式
+CPU,工具
+pip install output/mindspore-*.whlhttps://py,命令
+"pi.tuna.tsinghua.edu.cn/simple
+",链接
+scipy包,工具
+pip instal,命令
+"https://pypi.anaconda.org/scipy-wheels-nightly/simple scipy
+",链接
+pip install,工具
+-upgrade,工具
+upgrade,工具
+"python_version}-macosx_{platform_version}_{arch}.whl
+",命令
+310,数字
+mindspore-ascend-,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend310_install_pip.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend310-pip.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend310-pip.sh
+",链接
+编译和运行MindSpore的操,系统
+cmake,工具
+https://cmake.org/,链接
+wget,工具
+https://apt.kitware.com/keys/kitware-archive-latest.asc/dev/nul,链接
+https://apt.kitware.com/ubuntu,链接
+mai,工具
+stall,工具
+aar,系统名词
+ch6,工具
+3.19.8-Linux/usr/local/cmake-3.19.8 --exclude-,命令
+subdir,链接
+/cma,命令
+ke-3.19.8/bin:\$,链接
+CMakeLists.txt,工具
+tensor_add,工具
+mindir,工具
+MindIR,工具
+ke,工具
+grep,工具
+Location,工具
+Co,安装方式
+da方式,安装方式
+MindSpore GPU,工具
+conda方式,安装方式
+mindspore-gpu,工具
+cuDN,工具
+cudnn,工具
+TensorR,工具
+tensorrt,工具
+conda,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_gpu_install_conda.md,链接
+https://docs.conda.io/en/latest/,链接
+包管理与环境管理系统,系统名词
+二进制软件包,系统名词
+GPU,工具
+Conda方式,安装方式
+GP,工具
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-gpu-conda.sh,链接
+CUDA,工具
+NVIDIA GPU驱,工具
+CUD,工具
+10,数字
+418.3,数字
+50.80.0,数字
+GPU驱,工具
+软件源,系统名词
+ot权限,系统名词
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-gpu-conda.sh
+",链接
+11.1,数字
+10.1,数字
+cuD,工具
+Ubuntu18.04,系统
+Mi,工具
+10.111.1,数字
+cuda,工具
+7.6.x,数字
+8.0.x,数字
+速库,系统名词
+Anaconda3,工具
+Miniconda3,工具
+9.4.0,数字
+7.2.2,数字
+理SDK,工具
+Servin,工具
+10.,数字
+https://developer.nvidia.com/cuda-toolkit-archive,链接
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html,链接
+nfi,系统
+e方,系统
+idia,工具
+驱动,系统名词
+"https://developer.download.nvidia.com/compute/cuda/11.1.1/local_installers/cuda_11.1.1_455.32.00_linux.run
+",链接
+"https://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
+",链接
+._418.87.,系统
+ux.run,链接
+https://developer.nvidia.com/zh-cn/cudnn,链接
+cuCUDA,工具
+sudo chmod a+r /usr/loca,命令
+"l/cuda-11.1/include/cudnn.h /usr/local/cuda-11.1/lib64/libcudnn*
+",链接
+/usr/local/cuda,链接
+Miniconda,工具
+"gmp
+",工具
+https://developer.nvidia.com/nvidia-tensorrt-7x-download,链接
+nsorR,工具
+AR格,工具
+.2.,数字
+untu-18.04.,系统
+8dnn8.0,系统
+untu-18,系统
+.04.,数字
+cd TensorR,命令
+7.2.2.,数字
+conda creat,命令
+"c conda-forge -n mindspore_py37 python=3.7.5 -y
+",命令
+ 10.,数字
+ndows,工具
+Windows,工具
+windows,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_win_install_pip.md,链接
+indo,链接
+社区,系统名词
+Windows（CPU,工具
+源码编,安装方式
+https://www.mindspore.cn/news/newschildren?id=364,系统名词
+https://gitee.com/lvmingfu,链接
+x86架构6,系统名词
+https://www.python.org/ftp/python/3.7.5/python-3.7.5-amd64.exe,链接
+https://mirrors.huaweicloud.com/python/3.7.5/python-3.7.5-amd64.exe,链接
+https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe,链接
+https://mirrors.huaweicloud.com/python/3.8.0/python-3.8.0-amd64.exe,链接
+https://www.python.org/ftp/python/3.9.0/python-3.9.0-amd64.exe,链接
+https://mirrors.huaweicloud.com/python/3.9.0/python-3.9.0-amd64.exe,链接
+系统环境变量,系统名词
+系统变量,系统名词
+Path,工具
+python.exe,工具
+https://ms-release.obs.cn-north-4.myhuaweicloud.com/%MS_VERSION%/MindSpore/cpu/x86_64/mindspore-%MS_VER,链接
+"SION:-=%-cp37-cp37m-win_amd64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",命令
+https://ms-release.obs.cn-north-4.myhuaweicloud.com/%MS_VERSION%/MindSpore/cpu/x86_64/mindspore-%MS_VE,链接
+"RSION:-=%-cp38-cp38-win_amd64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",命令
+https://ms-release.obs.cn-north-4.myhuaweicloud.com/%MS_VERSION%/MindSpore/cpu/x86_64/mindspore-%MS_,链接
+"VERSION:-=%-cp39-cp39-win_amd64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",命令
+1.5.0,数字
+Nightly,工具
+CPU Nightly,工具
+mindspore-cpu-nightly,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_install_nightly.md,链接
+MindSpore Nightly,工具
+Ubuntu,工具
+源码编译,安装方式
+https://www.mindspore.cn/news/newschildren?id=365,系统名词
+https://gitee.com/damon0626,链接
+.0,工具
+con,工具
+da3-py37_4.10.3-Linux-x86_64.sh,命令
+co,工具
+nda3/etc/prof,命令
+ile.d/conda.,链接
+sh,工具
+create,工具
+pytho,工具
+3.7.,数字
+py,工具
+"thon3.7-dev python3.7-distutils python3-pip -y
+",命令
+stall /usr/bin/pyt,命令
+hon python /usr/bin/python3.7 100,链接
+nstalpip,工具
+https://repo.huaweicloud.com/repository/pypi/simple,链接
+config set,工具
+global.index,工具
+"https://repo.huaweicloud.com/repository/pypi/simple
+",链接
+pip installhttps://py,命令
+setuptools,工具
+git gmp tclsh patch NUMA Flex,工具
+git-gmp-tclsh-patch-numa-flex,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend_install_source.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-source.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-source.sh
+",链接
+"Open MPI
+",工具
+Python3,工具
+44.0,数字
+git,工具
+源代码,系统名词
+git-lfs,工具
+Flex,工具
+2.5.35,数字
+词法分析器,系统名词
+tclsh,工具
+sqlite,工具
+2.5,数字
+NUMA,工具
+2.0.11,数字
+非一致性内存访问库,系统名词
+mp-dev,工具
+ma-deflex,工具
+ Ubuntu,系统
+it-lfs-linux-*-v,工具
+3.1.,数字
+"git-lfs
+",工具
+github,工具
+gitee,工具
+镜像,系统名词
+pip install output/mindspore_ascend-*.whhtt,命令
+"ps://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+pipinstall,工具
+.whl,工具
+indows,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_win_install_source.md,链接
+https://www.mindspore.cn/news/newschildren?id,系统名词
+64,系统
+ingfu,工具
+Visual,工具
+https://www.microsoft.com/zh-CN/download/details.aspx?id=48145,链接
+https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.2/Git-2.29.2.2-64-bit.exe,链接
+ProgramFiles,工具
+it\,工具
+MinGW,工具
+W64,工具
+https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.3.0/threads-posix/seh/x86_64-7.3.0-release-posix-seh-rt_v5-rev0.7z,链接
+MinG,工具
+https://github.com/Kitware/Cmake/releases/tag/v3.18.3,链接
+cmake.exe,工具
+ActivePerl,工具
+5.28.1.280,数字
+https://downloads.activestate.com/ActivePerl/releases/5.28.1.2801/ActivePerl-5.28.1.2801-MSWin32-x64-24563874.exe,链接
+hl,工具
+"https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+{version}-{python_version}-win_amd64.w,命令
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_mac_install_pip.md,链接
+macO,系统名词
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/x86_64/mindspore-${MS_VERSION/-/}-cp37-cp37m-macosx_10_15_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/x86_64/mindspore-${MS_VERSION/-/}-cp38-cp38-linux_macosx_10_15_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/x86_64/mindspore-${MS_VERSION/-/}-cp39-cp39-macosx_10_15_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/aarch64/mindspore-${MS_VERSION/-/}-cp38-cp38-macosx_11_0_arm64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/aarch64/mindspore-${MS_VERSION/-/}-cp39-cp39-macosx_11_0_arm64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_win_install_nightly.md,链接
+Ubunt,工具
+u 18,系统
+.04,数字
+Description,工具
+Ubuntu 18.04.,系统
+4.18,系统
+Ubuntu SMP Friu10,系统
+x86_x86_64x86_64,系统名词
+GNU,工具
+7.5.0,数字
+Ubuntu 7.5.0-3ubuntu1~18.04,系统
+.5.0,数字
+Copyright,工具
+reoftware,工具
+oundation,工具
+This,工具
+is free,工具
+software,工具
+see the,工具
+source,工具
+copying,工具
+conditions,工具
+https://ftp.gnu.org/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz,链接
+cd gcc-,命令
+hetop level,工具
+of the,工具
+gcc source,工具
+tree,工具
+he,工具
+the,工具
+thing.,工具
+2020-12-19 09:58:,命令
+33 URL: ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-6.1.0.tar,链接
+83840,系统
+.1.0,数字
+20,命令
+20-12-19 10:00:01 URL: ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-3.1.4.tar.,链接
+84,系统
+2020-12-19,命令
+ 10:00:50 URL: ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-1.0.3.tar.g,链接
+6699,系统名词
+25,工具
+1.0.3,数字
+20-12-19 10:03:10 URL: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.16.1.tar.,链接
+1626446,系统名词
+ms-sd@mssd:~/gcc-7.3.0/build$ ../configure --enable-checking=release -,链接
+"-enable-languages=c,c++ --disable-multilib
+",命令
+7C,工具
+PU性,工具
+线程,系统名词
+cGCC,工具
+FreeSoftware,工具
+Foundation,工具
+Ubuntu18.,系统
+python3,工具
+ersion,工具
+3.6.9,数字
+https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz,链接
+Pytho,工具
+3.7.5.,数字
+Python-,工具
+ms,链接
+"-sd@mssd:~/Python-3.7.5$ ./configure --prefix=/usr/local/python3.7.5 --with-ssl
+",链接
+with-ssl,工具
+"到SSL
+",工具
+-sd@mssd:~/Python-3.7.5$ sudo apt-g,链接
+"-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl --no-check-certificate
+",命令
+pdb,工具
+3..,数字
+py3versions,工具
+./share/py,命令
+thon3/py3versions.py,链接
+452645,系统名词
+6m,工具
+1p,工具
+ython3,工具
+python3链,工具
+"-sd@mssd:~/Python-3.7.5$ sudo mv /usr/bin/python3 /usr/bin/python3.bak
+",链接
+"-sd@mssd:~/Python-3.7.5$ sudo ln -s /usr/local/python3.7.5/bin/python3.7 /usr/bin/python3
+",链接
+"-sd@mssd:~/Python-3.7.5$ sudo ln -s /usr/local/python3.7.5/bin/pip3 /usr/bin/pip3
+",链接
+-sd@mssd:~/Python-3.7.5,链接
+n3,工具
+"linux
+",工具
+There,工具
+providing /usr/bin/pytho,链接
+Selection,工具
+Priority,工具
+"Status
+",工具
+usr/bin/python3,工具
+auto mode,工具
+usr/bin/python2,工具
+manual mode,工具
+Press,工具
+ente,工具
+to keep the,工具
+curre,工具
+choice,工具
+type selection,工具
+mber,工具
+OpenSSL,工具
+ 1.1.1,数字
+1.1.1,数字
+OpenSSL 1.1.,系统
+Sep20,工具
+Ubun,工具
+t18.04,系统
+openssl,工具
+https://www.cnblogs.com/thechosenone95/p/10603110.html,链接
+3.18.5,数字
+https://github.com/Kitware/CMake/releases/download/v3.18.5/cmake-3.18.5.tar.gz,链接
+you,工具
+can,工具
+ootstrap,工具
+make,工具
+kdir,工具
+cmak,工具
+依次,系统名词
+"-sd@mssd:~/cmake-3.18.5$ ./bootstrap
+",链接
+suite,工具
+maintained,工具
+ported,工具
+in,工具
+ex-ur,命令
+Package,工具
+Version,工具
+19.4,数字
+.3.3,数字
+41.2.0,数字
+2.0,数字
+patch 2.5,工具
+ubuntu18.04,系统
+.7.,数字
+2.7.6,数字
+reeSoftware,工具
+198,系统名词
+License,工具
+http://gnu.org/licenses/gpl.html>.,链接
+you are,工具
+free,工具
+chan,工具
+the extent,工具
+permitted,工具
+NUMA ,工具
+代码,系统名词
+"pybind1python3-wheel python3-setuptools python3.7-minimal
+",命令
+）pip3,工具
+"-sd@mssd:~/mindspore$ sudodspore/output/mindspore-1.1.0-cp37-cp37m-linux_x86_64.whl
+",链接
+Docker方式,安装方式
+docker方式,安装方式
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_install_docker.md,链接
+Docker,工具
+https://docs.docker.com/get-docker/,链接
+容器引擎,系统名词
+开发者,人物
+容器,系统名词
+https://support.huaweicloud.com/swr/index.html,链接
+ CPU,工具
+devel,工具
+https://www.mindspore.cn/install,链接
+runtime,工具
+二进制包,系统名词
+1.1.0,数字
+x86架构,系统名词
+18.03,数字
+输出,系统名词
+标签,系统名词
+硬件,系统名词
+Linux-x86_64,系统
+Source,工具
+https://gitee.com/mindspore/mindspore/blob/r1.7/scripts/docker/README.md,链接
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_install_conda.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-cpu-conda.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-cpu-conda.sh
+",链接
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_install_pip.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-cpu-pip.sh,链接
+root,人物
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-cpu-pip.sh
+",链接
+niconda3-py,工具
+37_4.,命令
+3-Linux-x86_64,命令
+iniconda,工具
+3/e,命令
+le.d/co,链接
+"init bash
+",工具
+mindpy3,工具
+oftware-properties-common,工具
+"y
+",工具
+tall,工具
+.7,数字
+".7-dev python3.7-distutils python3-pip -y
+",命令
+tall /usr/bin/py,命令
+thon python /usr/bin/python3.7 100,链接
+pip installpip,工具
+ht,工具
+tps://repo.huaweicloud.com/repository/pypi/simple,链接
+pipconfig set global.index-url,工具
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/x86_64/mindspore-${MS_VERSION/-/}-cp37-cp37m-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/x86_64/mindspore-${MS_VERSION/-/}-cp38-cp38-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/x86_64/mindspore-${MS_VERSION/-/}-cp39-cp39-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/aarch64/mindspore-${MS_VERSION/-/}-cp37-cp37m-linux_aarch64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/aarch64/mindspore-${MS_VERSION/-/}-cp38-cp38-linux_aarch64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/cpu/aarch64/mindspore-${MS_VERSION/-/}-cp39-cp39-linux_aarch64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend_install_conda.md,链接
+EulerO,系统
+2.8,数字
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-conda.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/euleros-ascend-conda.sh
+",链接
+gitgmptclshpatchnumaflex,工具
+GCC git,工具
+gcc-git,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_gpu_install_source.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-gpu-source.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-gpu-source.sh
+",链接
+LLV,工具
+LLVM,工具
+Ubuntu|18.04,系统
+Autoconf,工具
+2.69,数字
+Libtool,工具
+2.4.6,数字
+29.fc30,数字
+Automake,工具
+1.15.1,数字
+12.0.1,数字
+编译器,系统名词
+图算融合,系统名词
+稀疏计算,系统名词
+llvm,工具
+git，Autoconf，Libtool,工具
+utomake,工具
+patch，NUMA,工具
+https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/nul,链接
+https://llvm.org/,链接
+https://apt.llvm.org/llvm-snapshot.gpg.keysudo apt-key add,链接
+nvcc,工具
+pip install output/mindspore_gpu-*.whlhttps://py,命令
+1.3.0,数字
+CUDA1,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_gpu_install_pip.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-gpu-pip.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-gpu-pip.sh
+",链接
+A10,数字
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/gpu/x86_64/cuda-10.1/mindspore_gpu-${MS_VERSION/-/}-cp37-cp37m-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/gpu/x86_64/cuda-10.1/mindspore_gpu-${MS_VERSION/-/}-cp38-cp38-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+.9,数字
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/gpu/x86_64/cuda-10.1/mindspore_gpu-${MS_VERSION/-/}-cp39-cp39-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/gpu/x86_64/cuda-11.1/mindspore_gpu-${MS_VERSION/-/}-cp37-cp37m-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/gpu/x86_64/cuda-11.1/mindspore_gpu-${MS_VERSION/-/}-cp38-cp38-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/gpu/x86_64/cuda-11.1/mindspore_gpu-${MS_VERSION/-/}-cp39-cp39-linux_x86_64.whl --trusted-host ms-release.obs.cn-north-4.myhuaweicloud.com -i https://pypi.tuna.tsinghua.edu.cn/simple
+",链接
+CU,工具
+A1,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_gpu_install_docker.md,链接
+ GPU,工具
+mindspore/mindspore-gpu,工具
+1.,数字
+发环境,系统名词
+Ubu,系统
+Acquire,工具
+operatision,工具
+https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add,链接
+"https://nvidia.github.io/nvidia-docker/$DISTRIBUTION/nvidia-docker.listsudo tee /etc/apt/sources.list.d/nvidia-docker.list
+",链接
+ocke,命令
+r:,工具
+da,工具
+a方式,安装方式
+nda,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend310_install_conda.md,链接
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_win_install_conda.md,链接
+indow,链接
+https://repo.anaconda.com/archive/,链接
+Conda软件包,工具
+https://repo.anaconda.com/miniconda/,链接
+condte,工具
+"nda-forgemindspore_py38 -c conda-forge python=3.8.0
+",命令
+condreate,工具
+"nda-forgemindspore_py39 -c conda-forge python=3.9.0
+",命令
+二进制包方式,安装方式
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/{arch}/mindspore_ascend-${MS_VERSION/-/}-linux_x86_64.tar.gz --no-check-certificate
+",链接
+"https://ms-release.obs.cn-north-4.myhuaweicloud.com/${MS_VERSION}/MindSpore/ascend/{arch}/mindspore_ascend-${MS_VERSION/-/}-linux_aarch64.tar.gz --no-check-certificate
+",链接
+gmp tclsh patch,工具
+gcc-git-gmp-tclsh-patch,工具
+numa,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_cpu_install_source.md,链接
+https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-cpu-source.sh,链接
+"https://gitee.com/mindspore/mindspore/raw/r1.7/scripts/install/ubuntu-cpu-source.sh
+",链接
+"NUMA
+",工具
+*.whl,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend_install_docker.md,链接
+Li,链接
+ux,系统
+https://ascend.huawei.com/ascendhub/#/main,链接
+ Ascend,工具
+Cente,工具
+Atlas Data Center Solution,工具
+Ascend ,工具
+昇腾软件包,链接
+商用版,系统名词
+社区版,系统名词
+链接,系统名词
+CANN,工具
+https://www.hiascend.com/software/cann/community-history,链接
+https://www.hiascend.com/hardware/firmware-drivers?tag=community,链接
+固件,系统名词
+驱动安装包,系统名词
+基础驱动,系统名词
+配套软件包,系统名词
+toolbox,工具
+Ascend NPU,工具
+Ascend Hub,工具
+https://ascend.huawei.com/ascendhub/#/home,链接
+https://ascendhub.huawei.com/#/detail/mindspore-modelzoo,链接
+docker,工具
+ogin,工具
+ker,工具
+"dhub.huawei.com/public-ascendhub/mindspore-modelzoo:{tag}
+",命令
+ascendhub,工具
+ascendhub/mindspore-modelzoo:{tag},命令
+MindInsight,工具
+hos,链接
+ms.Tensor,工具
+.one,工具
+Ascend AI处理器配套软件包,工具
+git gmp tclsh patch Flex,工具
+git-gmp-tclsh-patch-flex,工具
+https://gitee.com/mindspore/docs/blob/r1.7/install/mindspore_ascend310_install_source.md,链接
+gmp-dev,工具
+patch flex,工具
+taroutput/mind,命令
+spore_ascend-*.tar.,链接
+pathto extracted,工具
+"accordingly
+",工具
+Mambaforge,工具
+Miniforge,工具
+Anaconda,工具
+MiniConda,工具
+https://github.com/conda-forge/miniforge,链接
+conda-forge,工具
+py37,工具
+1.3,数字
+GPU Nightly,工具
+mindspore-gpu-nightly,工具
+https://www.mindspore.cn/news/newschildren,系统名词
+id=4,链接
+0依赖,系统名词
+https://gitee.com/zhang_yi2020,链接
+8.0MindSpore GPU,工具
+多精算,系统名词
+单机,系统名词
+多卡,工具
+多机,工具
+11.,数字
+pip install mindspore-cuda11-dev -i https://pypi.tuna.tsinghua.edu.cn/sim,命令
+"ple
+",链接
+nightly,工具

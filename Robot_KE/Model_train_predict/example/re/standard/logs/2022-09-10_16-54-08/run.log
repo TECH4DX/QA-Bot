@@ -1,0 +1,56 @@
+[2022-09-10 16:54:08,649][__main__][INFO] - 
+cwd: /home/zzx/deepke/DeepKE/example/re/standard
+preprocess: true
+data_path: data/origin
+out_path: data/out
+chinese_split: true
+replace_entity_with_type: true
+replace_entity_with_scope: true
+min_freq: 3
+pos_limit: 30
+seed: 1
+use_gpu: true
+gpu_id: 0
+epoch: 150
+batch_size: 32
+learning_rate: 0.0003
+lr_factor: 0.7
+lr_patience: 3
+weight_decay: 0.001
+early_stopping_patience: 6
+train_log: true
+log_interval: 10
+show_plot: true
+only_comparison_plot: false
+plot_utils: matplot
+predict_plot: false
+vocab_size: ???
+word_dim: 60
+pos_size: 62
+pos_dim: 10
+dim_strategy: sum
+num_relations: 14
+fp: /home/zzx/deepke/DeepKE/example/re/standard/checkpoints/2022-09-05_15-16-06/lm_epoch150.pth
+model_name: capsule
+share_weights: true
+num_iterations: 5
+dropout: 0.3
+input_dim_capsule: ???
+dim_capsule: 50
+num_capsule: ???
+in_channels: ???
+out_channels: 100
+kernel_sizes:
+- 9
+activation: lrelu
+keep_length: false
+pooling_strategy: cls
+
+[2022-09-10 16:54:16,290][__main__][INFO] - device: cuda:0
+[2022-09-10 16:54:16,290][deepke.relation_extraction.standard.tools.preprocess][INFO] - ===== start preprocess data =====
+[2022-09-10 16:54:16,290][deepke.relation_extraction.standard.tools.preprocess][INFO] - load raw files...
+[2022-09-10 16:54:16,290][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/train.csv
+[2022-09-10 16:54:16,293][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/valid.csv
+[2022-09-10 16:54:16,293][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/test.csv
+[2022-09-10 16:54:16,294][utils.ioUtils][INFO] - load csv from /home/zzx/deepke/DeepKE/example/re/standard/data/origin/relation.csv
+[2022-09-10 16:54:16,294][deepke.relation_extraction.standard.tools.preprocess][INFO] - clean data...

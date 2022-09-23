@@ -1,0 +1,11 @@
+[2022-09-10 15:40:09,883][__main__][INFO] - device: cuda:0
+[2022-09-10 15:40:09,884][utils.ioUtils][INFO] - load data from /home/zzx/deepke/DeepKE/example/re/standard/data/out/train.pkl
+Traceback (most recent call last):
+  File "run.py", line 65, in main
+    train_dataset = CustomDataset(train_data_path)
+  File "/home/zzx/deepke/DeepKE/src/deepke/relation_extraction/standard/tools/dataset.py", line 64, in __init__
+    self.file = load_pkl(fp)
+  File "/home/zzx/deepke/DeepKE/src/deepke/attribution_extraction/standard/utils/ioUtils.py", line 36, in load_pkl
+    with open(fp, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/zzx/deepke/DeepKE/example/re/standard/data/out/train.pkl'
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
