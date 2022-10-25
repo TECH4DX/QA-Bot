@@ -1,0 +1,994 @@
+mindspore.nn.transformer
+Note
+
+Transformer网络。这些是实验性接口，可能会修改或删除。
+
+classmindspore.nn.transformer.AttentionMask(seq_length, parallel_config=default_dpmp_config)[源代码]
+从输入掩码中获取下三角矩阵。输入掩码是值为1或0的二维Tensor (batch_size, seq_length)。1表示当前位置是一个有效的标记，0则表示当前位置不是一个有效的标记。
+
+参数：
+
+seq_length (int) - 表示输入Tensor的序列长度。
+
+parallel_config (OpParallelConfig) - 表示并行配置。默认值为 default_dpmp_config ，表示一个带有默认参数的 OpParallelConfig 实例。
+
+输入：
+
+input_mask (Tensor) - 掩码矩阵，shape为(batch_size, seq_length)，表示每个位置是否为有效输入。
+
+输出：
+
+Tensor，表示shape为(batch_size, seq_length, seq_length)的注意力掩码矩阵。
+
+异常：
+
+TypeError - seq_length 不是整数。
+
+ValueError - seq_length 不是正数。
+
+TypeError - parallel_config 不是OpParallelConfig的子类。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore.nn.transformer import AttentionMask
+from mindspore import Tensor
+mask = AttentionMask(seq_length=4)
+mask_array = np.array([[1, 1, 1, 0]], np.float32)
+inputs = Tensor(mask_array)
+res = mask(inputs)
+print(res)
+
+
+
+
+classmindspore.nn.transformer.VocabEmbedding(vocab_size, embedding_size, parallel_config=default_embedding_parallel_config, param_init="normal")[源代码]
+根据输入的索引查找参数表中的行作为返回值。当设置并行模式为 AUTO_PARALLEL_MODE 时，如果parallel_config.vocab_emb_dp为True时，那么embedding lookup表采用数据并行的方式，数据并行度为 parallel_config.data_parallel ，否则按 parallel_config.model_parallel 对embedding表中的第0维度进行切分。
+
+Note
+
+启用 AUTO_PARALLEL / SEMI_AUTO_PARALLEL 模式时，此层仅支持2维度的输入，因为策略是为2D输入而配置的。
+
+参数：
+
+vocab_size （int) - 表示查找表的大小。
+
+embedding_size （int）- 表示查找表中每个嵌入向量的大小。
+
+param_init （Union[Tensor, str, Initializer, numbers.Number]）- 表示embedding_table的Initializer。当指定字符串时，请参见 initializer 类了解字符串的值。默认值：’normal’。
+
+parallel_config (EmbeddingOpParallelConfig) - 表示网络的并行配置。默认值为 default_embedding_parallel_config ，表示带有默认参数的 EmbeddingOpParallelConfig 实例。
+
+输入：
+
+input_ids (Tensor) - shape为(batch_size, seq_length)的输入，其数据类型为int32。
+
+输出：
+
+Tuple，表示一个包含(output, embedding_table)的元组。
+
+output (Tensor) - shape为(batch_size, seq_length, embedding_size)嵌入向量查找结果。
+
+weight (Tensor) - shape为(vocab_size, embedding_size)的嵌入表。
+
+异常：
+
+ValueError - parallel_config.vocab_emb_dp为True时，词典的大小不是parallel_config.model_parallel的倍数。
+
+ValueError - vocab_size 不是正值。
+
+ValueError - embedding_size 不是正值。
+
+TypeError - parallel_config 不是OpParallelConfig的子类。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore.nn.transformer import VocabEmbedding
+from mindspore import Tensor
+from mindspore import dtype as mstype
+model = VocabEmbedding(vocab_size=30, embedding_size=30)
+tensor = Tensor(np.ones((20, 15)), mstype.int32)
+output, table = model(tensor)
+print(output.shape)
+
+print(table.shape)
+
+classmindspore.nn.transformer.MultiHeadAttention(batch_size, src_seq_length, tgt_seq_length, hidden_size, num_heads, hidden_dropout_rate=0.1, attention_dropout_rate=0.1, compute_dtype=mstype.float16, softmax_compute_type=mstype.float32, param_init_type=mstype.float32, use_past=False, parallel_config=default_dpmp_config)[源代码]
+论文 Attention Is All You Need 中所述的多头注意力的实现。给定src_seq_length长度的query向量，tgt_seq_length长度的key向量和value，注意力计算流程如下：
+
+MultiHeadAttention(query,key,vector)=Dropout(Concat(head1,…,headh)WO)
+其中， head_i = Attention(QW_i^Q, KW_i^K, VW_i^V) 。注意：输出层的投影计算中带有偏置参数。
+
+如果query tensor、key tensor和value tensor相同，则上述即为自注意力机制的计算过程。
+
+参数：
+
+batch_size (int) - 表示训练批次的大小。
+
+src_seq_length (int) - 表示query向量的序列长度。
+
+tgt_seq_length (int) - 表示key向量和value向量的序列长度。
+
+hidden_size (int) - 表示输入的向量大小。
+
+num_heads (int) - 表示注意力机制中头的数量。
+
+hidden_dropout_rate (float) - 表示最后dense输出的丢弃率。默认值：0.1
+
+attention_dropout_rate (float) - 表示注意力score的丢弃率。默认值：0.1
+
+compute_dtype (dtype.Number) - 表示dense中矩阵乘法的计算类型。默认值：dtype.float16。其值应为dtype.float32或dtype.float16。
+
+param_init_type (dtype.Number) - 表示模块的参数初始化类型。默认值：dtype.float32。其值应为dtype.float32或dtype.float16。
+
+softmax_compute_type (dtype.Number) - 表示softmax计算模块的类型。默认值：dtype.float32。 其值应为dtype.float32或dtype.float16。
+
+use_past (bool) - 使用过去状态进行计算，用于增量预测。例如，如果我们有两个单词，想生成十个或以上单词。我们只需要计算一次这两个单词的状态，然后逐个生成下一个单词。当use_past为True时，有两个步骤可以执行预测。 第一步是通过 model.add_flags_recursive(is_first_iteration=True) 将is_first_iteration设为True，并传递完整的输入。然后，通过 model.add_flags_recursive(is_first_iteration=False) 将is_first_iteration设为False。此时，传递step的输入tensor，并对其进行循环。默认值：False
+
+parallel_config (OpParallelConfig) - 表示并行配置。默认值为 default_dpmp_config ，表示一个带有参数的 OpParallelConfig 实例。
+
+输入：
+
+query_tensor (Tensor) - use_past为False或is_first_iteration为True时，表示shape为(batch_size, src_seq_length, hidden_size)或(batch_size * src_seq_length, hidden_size)的query向量。否则，shape必须为(batch_size, 1, hidden_size)。
+
+key_tensor (Tensor) - use_past为False或is_first_iteration为True时，表示shape为(batch_size, tgt_seq_length, hidden_size)或(batch_size * tgt_seq_length, hidden_size)的key向量。否则，shape必须为(batch_size, 1, hidden_size)。
+
+value_tensor (Tensor) - use_past为False或is_first_iteration为True时，表示shape为(batch_size, tgt_seq_length, hidden_size)或(batch_size * tgt_seq_length, hidden_size)的value向量。否则，shape必须为(batch_size, 1, hidden_size)。
+
+attention_mask (Tensor) - use_past为False或is_first_iteration为True时，表示shape为(batch_size, src_seq_length, tgt_seq_length)的注意力掩码矩阵。否则，shape必须为(batch_size, 1, tgt_seq_length)。
+
+key_past (Tensor) - shape为(batch_size, num_heads, size_per_head, tgt_seq_length)的Float16 tensor， 表示过去所计算的key向量。 当use_past为True时，需要传入非None值用于增量预测。默认值为None。
+
+value_past (Tensor) - shape为(batch_size, num_heads, tgt_seq_length, size_per_head)的Float16 tensor，表示过去所计算的value向量。 当use_past为True时，需要传入非None值用于增量预测。默认值为None。
+
+batch_valid_length (Tensor) - shape为(batch_size,)的Int32 tensor，表示已经计算的token索引。 当use_past为True时，需要传入非None值用于增量预测。默认值为None。
+
+输出：
+
+Tuple，表示一个包含(output, layer_present)的元组。
+
+output (Tensor) - Tensor。use_past为False或is_first_iteration为True时，表示shape为(batch_size, src_seq_length, hidden_size)或(batch_size * src_seq_length, hidden_size)的层输出的float tensor。否则，shape将为(batch_size, 1, hidden_size)。
+
+layer_present (Tuple) - 表示shape为((batch_size, num_heads, size_per_head, tgt_seq_length)或(batch_size, num_heads, tgt_seq_length, size_per_head))的投影key向量和value向量的Tensor的元组。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore.nn.transformer import MultiHeadAttention
+from mindspore import dtype as mstype
+from mindspore import Tensor
+model = MultiHeadAttention(batch_size=2, hidden_size=15, src_seq_length=20, tgt_seq_length=20,
+                           num_heads=3)
+from_tensor = Tensor(np.ones((2, 20, 15)), mstype.float32)
+to_tensor = Tensor(np.ones((2, 20, 15)), mstype.float16)
+attention_mask = Tensor(np.ones((2, 20, 20)), mstype.float16)
+attn_out, past = model(from_tensor, to_tensor, to_tensor, attention_mask)
+print(attn_out.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+# When use use_past=True, it includes two steps to implement the incremental prediction.
+# Step 1: set is_first_iteration=True, and input the full sequence length's state.
+# We need to prepare the memory parameters for saving key and value states firstly.
+model = MultiHeadAttention(batch_size=2, hidden_size=15, src_seq_length=20, tgt_seq_length=20,
+                           num_heads=3, use_past=True)
+key_past = Tensor(np.zeros(shape=(2, 3, 5, 20)), mstype.float16)
+value_past = Tensor(np.zeros(shape=(2, 3, 20, 5)), mstype.float16)
+batch_valid_length = Tensor(np.ones((2,)), mstype.int32)
+# Set is_first_iteration=True to generate the full memory states
+model.add_flags_recursive(is_first_iteration=True)
+attn_out, past = model(from_tensor, to_tensor, to_tensor, attention_mask, key_past, value_past,
+                       batch_valid_length)
+print(attn_out.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+from_tensor = Tensor(np.ones((2, 1, 15)), mstype.float32)
+to_tensor = Tensor(np.ones((2, 1, 15)), mstype.float16)
+attention_mask = Tensor(np.ones((2, 1, 20)), mstype.float16)
+# Step 2: set is_first_iteration=False, and pass the single word to run the prediction rather than the
+# full sequence.
+model.add_flags_recursive(is_first_iteration=False)
+attn_out, past = model(from_tensor, to_tensor, to_tensor, attention_mask, key_past, value_past,
+                       batch_valid_length)
+print(attn_out.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+classmindspore.nn.transformer.FeedForward(hidden_size, ffn_hidden_size, dropout_rate, hidden_act="gelu", expert_num=1, param_init_type=mstype.float32, parallel_config=default_dpmp_config)[源代码]
+具有两层线性层的多层感知器，并在最终输出上使用Dropout。第一个线性层将输入维度从hidden_size投影到ffn_hidden_size，并在中间应用激活层。第二个线性层将该维度从ffn_hidden_size投影到hidden_size。配置parallel_config之后， 第一个线性层的权重将在输入维度上被分片，第二个线性层在输出维度上进行切分。总体过程如下
+
+其中 W1,W2,b1 和 b2 为可训练参数。
+
+参数：
+
+hidden_size (int) - 表示输入的维度。
+
+ffn_hidden_size (int) - 表示中间隐藏大小。
+
+dropout_rate (float) - 表示第二个线性层输出的丢弃率。
+
+hidden_act (str) - 表示第一个线性层的激活。其值可为’relu’、’relu6’、’tanh’、’gelu’、’fast_gelu’、’elu’、’sigmoid’、’prelu’、’leakyrelu’、’hswish’、’hsigmoid’、’logsigmoid’等等。默认值：’gelu’。
+
+expert_num (int) - 表示线性层中使用的专家数量。对于expert_num > 1用例，使用BatchMatMul。BatchMatMul中的第一个维度表示expert_num。默认值：1
+
+param_init_type (dtype.Number) - 表示参数初始化类型。其值应为dtype.float32或dtype.float16。默认值：dtype.float32
+
+parallel_config (OpParallelConfig) - 表示并行配置。更多详情，请参见 OpParallelConfig 。默认值为 default_dpmp_config ，表示一个带有默认参数的 OpParallelConfig 实例。
+
+输入：
+
+x (Tensor) - 应为 [batch, seq_length, hidden_size]或[batch * seq_length, hidden_size] 。表示浮点Tensor。
+
+输出：
+
+Tensor，表示映射后该层的输出。shape为 [batch, seq_length, hidden_size] 或 [batch * seq_length, hidden_size] 。
+
+异常：
+
+ValueError - hidden_act 不是字符串。
+
+TypeError - parallel_config 不是OpParallelConfig的子类。
+
+ValueError - ffn_hidden_size 不是parallel_config中model_parallel的倍数。
+
+ValueError - hidden_size 不是parallel_config中model_parallel的倍数。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore.nn.transformer import FeedForward
+from mindspore import dtype as mstype
+from mindspore import Tensor
+model = FeedForward(hidden_size=15, ffn_hidden_size=30, dropout_rate=0.1)
+tensor = Tensor(np.ones((2, 20, 15)), mstype.float32)
+output = model(tensor)
+print(output.shape)
+
+classmindspore.nn.transformer.TransformerEncoder(batch_size, num_layers, hidden_size, ffn_hidden_size, seq_length, num_heads, attention_dropout_rate=0.1, hidden_dropout_rate=0.1, hidden_act="gelu", post_layernorm_residual=False, layernorm_compute_type=mstype.float32, softmax_compute_type=mstype.float32, param_init_type=mstype.float32, lambda_func=None, offset=0, use_past=False, moe_config=default_moe_config, parallel_config=default_transformer_config)[源代码]
+Transformer中的编码器模块，具有多层堆叠的 TransformerEncoderLayer ，包括多头自注意力层和前馈层。
+
+参数：
+
+batch_size (int) - 表示输入tensor的批次大小。
+
+num_layers (int) - 表示 TransformerEncoderLayer 的层。
+
+hidden_size (int) - 表示输入的隐藏大小。
+
+ffn_hidden_size (int) - 表示前馈层中bottleneck的隐藏大小。
+
+seq_length (int) - 表示输入序列长度。
+
+num_heads (int) - 表示注意力头的数量。
+
+hidden_dropout_rate (float) - 表示作用在隐藏层输出的丢弃率。默认值：0.1
+
+attention_dropout_rate (float) - 表示注意力score的丢弃率。默认值：0.1
+
+post_layernorm_residual (bool) - 表示是否在LayerNorm之前使用残差，即是否选择残差为Post-LayerNorm或者Pre-LayerNorm。默认值：False
+
+hidden_act (str) - 表示内部前馈层的激活函数。其值可为’relu’、’relu6’、’tanh’、’gelu’、’fast_gelu’、’elu’、’sigmoid’、’prelu’、’leakyrelu’、’hswish’、’hsigmoid’、’logsigmoid’等等。默认值：gelu。
+
+layernorm_compute_type (dtype.Number) - 表示LayerNorm的计算类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+softmax_compute_type (dtype.Number) - 表示注意力中softmax的计算类型。其值应为dtype.float32或dtype.float16。默认值为mstype.float32。
+
+param_init_type (dtype.Number) - 表示模块的参数初始化类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+use_past (bool) - 使用过去状态进行计算，用于增量预测。例如，如果我们有两个单词，想生成十个或以上单词。我们只需要计算一次这两个单词的状态，然后逐个生成下一个单词。当use_past为True时，有两个步骤可以运行预测。第一步是通过 model.add_flags_recursive(is_first_iteration=True) 将is_first_iteration设为True，并传递完整的输入。然后，通过 model.add_flags_recursive(is_first_iteration=False) 将is_first_iteration设为False。此时，传递step的输入tensor，并对其进行环回。默认值：False
+
+lambda_func - 表示设置融合索引、pipeline阶段和重计算属性的函数。如果用户想确定pipeline阶段和梯度聚合融合，用户可以传递一个接受 network 、 layer_id 、 offset 、 parallel_config 和 layers 的函数。 network(Cell) 表示transformer块， layer_id(int) 表示当前模块的层索引，从零开始计数， offset(int) 表示如果网络中还有其他模块，则layer_index需要一个偏置。pipeline的默认设置为： (layer_id + offset) // (layers / pipeline_stage) 。
+
+offset (int) - 表示 decoder 的初始层索引。其用于设置梯度聚合的融合值和流水线并行的stage值。
+
+moe_config (MoEConfig) - 表示MoE (Mixture of Expert)的配置。
+
+parallel_config (TransformerOpParallelConfig) - 表示并行配置。默认值为 default_transformer_config ，表示带有默认参数的 TransformerOpParallelConfig 实例。
+
+输入：
+
+hidden_states (Tensor) - Tensor。如果use_past为False或者is_first_iteration为True，shape为[batch_size, seq_length, hidden_size]或者[batch_size * seq_length, hidden_size]。否则，shape应为[batch_size, 1, hidden_size]。
+
+attention_mask (Tensor) - Tensor，表示shape为[[batch_size, seq_length, seq_length]的注意力掩码。
+
+init_reset (Tensor) - shape为[1]的bool tensor，用于清除增量预测中使用的past key参数和past value参数。仅当use_past为True时有效。默认值为True。
+
+batch_valid_length (Tensor) - shape为[batch_size]的Int32 tensor，表示过去所计算的索引。当use_past为True时，它用于增量预测。默认值为None。
+
+输出：
+
+Tuple，表示一个包含(output, layer_present)的元组。
+
+output (Tensor) - use_past为False或is_first_iteration为True时，表示shape为(batch_size, seq_length, hidden_size)或(batch_size * seq_length, hidden_size)的层输出的float tensor。否则，shape将为(batch_size, 1, hidden_size)。
+
+layer_present (Tuple) - 大小为num_layers的元组，其中每个元组都包含shape为((batch_size, num_heads, size_per_head, seq_length)或(batch_size, num_heads, seq_length, size_per_head))的投影key向量和value向量的Tensor的元组。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import TransformerEncoder
+from mindspore import Tensor
+model = TransformerEncoder(batch_size=2, num_layers=2, hidden_size=8, ffn_hidden_size=64,
+                           seq_length=16, num_heads=2)
+encoder_input_value = Tensor(np.ones((2, 16, 8)), mstype.float32)
+encoder_input_mask = Tensor(np.ones((2, 16, 16)), mstype.float16)
+output, past = model(encoder_input_value, encoder_input_mask)
+print(output.shape)
+
+print(len(past))
+
+print(past[0][0].shape)
+
+print(past[0][1].shape)
+
+# When use use_past=True, it includes two steps to implement the incremental prediction.
+# Step 1: set is_first_iteration=True, and input the full sequence length's state.
+batch_valid_length = Tensor(np.ones((2,)), mstype.int32)
+init_reset = Tensor([True], mstype.bool_)
+# Set is_first_iteration=True to generate the full memory states
+model = TransformerEncoder(batch_size=2, hidden_size=8, ffn_hidden_size=64, seq_length=16,
+                           num_heads=2, num_layers=2, use_past=True)
+model.add_flags_recursive(is_first_iteration=True)
+hidden, past = model(encoder_input_value, encoder_input_mask, init_reset, batch_valid_length)
+print(hidden.shape)
+
+print(past[0][0].shape)
+
+print(past[0][1].shape)
+
+encoder_input_value = Tensor(np.ones((2, 1, 8)), mstype.float32)
+encoder_input_mask = Tensor(np.ones((2, 1, 16)), mstype.float16)
+init_reset = Tensor([False], mstype.bool_)
+# Step 2: set is_first_iteration=False, and pass the single word to run the prediction rather than
+# the full sequence.
+model.add_flags_recursive(is_first_iteration=False)
+hidden, past = model(encoder_input_value, encoder_input_mask, init_reset, batch_valid_length)
+print(hidden.shape)
+
+print(past[0][0].shape)
+
+print(past[0][1].shape)
+
+classmindspore.nn.transformer.TransformerDecoder(num_layers, batch_size, hidden_size, ffn_hidden_size, src_seq_length, tgt_seq_length, num_heads, attention_dropout_rate=0.1, hidden_dropout_rate=0.1, post_layernorm_residual=False, layernorm_compute_type=mstype.float32, softmax_compute_type=mstype.float32, param_init_type=mstype.float32, hidden_act="gelu", lambda_func=None, use_past=False, offset=0, moe_config=default_moe_config, parallel_config=default_transformer_config)[源代码]
+Transformer中的解码器模块，为多层堆叠的 TransformerDecoderLayer ，包括多头自注意力层、交叉注意力层和前馈层。
+
+参数：
+
+batch_size (int) - 表示输入Tensor的批次大小。
+
+num_layers (int) - 表示 TransformerDecoderLayer 的层数。
+
+hidden_size (int) - 表示输入的隐藏大小。
+
+ffn_hidden_size (int) - 表示前馈层中bottleneck的隐藏大小。
+
+src_seq_length (int) - 表示输入源序列长度。
+
+tgt_seq_length (int) - 表示输入目标序列长度。
+
+num_heads (int) - 表示注意力头的数量。
+
+hidden_dropout_rate (float) - 表示作用在隐藏层输出的丢弃率。默认值：0.1
+
+attention_dropout_rate (float) - 表示注意力score的丢弃率。默认值：0.1
+
+post_layernorm_residual (bool) - 表示是否在LayerNorm之前使用残差，即是否选择残差为Post-LayerNorm或者Pre-LayerNorm。默认值：False
+
+hidden_act (str) - 表示内部前馈层的激活函数。其值可为’relu’、’relu6’、’tanh’、’gelu’、’fast_gelu’、’elu’、’sigmoid’、’prelu’、’leakyrelu’、’hswish’、’hsigmoid’、’logsigmoid’等等。默认值：gelu。
+
+layernorm_compute_type (dtype.Number) - 表示LayerNorm的计算类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+use_past (bool) - 表示是否开启增量推理。在推理中会缓存注意力机制计算结果，避免冗余计算。默认值为False。
+
+softmax_compute_type (dtype.Number) - 表示注意力中softmax的计算类型。其值应为dtype.float32或dtype.float16。默认值为mstype.float32。
+
+param_init_type (dtype.Number) - 表示模块的参数初始化类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+offset (int) - 表示 decoder 的初始层索引偏移值。其用于设置梯度聚合的融合值和流水线并行的stage值，使其不与编码器层的相关属性重叠。
+
+lambda_func - 表示确定梯度融合索引、pipeline阶段和重计算属性的函数。如果用户想确定pipeline阶段和梯度聚合融合，用户可以传递一个接受 network 、 layer_id 、 offset 、 parallel_config 和 layers 的函数。 network(Cell) 表示transformer块， layer_id(int) 表示当前模块的层索引，从零开始计数， offset(int) 表示如果网络中还有其他模块，则layer_index需要一个偏置。pipeline的默认设置为： (layer_id + offset) // (layers / pipeline_stage) 。默认值：None
+
+moe_config (MoEConfig) - 表示MoE (Mixture of Expert)的配置。
+
+parallel_config (TransformerOpParallelConfig) - 表示并行配置。默认值为 default_transformer_config ，表示带有默认参数的 TransformerOpParallelConfig 实例。
+
+输入：
+
+hidden_stats (Tensor) - shape为[batch_size, seq_length, hidden_size]或[batch_size * seq_length, hidden_size]的输入tensor。
+
+attention_mask (Tensor) - shape为[batch_size, seq_length, seq_length]的解码器的注意力掩码。
+
+encoder_output (Tensor) - shape为[batch_size, seq_length, hidden_size]或[batch_size * seq_length, hidden_size]的编码器的输出。
+
+memory_mask (Tensor) - shape为[batch, tgt_seq_length, src_seq_length]的交叉注意力的memory掩码，其中tgt_seq_length表示解码器的长度。注：当网络位于最外层时，此参数不能通过None传递。默认值为None。
+
+init_reset (Tensor) - shape为[1]的bool tensor，用于清除增量预测中使用的past key参数和past value参数。仅当use_past为True时有效。默认值为True。
+
+batch_valid_length (Tensor) - shape为[batch_size]的Int32 tensor，表示过去所计算的索引。当use_past为True时，它用于增量预测。默认值为None。
+
+输出：
+
+Tuple，表示一个包含(output, layer_present)的元组。
+
+output (Tensor) - 输出的logit。shape为[batch, tgt_seq_length, hidden_size]或[batch * tgt_seq_length, hidden_size]。
+
+layer_present (Tuple) - 大小为层数的元组，其中每个元组都是shape为((batch_size, num_heads, size_per_head, tgt_seq_length)或(batch_size, num_heads, tgt_seq_length, size_per_head)的自注意力中的投影key向量和value向量的tensor的元组，或者是shape为(batch_size, num_heads, size_per_head, src_seq_length)或(batch_size, num_heads, src_seq_length, size_per_head))的交叉注意力中的投影key向量和value向量的tensor的元组。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import TransformerDecoder
+from mindspore import Tensor
+model = TransformerDecoder(batch_size=2, num_layers=1, hidden_size=64, ffn_hidden_size=64,
+                           num_heads=2, src_seq_length=20, tgt_seq_length=10)
+encoder_input_value = Tensor(np.ones((2, 20, 64)), mstype.float32)
+decoder_input_value = Tensor(np.ones((2, 10, 64)), mstype.float32)
+decoder_input_mask = Tensor(np.ones((2, 10, 10)), mstype.float16)
+memory_mask = Tensor(np.ones((2, 10, 20)), mstype.float16)
+output, past = model(decoder_input_value, decoder_input_mask, encoder_input_value, memory_mask)
+print(output.shape)
+
+print(len(past))
+
+print(past[0][0].shape)
+
+print(past[0][1].shape)
+
+print(past[0][2].shape)
+
+print(past[0][3].shape)
+
+classmindspore.nn.transformer.TransformerEncoderLayer(batch_size, hidden_size, ffn_hidden_size, num_heads, seq_length, attention_dropout_rate=0.1, hidden_dropout_rate=0.1, post_layernorm_residual=False, layernorm_compute_type=mstype.float32, softmax_compute_type=mstype.float32, param_init_type=mstype.float32, hidden_act="gelu", use_past=False, moe_config=default_moe_config, parallel_config=default_dpmp_config)[源代码]
+Transformer的编码器层。Transformer的编码器层上的单层的实现，包括多头注意力层和前馈层。
+
+参数：
+
+batch_size (int) - 表示输入Tensor的批次大小。
+
+hidden_size (int) - 表示输入的隐藏大小。
+
+seq_length (int) - 表示输入序列长度。
+
+ffn_hidden_size (int) - 表示前馈层中bottleneck的隐藏大小。
+
+num_heads (int) - 表示注意力头的数量。
+
+hidden_dropout_rate (float) - 表示作用在隐藏层输出的丢弃率。默认值：0.1
+
+attention_dropout_rate (float) - 表示注意力score的丢弃率。默认值：0.1
+
+post_layernorm_residual (bool) - 表示是否在LayerNorm之前使用残差，即是否选择残差为Post-LayerNorm或者Pre-LayerNorm。默认值：False
+
+hidden_act (str) - 表示内部前馈层的激活函数。其值可为’relu’、’relu6’、’tanh’、’gelu’、’fast_gelu’、’elu’、’sigmoid’、’prelu’、’leakyrelu’、’hswish’、’hsigmoid’、’logsigmoid’等等。默认值：gelu。
+
+layernorm_compute_type (dtype.Number) - 表示LayerNorm的计算类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+softmax_compute_type (dtype.Number) - 表示注意力中softmax的计算类型。其值应为dtype.float32或dtype.float16。默认值为mstype.float32。
+
+param_init_type (dtype.Number) - 表示模块的参数初始化类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+use_past (bool) - 使用过去状态进行计算，用于增量预测。例如，如果我们有两个单词，想生成十个或以上单词。我们只需要计算一次这两个单词的状态，然后逐个生成下一个单词。当use_past为True时，有两个步骤可以运行预测。第一步是通过 model.add_flags_recursive(is_first_iteration=True) 将is_first_iteration设为True，并传递完整的输入。然后，通过 model.add_flags_recursive(is_first_iteration=False) 将is_first_iteration设为False。此时，传递step的输入tensor，并对其进行环回。默认值：False
+
+moe_config (MoEConfig) - 表示MoE (Mixture of Expert)的配置。
+
+parallel_config (OpParallelConfig) - 表示并行配置。默认值为 default_dpmp_config ，表示一个带有默认参数的 OpParallelConfig 实例。
+
+输入：
+
+x (Tensor) - Float Tensor。如果use_past为False或者is_first_iteration为True，shape应为[batch_size, seq_length, hidden_size]或者[batch_size * seq_length, hidden_size]。否则，shape应为[batch_size, 1, hidden_size]。
+
+input_mask (Tensor) - Float tensor。use_past为False或者is_first_iteration为True时，表示shape为[batch_size, seq_length, seq_length]的注意力掩码。否则，shape应为[batch_size, 1, hidden_size]。
+
+init_reset (Tensor) - shape为[1]的bool tensor，用于清除增量预测中使用的past key参数和past value参数。仅当use_past为True时有效。默认值为True。
+
+batch_valid_length (Tensor) - shape为[batch_size]的Int32 tensor，表示过去所计算的索引。当use_past为True时，它用于增量预测。默认值为None。
+
+输出：
+
+Tuple，表示一个包含(output, layer_present)的元组。
+
+output (Tensor) - use_past为False或is_first_iteration为True时，表示shape为(batch_size, seq_length, hidden_size)或(batch_size * seq_length, hidden_size)的层输出的float tensor。否则，shape将为(batch_size, 1, hidden_size)。
+
+layer_present (Tuple) - 表示shape为((batch_size, num_heads, size_per_head, seq_length)或(batch_size, num_heads, seq_length, size_per_head))的投影key向量和value向量的Tensor的元组。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import TransformerEncoderLayer
+from mindspore import Tensor
+model = TransformerEncoderLayer(batch_size=2, hidden_size=8, ffn_hidden_size=64, seq_length=16,
+                                num_heads=2)
+encoder_input_value = Tensor(np.ones((2, 16, 8)), mstype.float32)
+encoder_input_mask = Tensor(np.ones((2, 16, 16)), mstype.float16)
+output, past = model(encoder_input_value, encoder_input_mask)
+print(output.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+# When use use_past=True, it includes two steps to implement the incremental prediction.
+# Step 1: set is_first_iteration=True, and input the full sequence length's state.
+batch_valid_length = Tensor(np.ones((2,)), mstype.int32)
+init_reset = Tensor([True], mstype.bool_)
+# Set is_first_iteration=True to generate the full memory states
+model = TransformerEncoderLayer(batch_size=2, hidden_size=8, ffn_hidden_size=64, seq_length=16,
+                                num_heads=2, use_past=True)
+model.add_flags_recursive(is_first_iteration=True)
+hidden, past = model(encoder_input_value, encoder_input_mask, init_reset, batch_valid_length)
+print(hidden.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+encoder_input_value = Tensor(np.ones((2, 1, 8)), mstype.float32)
+encoder_input_mask = Tensor(np.ones((2, 1, 16)), mstype.float16)
+init_reset = Tensor([False], mstype.bool_)
+# Step 2: set is_first_iteration=False, and pass the single word to run the prediction rather than
+# the full sequence.
+model.add_flags_recursive(is_first_iteration=False)
+hidden, past = model(encoder_input_value, encoder_input_mask, init_reset, batch_valid_length)
+print(hidden.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+classmindspore.nn.transformer.TransformerDecoderLayer(hidden_size, ffn_hidden_size, num_heads, batch_size, src_seq_length, tgt_seq_length, attention_dropout_rate=0.1, hidden_dropout_rate=0.1, post_layernorm_residual=False, use_past=False, layernorm_compute_type=mstype.float32, softmax_compute_type=mstype.float32, param_init_type=mstype.float32, hidden_act="gelu", moe_config=default_moe_config, parallel_config=default_dpmp_config)[源代码]
+Transformer的解码器层。Transformer的解码器层上的单层的实现，包括自注意力层、交叉注意力层和前馈层。当encoder_output为None时，交叉注意力将无效。
+
+参数：
+
+batch_size (int) - 表示输入Tensor的批次大小。
+
+hidden_size (int)：表示输入的隐藏大小。
+
+src_seq_length (int) - 表示输入源序列长度。
+
+tgt_seq_length (int) - 表示输入目标序列长度。
+
+ffn_hidden_size (int) - 表示前馈层中bottleneck的隐藏大小。
+
+num_heads (int) - 表示注意力头的数量。
+
+hidden_dropout_rate (float) - 表示作用在隐藏层输出的丢弃率。默认值：0.1
+
+attention_dropout_rate (float) - 表示注意力score的丢弃率。默认值：0.1
+
+post_layernorm_residual (bool) - 表示是否在LayerNorm之前使用残差，即是否选择残差为Post-LayerNorm或者Pre-LayerNorm。默认值：False
+
+hidden_act (str) - 表示内部前馈层的激活函数。其值可为’relu’、’relu6’、’tanh’、’gelu’、’fast_gelu’、’elu’、’sigmoid’、’prelu’、’leakyrelu’、’hswish’、’hsigmoid’、’logsigmoid’等等。默认值：gelu。
+
+layernorm_compute_type (dtype.Number) - 表示LayerNorm的计算类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+softmax_compute_type (dtype.Number) - 表示注意力中softmax的计算类型。其值应为dtype.float32或dtype.float16。默认值为mstype.float32。
+
+param_init_type (dtype.Number) - 表示模块的参数初始化类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+use_past (bool) - 使用过去状态进行计算，用于增量预测。默认值：False
+
+moe_config (MoEConfig) - 表示MoE (Mixture of Expert)的配置。
+
+parallel_config (OpParallelConfig) - 表示并行配置。默认值为 default_dpmp_config ，表示一个带有默认参数的 OpParallelConfig 实例。
+
+输入：
+
+hidden_stats (Tensor) - shape为[batch_size, tgt_seq_length, hidden_size]或[batch_size * tgt_seq_length, hidden_size]的输入tensor。
+
+decoder_mask (Tensor) - shape为[batch_size, src_seq_length, seq_length]的解码器的注意力掩码。
+
+encoder_output (Tensor) - shape为[batch_size, seq_length, hidden_size]或[batch_size * seq_length, hidden_size]的编码器的输出。注：当网络位于最外层时，此参数不能通过None传递。默认值为None。
+
+memory_mask (Tensor) - shape为[batch, tgt_seq_length, src_seq_length]的交叉注意力的memory掩码，其中tgt_seq_length表示解码器的长度。注：当网络位于最外层时，此参数不能通过None传递。默认值为None。
+
+init_reset (Tensor) - shape为[1]的bool tensor，用于清除增量预测中使用的past key参数和past value参数。仅当use_past为True时有效。默认值为True。
+
+batch_valid_length (Tensor) - shape为[batch_size]的Int32 tensor，表示过去所计算的索引。当use_past为True时，它用于增量预测。默认值为None。
+
+输出：
+
+Tuple，表示一个包含(output, layer_present)的元组。
+
+output (Tensor) - 此层的输出logit。shape为[batch, seq_length, hidden_size]或[batch * seq_length, hidden_size]。
+
+layer_present (Tuple) - 元组，其中每个元组都是shape为((batch_size, num_heads, size_per_head, tgt_seq_length)或(batch_size, num_heads, tgt_seq_length, size_per_head)的自注意力中的投影key向量和value向量的tensor的元组，或者是shape为(batch_size, num_heads, size_per_head, src_seq_length)或(batch_size, num_heads, src_seq_length, size_per_head))的交叉注意力中的投影key向量和value向量的tensor的元组。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import TransformerDecoderLayer
+from mindspore import Tensor
+model = TransformerDecoderLayer(batch_size=2, hidden_size=64, ffn_hidden_size=64, num_heads=2,
+                                src_seq_length=20, tgt_seq_length=10)
+encoder_input_value = Tensor(np.ones((2, 20, 64)), mstype.float32)
+decoder_input_value = Tensor(np.ones((2, 10, 64)), mstype.float32)
+decoder_input_mask = Tensor(np.ones((2, 10, 10)), mstype.float16)
+memory_mask = Tensor(np.ones((2, 10, 20)), mstype.float16)
+output, past = model(decoder_input_value, decoder_input_mask, encoder_input_value, memory_mask)
+print(output.shape)
+
+print(past[0].shape)
+
+print(past[1].shape)
+
+print(past[2].shape)
+
+print(past[3].shape)
+
+classmindspore.nn.transformer.Transformer(hidden_size, batch_size, ffn_hidden_size, src_seq_length, tgt_seq_length, encoder_layers=3, decoder_layers=3, num_heads=2, attention_dropout_rate=0.1, hidden_dropout_rate=0.1, hidden_act="gelu", post_layernorm_residual=False, layernorm_compute_type=mstype.float32, softmax_compute_type=mstype.float32, param_init_type=mstype.float32, lambda_func=None, use_past=False, moe_config=default_moe_config, parallel_config=default_transformer_config)[源代码]
+Transformer模块，包括编码器和解码器。与原始的实现方式的区别在于该模块在实行层归一化之前使用了残差加法。默认的激活层为 gelu 。 详细信息可参考 Attention Is All You Need 。
+
+Note
+
+这是一个实验接口，可能会被更改或者删除。
+
+参数：
+
+batch_size (int) - 表示输入的批次大小。
+
+encoder_layers (int) - 表示 TransformerEncoderLayer 的层数。
+
+decoder_layers (int) - 表示 TransformerDecoderLayer 的层数。
+
+hidden_size (int) - 表示输入向量的大小。
+
+ffn_hidden_size (int) - 表示前馈层中bottleneck的隐藏大小。
+
+src_seq_length (int) - 表示编码器的输入Tensor的seq_length。
+
+tgt_seq_length (int) - 表示解码器的输入Tensor的seq_length。
+
+num_heads (int) - 表示注意力头的数量。默认值：2
+
+hidden_dropout_rate (float) - 表示作用在隐藏层输出的丢弃率。默认值：0.1
+
+attention_dropout_rate (float) - 表示注意力score的丢弃率。默认值：0.1
+
+post_layernorm_residual (bool) - 表示是否在LayerNorm之前使用残差，即是否选择残差为Post-LayerNorm或者Pre-LayerNorm。默认值：False
+
+use_past (bool) - 表示是否开启增量推理。在推理中会缓存注意力机制计算结果，避免冗余计算。默认值为False。
+
+layernorm_compute_type (dtype.Number) - 表示LayerNorm的计算类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+softmax_compute_type (dtype.Number) - 表示注意力机制中softmax的计算类型。其值应为dtype.float32或dtype.float16。默认值为mstype.float32。
+
+param_init_type (dtype.Number) - 表示模块的参数初始化类型。其值应为dtype.float32或dtype.float16。默认值为dtype.float32。
+
+hidden_act (str) - 表示前馈层的激活行为。其值可为’relu’、’relu6’、’tanh’、’gelu’、’fast_gelu’、’elu’、’sigmoid’、’prelu’、’leakyrelu’、’hswish’、’hsigmoid’、’logsigmoid’等等。默认值：gelu。
+
+moe_config (MoEConfig) - 表示MoE (Mixture of Expert)的配置。
+
+lambda_func - 表示设置融合索引、pipeline阶段和重计算属性的函数。如果用户想确定pipeline阶段和梯度融合，用户可以传递一个接受 network 、 layer_id 、 offset 、 parallel_config 和 layers 的函数。 network(Cell) 表示transformer块， layer_id(int) 表示当前模块的层索引，从零开始计数， offset(int) 表示如果网络中还有其他模块，则layer_id需要一个偏移。pipeline的默认设置为： (layer_id + offset) // ((encoder_layers + decoder_length) / pipeline_stage) 。
+
+parallel_config (TransformerOpParallelConfig) - 表示并行配置。默认值为 default_transformer_config ，表示带有默认参数的 TransformerOpParallelConfig 实例。
+
+输入：
+
+encoder_inputs (Tensor) - shape为[batch_size, seq_length, hidden_size]或[batch_size * seq_length, hidden_size]的输入Tensor。
+
+encoder_masks (Tensor) - shape为[batch_size, seq_length, seq_length]的解码器的注意力掩码。
+
+decoder_inputs (Tensor) - shape为[batch_size, seq_length, hidden_size]或[batch_size * seq_length, hidden_size]的编码器的输出。如果解码器层数为0，则此值应为None。
+
+decoder_masks (Tensor) - shape为[batch_size, seq_length, seq_length]的解码器的注意力掩码。
+
+memory_mask (Tensor) - shape为[batch, tgt_seq_length, src_seq_length]的交叉注意力的memory掩码，其中tgt_seq_length表示解码器的长度。如果解码器层为0，则shape为[batch_size, seq_length, hidden_size]的编码器的输出应为None。
+
+init_reset (Tensor) - shape为[1]的bool tensor，用于清除增量预测中使用的past key参数和past value参数。仅当use_past为True时有效。默认值为True。
+
+batch_valid_length (Tensor) - shape为[batch_size]的Int32 tensor，表示过去所计算的索引。当use_past为True时，它用于增量预测。默认值为None。
+
+输出：
+
+Tuple，表示包含(output, encoder_layer_present, encoder_layer_present, accum_loss)的元组。
+
+output (Tensor) - 如果只有编码器，则表示编码器层的输出logit。shape为[batch, src_seq_length, hidden_size] or [batch * src_seq_length, hidden_size]。如果有编码器和解码器，则输出来自于解码器层。shape为[batch, tgt_seq_length, hidden_size]或[batch * tgt_seq_length, hidden_size]。
+
+encoder_layer_present (Tuple) - 大小为num_layers的元组，其中每个元组都是shape为((batch_size, num_heads, size_per_head, src_seq_length)或(batch_size, num_heads, src_seq_length, size_per_head))的自注意力中的投影key向量和value向量的tensor的元组。
+
+decoder_layer_present (Tuple) - 大小为num_layers的元组，其中每个元组都是shape为((batch_size, num_heads, size_per_head, tgt_seq_length)或(batch_size, num_heads, tgt_seq_length, size_per_head))的self attention中的投影key向量和value向量的tensor的元组，或者是shape为(batch_size, num_heads, size_per_head, src_seq_length)或(batch_size, num_heads, src_seq_length, size_per_head))的交叉注意力中的投影key向量和value向量的tensor的元组。如果未设置解码器，返回值将为None。
+
+accum_loss (Tensor) - 表示一个辅助损失来最小化路由到每个专家的数据部分的均方，且仅仅在专家数大于1时才会返回。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import Transformer
+from mindspore import Tensor
+model = Transformer(batch_size=2, encoder_layers=1, decoder_layers=2, hidden_size=64,
+                    ffn_hidden_size=64, src_seq_length=20, tgt_seq_length=10)
+encoder_input_value = Tensor(np.ones((2, 20, 64)), mstype.float32)
+encoder_input_mask = Tensor(np.ones((2, 20, 20)), mstype.float16)
+decoder_input_value = Tensor(np.ones((2, 10, 64)), mstype.float32)
+decoder_input_mask = Tensor(np.ones((2, 10, 10)), mstype.float16)
+memory_mask = Tensor(np.ones((2, 10, 20)), mstype.float16)
+output, en_past, de_past = model(encoder_input_value, encoder_input_mask, decoder_input_value,
+                                 decoder_input_mask, memory_mask)
+print(output.shape)
+
+print(len(en_past))
+
+print(len(de_past))
+
+print(en_past[0][0].shape)
+
+print(en_past[0][1].shape)
+
+print(de_past[0][0].shape)
+
+print(de_past[0][1].shape)
+
+print(de_past[0][2].shape)
+
+print(de_past[0][3].shape)
+
+classmindspore.nn.transformer.TransformerOpParallelConfig(data_parallel=1, model_parallel=1, expert_parallel=1, pipeline_stage=1, micro_batch_num=1, recompute=default_transformer_recompute_config, optimizer_shard=False, gradient_aggregation_group=4, vocab_emb_dp=True)[源代码]
+用于设置数据并行、模型并行等等并行配置的TransformerOpParallelConfig。
+
+Note
+
+除recompute参数外，当用户未将auto_parallel_context设为 SEMI_AUTO_PARALLEL 或 AUTO_PARALLEL 时，其他参数将无效。 在训练时，micro_batch_num的值必须大于或等于equal to pipeline_stage的值。data_parallel*model_parallel *pipeline_stage的值必须等于或小于总设备的数量。设置pipeline_stage和optimizer_shard时，其配置将覆盖auto_parallel_context的配置。
+
+参数：
+
+data_parallel (int) - 表示数据并行数。默认值：1。
+
+model_parallel (int) - 表示模型并行数。默认值：1。
+
+expert_parallel (int) - 表示专家并行数，只有在应用混合专家结构（MoE，Mixture of Experts）时才会生效。默认值：1.
+
+pipeline_stage (int) - 表示将Transformer切分成的stage数目。其值应为正数。默认值：1。
+
+micro_batch_num (int) - 表示用于pipeline训练的batch的微型大小。默认值：1。
+
+optimizer_shard (bool) - 表示是否使能优化器切分。默认值：False。
+
+gradient_aggregation_group (int) - 表示优化器切分的融合组大小。默认值：4。
+
+recompute (bool) - 表示是否启用transformer每层的的重计算。默认值：False。
+
+vocab_emb_dp (bool) - 表示Embedding表是否为数据并行，否则将在查找表中的第0维度根据模型并行度进行切分。默认值：True。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+from mindspore.nn.transformer import TransformerRecomputeConfig
+recompute_config=TransformerRecomputeConfig(recompute=True, parallel_optimizer_comm_recompute=True, \
+                                            mp_comm_recompute=True, recompute_slice_activation=True)
+config=TransformerOpParallelConfig(data_parallel=1, model_parallel=1, recompute=recompute_config)
+dp_mp_config()
+获取包含数据并行、模型并行度的DPMPlConfig。
+
+embedding_dp_mp_config()
+获取包含数据并行、模型并行和embedding并行度的EmbeddingParallelConfig。
+
+classmindspore.nn.transformer.EmbeddingOpParallelConfig(data_parallel=1, model_parallel=1, vocab_emb_dp=True)[源代码]
+VocabEmbedding 类中的并行配置。当vocab_emb_dp为True时，设置Embedding查找为数据并行，其中model_parallel参数会被忽略。当vocab_emb_dp为False时，在Embedding表的第0轴进行按model_parallel的大小进行切分。
+
+参数：
+
+data_parallel (int) - 表示数据并行度。默认值：1。
+
+model_parallel (int) - 表示模型平行度。默认值：1。
+
+vocab_emb_dp (bool) - 表示模型并行或数据并行中的Shard embedding。默认值：True。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+from mindspore.nn.transformer import EmbeddingOpParallelConfig
+config=EmbeddingOpParallelConfig(data_parallel=1, model_parallel=1, vocab_emb_dp=True)
+dp_mp_config()
+获取包含有data_parallel和model_parallel属性的DPMPlConfig类。
+
+classmindspore.nn.transformer.TransformerRecomputeConfig(recompute=False, parallel_optimizer_comm_recompute=False, mp_comm_recompute=True, recompute_slice_activation=False)[源代码]
+Transformer的重计算配置接口。
+
+参数：
+
+recompute (bool) - 是否使能重计算。默认值为False。
+
+parallel_optimizer_comm_recompute (bool) - 指定由优化器切分产生的AllGather算子是否进行重计算。默认值为False。
+
+mp_comm_recompute (bool) - 指定由模型并行成分产生的通信算子是否进行重计算。默认值为False。
+
+recompute_slice_activation (bool) - 指定激活层是否切片保存。默认值为False。
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+from mindspore.nn.transformer import TransformerRecomputeConfig
+config=TransformerRecomputeConfig(recompute=True, parallel_optimizer_comm_recompute=True, \
+                                  mp_comm_recompute=True, recompute_slice_activation=True)
+classmindspore.nn.transformer.CrossEntropyLoss(parallel_config=default_dpmp_config)[源代码]
+计算输入和输出之间的交叉熵损失。
+
+参数：
+
+parallel_config (OpParallelConfig, MoEParallelConfig) - 表示并行配置。默认值为 default_dpmp_config ，表示一个带有默认参数的 OpParallelConfig 实例。
+
+输入：
+
+logits (Tensor) - shape为(N, C)的Tensor。表示的输出logits。其中N表示任意大小的维度，C表示类别个数。数据类型必须为float16或float32。
+
+labels (Tensor) - shape为(N, )的Tensor。表示样本的真实标签，其中每个元素的取值区间为[0,C)。
+
+input_mask (Tensor) - shape为(N, )的Tensor。input_mask表示是否有填充输入。1表示有效，0表示无效，其中元素值为0的位置不会计算进损失值。
+
+输出：
+
+Tensor，表示对应的交叉熵损失。
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import CrossEntropyLoss
+from mindspore import Tensor
+loss = CrossEntropyLoss()
+logits = Tensor(np.array([[3, 5, 6, 9, 12, 33, 42, 12, 32, 72]]), mstype.float32)
+labels_np = np.array([1]).astype(np.int32)
+input_mask = Tensor(np.ones(1).astype(np.float32))
+labels = Tensor(labels_np)
+output = loss(logits, labels, input_mask)
+print(output.shape)
+
+classmindspore.nn.transformer.OpParallelConfig(data_parallel=1, model_parallel=1)[源代码]
+用于设置数据并行和模型并行的OpParallelConfig。
+
+参数：
+
+data_parallel (int) - 表示数据并行度。默认值：1
+
+model_parallel (int) - 表示模型并行度。默认值：1
+
+支持平台：
+
+Ascend GPU
+
+样例：
+
+from mindspore.nn.transformer import OpParallelConfig
+config=OpParallelConfig(data_parallel=1, model_parallel=1)
+classmindspore.nn.transformer.FixedSparseAttention(batch_size, num_heads, size_per_head, block_size, seq_length=1024, num_different_global_patterns=4, parallel_config=default_dpmp_config)[源代码]
+固定稀疏注意力层。
+
+此接口实现了Sparse Transformer中使用的稀疏注意力原语。更多详情，请见论文（https://arxiv.org/abs/1904.10509）。
+
+具体来说，它包括以下内容：
+
+正常注意力的更快实现（不计算上三角，并且融合了许多操作）。
+
+如论文Sparse Transformers所述，“分散”和“固定”注意力的实现。
+
+参数：
+
+batch_size (int) - 表示输入batch size的数量。
+
+num_heads (int) - 表示注意力头数。
+
+block_size (int) - 表示用来确定block size的整数。目前稀疏自注意力的实现基于稀疏块矩阵。此参数定义了稀疏矩阵块的大小。目前仅支持64。
+
+seq_length (int) - 表示输入序列的长度。目前只支持1024。
+
+num_different_global_patterns (int) - 表示用于确定不同的全局注意力数量。虽然全局注意力由局部的代表性的块决定， 但由于有多个头，所以每个头都可以使用不同的全局代表。目前只支持4。
+
+size_per_head (int) - 表示每个注意力头的向量大小。目前仅支持64和128。
+
+parallel_config (OpParallelConfig) - 并行设置，内容请参阅 OpParallelConfig 的定义。默认值为 default_dpmp_config ，一个用默认参数初始化的 OpParallelConfig 的实例。
+
+输入：
+
+q (Tensor) - Tensor query (mstype.fp16 [batch_size, seq_length, hidden_size])：表示上下文的query向量。
+
+k (Tensor) - Tensor key (mstype.fp16 [batch_size, seq_length, hidden_size])：表示上下文的key向量。
+
+v (Tensor) - Tensor value (mstype.fp16 [批次大小, seq_length, hidden_size])：表示上下文的value向量。
+
+attention_mask (Tensor) - Float Tensor the mask of (mstype.fp32 , mstype.fp16 [batch_size, seq_length, seq_length])： 表示掩码的下三角形矩阵。
+
+输出：
+
+Tensor，shape为[batch_size, seq_length, hidden_size]。
+
+支持平台：
+
+Ascend
+
+样例：
+
+import numpy as np
+from mindspore import dtype as mstype
+from mindspore.nn.transformer import FixedSparseAttention
+from mindspore import Tensor
+model = FixedSparseAttention(batch_size=2,
+                             num_heads=8,
+                             size_per_head=64,
+                             block_size=64)
+q = Tensor(np.ones((2, 1024, 8*64)), mstype.float16)
+k = Tensor(np.ones((2, 1024, 8*64)), mstype.float16)
+v = Tensor(np.ones((2, 1024, 8*64)), mstype.float16)
+attention_mask = Tensor(np.ones((2, 1024, 1024)), mstype.float32)
+output = model(q, k, v, attention_mask)
+print(output.shape)
+
+classmindspore.nn.transformer.MoEConfig(expert_num=1, capacity_factor=1.1, aux_loss_factor=0.05, num_experts_chosen=1)[源代码]
+MoE (Mixture of Expert)的配置。
+
+参数：
+
+expert_num (int) - 表示使用的专家数量。默认值：1。
+
+capacity_factor (float) - 表示专家处理的容量关系，其值大于等于1.0。默认值：1.1。
+
+aux_loss_factor (float) - 表示负载均衡损失（由路由器产生）的平衡系数。相乘的结果会加到总损失函数中。此系数的值小于1.0。默认值：0.05。
+
+num_experts_chosen (int) - 表示每个标识选择的专家数量，其值小于等于专家数量。默认值：1。
+
+支持平台：
+
+Ascend
+
+样例：
+
+from mindspore.nn.transformer import MoEConfig
+moe_config = MoEConfig(expert_num=4, capacity_factor=5.0, aux_loss_factor=0.05, num_experts_chosen=1)

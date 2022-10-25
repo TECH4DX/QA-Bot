@@ -1,0 +1,149 @@
+mindspore.nn.probability
+用于构造概率网络的高级组件。
+
+Bijectors
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.probability.bijector.Bijector
+
+Bijector类。
+
+Ascend GPU
+
+mindspore.nn.probability.bijector.Exp
+
+指数Bijector（Exponential Bijector）。
+
+Ascend GPU
+
+mindspore.nn.probability.bijector.GumbelCDF
+
+GumbelCDF Bijector。
+
+Ascend GPU
+
+mindspore.nn.probability.bijector.Invert
+
+逆映射Bijector（Invert Bijector）。
+
+Ascend GPU
+
+mindspore.nn.probability.bijector.PowerTransform
+
+乘方Bijector（PowerTransform Bijector）。
+
+Ascend GPU
+
+mindspore.nn.probability.bijector.ScalarAffine
+
+标量仿射Bijector（Scalar Affine Bijector）。
+
+Ascend GPU
+
+mindspore.nn.probability.bijector.Softplus
+
+Softplus Bijector。
+
+Ascend GPU
+
+Distributions
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.probability.distribution.Bernoulli
+
+伯努利分布（Bernoulli Distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Beta
+
+Beta 分布（Beta Distribution）。
+
+Ascend
+
+mindspore.nn.probability.distribution.Categorical
+
+分类分布。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Cauchy
+
+柯西分布（Cauchy distribution）。
+
+Ascend
+
+mindspore.nn.probability.distribution.Distribution
+
+所有分布的基类。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Exponential
+
+指数分布（Exponential Distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Gamma
+
+伽马分布（Gamma distribution）。
+
+Ascend
+
+mindspore.nn.probability.distribution.Geometric
+
+几何分布（Geometric Distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Gumbel
+
+Gumbel分布（Gumbel distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Logistic
+
+Logistic分布（Logistic distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.LogNormal
+
+对数正态分布（LogNormal distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Normal
+
+正态分布（Normal distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Poisson
+
+泊松分布（Poisson Distribution）。
+
+Ascend
+
+mindspore.nn.probability.distribution.TransformedDistribution
+
+转换分布（Transformed Distribution）。
+
+Ascend GPU
+
+mindspore.nn.probability.distribution.Uniform
+
+均匀分布（Uniform Distribution）。
+
+Ascend GPU
+

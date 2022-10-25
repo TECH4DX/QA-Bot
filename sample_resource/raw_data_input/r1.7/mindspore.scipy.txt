@@ -1,0 +1,107 @@
+mindspore.scipy
+Scipy-like interfaces in mindspore.
+
+mindspore.scipy.linalg
+Linear algebra submodule.
+
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.scipy.linalg.block_diag
+
+Create a block diagonal matrix from provided arrays.
+
+CPU GPU
+
+mindspore.scipy.linalg.cho_factor
+
+Compute the cholesky decomposition of a matrix, to use in cho_solve.
+
+CPU GPU
+
+mindspore.scipy.linalg.cholesky
+
+Compute the cholesky decomposition of a matrix.
+
+CPU GPU
+
+mindspore.scipy.linalg.cho_solve
+
+Given the cholesky factorization of a, solve the linear equation
+
+CPU GPU
+
+mindspore.scipy.linalg.eigh
+
+Solve a standard or generalized eigenvalue problem for a complex Hermitian or real symmetric matrix.
+
+CPU GPU
+
+mindspore.scipy.linalg.inv
+
+Compute the inverse of a matrix.
+
+CPU GPU
+
+mindspore.scipy.linalg.lu
+
+Compute pivoted LU decomposition of a general matrix.
+
+CPU GPU
+
+mindspore.scipy.linalg.lu_factor
+
+Compute pivoted LU decomposition of a square matrix, and its outputs can be directly used as the inputs of lu_solve.
+
+CPU GPU
+
+mindspore.scipy.linalg.solve_triangular
+
+Assuming a is a batched triangular matrix, solve the equation
+
+CPU GPU
+
+mindspore.scipy.optimize
+Optimize submodule.
+
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.scipy.optimize.line_search
+
+Inexact line search that satisfies strong Wolfe conditions.
+
+CPU GPU
+
+mindspore.scipy.optimize.minimize
+
+Minimization of scalar function of one or more variables.
+
+CPU GPU
+
+mindspore.scipy.sparse.linalg
+Sparse linear algebra submodule.
+
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.scipy.sparse.linalg.cg
+
+Use Conjugate Gradient iteration to solve the linear system:
+
+CPU GPU
+
+mindspore.scipy.sparse.linalg.gmres
+
+Given given A and b, GMRES solves the linear system:
+
+CPU GPU

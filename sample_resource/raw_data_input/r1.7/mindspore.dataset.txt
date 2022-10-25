@@ -1,0 +1,344 @@
+mindspore.dataset
+该模块提供了加载和处理各种通用数据集的API，如MNIST、CIFAR-10、CIFAR-100、VOC、COCO、ImageNet、CelebA、CLUE等， 也支持加载业界标准格式的数据集，包括MindRecord、TFRecord、Manifest等。此外，用户还可以使用此模块定义和加载自己的数据集。
+
+该模块还提供了在加载时进行数据采样的API，如SequentialSample、RandomSampler、DistributedSampler等。
+
+大多数数据集可以通过指定参数 cache 启用缓存服务，以提升整体数据处理效率。 请注意Windows平台上还不支持缓存服务，因此在Windows上加载和处理数据时，请勿使用。更多介绍和限制， 请参考 Single-Node Tensor Cache。
+
+在API示例中，常用的模块导入方法如下：
+
+import mindspore.dataset as ds
+from mindspore.dataset.transforms import c_transforms
+常用数据集术语说明如下：
+
+Dataset，所有数据集的基类，提供了数据处理方法来帮助预处理数据。
+
+SourceDataset，一个抽象类，表示数据集管道的来源，从文件和数据库等数据源生成数据。
+
+MappableDataset，一个抽象类，表示支持随机访问的源数据集。
+
+Iterator，用于枚举元素的数据集迭代器的基类。
+
+视觉
+mindspore.dataset.Caltech101Dataset
+
+读取和解析Caltech101数据集的源文件构建数据集。
+
+mindspore.dataset.Caltech256Dataset
+
+读取和解析Caltech256数据集的源文件构建数据集。
+
+mindspore.dataset.CelebADataset
+
+读取和解析CelebA数据集的源文件构建数据集。
+
+mindspore.dataset.Cifar10Dataset
+
+读取和解析CIFAR-10数据集的源文件构建数据集。
+
+mindspore.dataset.Cifar100Dataset
+
+读取和解析CIFAR-100数据集的源文件构建数据集。
+
+mindspore.dataset.CityscapesDataset
+
+读取和解析Cityscapes数据集的源文件构建数据集。
+
+mindspore.dataset.CocoDataset
+
+读取和解析COCO数据集的源文件构建数据集。
+
+mindspore.dataset.DIV2KDataset
+
+读取和解析DIV2K数据集的源文件构建数据集。
+
+mindspore.dataset.EMnistDataset
+
+A source dataset that reads and parses the EMNIST dataset.
+
+mindspore.dataset.FakeImageDataset
+
+A source dataset for generating fake images.
+
+mindspore.dataset.FashionMnistDataset
+
+A source dataset that reads and parses the FASHION-MNIST dataset.
+
+mindspore.dataset.FlickrDataset
+
+A source dataset that reads and parses Flickr8k and Flickr30k dataset.
+
+mindspore.dataset.Flowers102Dataset
+
+A source dataset that reads and parses Flowers102 dataset.
+
+mindspore.dataset.ImageFolderDataset
+
+从树状结构的文件目录中读取图片构建源数据集，同一个文件夹中的所有图片将被分配相同的label。
+
+mindspore.dataset.KMnistDataset
+
+A source dataset that reads and parses the KMNIST dataset.
+
+mindspore.dataset.ManifestDataset
+
+读取和解析Manifest数据文件构建数据集。
+
+mindspore.dataset.MnistDataset
+
+读取和解析MNIST数据集的源文件构建数据集。
+
+mindspore.dataset.PhotoTourDataset
+
+A source dataset that reads and parses the PhotoTour dataset.
+
+mindspore.dataset.Places365Dataset
+
+A source dataset that reads and parses the Places365 dataset.
+
+mindspore.dataset.QMnistDataset
+
+A source dataset that reads and parses the QMNIST dataset.
+
+mindspore.dataset.SBDataset
+
+A source dataset that reads and parses Semantic Boundaries Dataset.
+
+mindspore.dataset.SBUDataset
+
+A source dataset that reads and parses the SBU dataset.
+
+mindspore.dataset.SemeionDataset
+
+A source dataset that reads and parses Semeion dataset.
+
+mindspore.dataset.STL10Dataset
+
+A source dataset that reads and parses STL10 dataset.
+
+mindspore.dataset.SVHNDataset
+
+A source dataset that reads and parses SVHN dataset.
+
+mindspore.dataset.USPSDataset
+
+A source dataset that reads and parses the USPS dataset.
+
+mindspore.dataset.VOCDataset
+
+读取和解析VOC数据集的源文件构建数据集。
+
+mindspore.dataset.WIDERFaceDataset
+
+A source dataset that reads and parses WIDERFace dataset.
+
+文本
+mindspore.dataset.AGNewsDataset
+
+A source dataset that reads and parses AG News datasets.
+
+mindspore.dataset.AmazonReviewDataset
+
+A source dataset that reads and parses Amazon Review Polarity and Amazon Review Full datasets.
+
+mindspore.dataset.CLUEDataset
+
+读取和解析CLUE数据集的源文件构建数据集。
+
+mindspore.dataset.CoNLL2000Dataset
+
+A source dataset that reads and parses CoNLL2000 dataset.
+
+mindspore.dataset.DBpediaDataset
+
+A source dataset that reads and parses the DBpedia dataset.
+
+mindspore.dataset.EnWik9Dataset
+
+A source dataset that reads and parses EnWik9 dataset.
+
+mindspore.dataset.IMDBDataset
+
+A source dataset that reads and parses Internet Movie Database (IMDb).
+
+mindspore.dataset.IWSLT2016Dataset
+
+A source dataset that reads and parses IWSLT2016 datasets.
+
+mindspore.dataset.IWSLT2017Dataset
+
+A source dataset that reads and parses IWSLT2017 datasets.
+
+mindspore.dataset.PennTreebankDataset
+
+A source dataset that reads and parses PennTreebank datasets.
+
+mindspore.dataset.SogouNewsDataset
+
+A source dataset that reads and parses Sogou News dataset.
+
+mindspore.dataset.TextFileDataset
+
+读取和解析文本文件构建数据集。
+
+mindspore.dataset.UDPOSDataset
+
+A source dataset that reads and parses UDPOS dataset.
+
+mindspore.dataset.WikiTextDataset
+
+A source dataset that reads and parses WikiText2 and WikiText103 datasets.
+
+mindspore.dataset.YahooAnswersDataset
+
+A source dataset that reads and parses the YahooAnswers dataset.
+
+mindspore.dataset.YelpReviewDataset
+
+A source dataset that reads and parses Yelp Review Polarity and Yelp Review Full dataset.
+
+音频
+mindspore.dataset.LJSpeechDataset
+
+A source dataset that reads and parses LJSpeech dataset.
+
+mindspore.dataset.SpeechCommandsDataset
+
+A source dataset that reads and parses the SpeechCommands dataset.
+
+mindspore.dataset.TedliumDataset
+
+A source dataset that reads and parses Tedlium dataset.
+
+mindspore.dataset.YesNoDataset
+
+A source dataset that reads and parses the YesNo dataset.
+
+标准格式
+mindspore.dataset.CSVDataset
+
+读取和解析CSV数据文件构建数据集。
+
+mindspore.dataset.MindDataset
+
+读取和解析MindRecord数据文件构建数据集。
+
+mindspore.dataset.OBSMindDataset
+
+读取和解析存放在华为云OBS、Minio以及AWS S3等云存储上的MindRecord格式数据集。
+
+mindspore.dataset.TFRecordDataset
+
+读取和解析TFData格式的数据文件构建数据集。
+
+用户自定义
+mindspore.dataset.GeneratorDataset
+
+自定义Python数据源，通过迭代该数据源构造数据集。
+
+mindspore.dataset.NumpySlicesDataset
+
+由Python数据构建数据集。
+
+mindspore.dataset.PaddedDataset
+
+由用户提供的填充数据构建数据集。
+
+mindspore.dataset.RandomDataset
+
+A source dataset that generates random data.
+
+图
+mindspore.dataset.GraphData
+
+从共享文件或数据库中读取用于GNN训练的图数据集。
+
+采样器
+mindspore.dataset.DistributedSampler
+
+分布式采样器，将数据集进行分片用于分布式训练。
+
+mindspore.dataset.PKSampler
+
+为数据集中每P个类别各采样K个样本。
+
+mindspore.dataset.RandomSampler
+
+随机采样器。
+
+mindspore.dataset.SequentialSampler
+
+按数据集的读取顺序采样数据集样本，相当于不使用采样器。
+
+mindspore.dataset.SubsetRandomSampler
+
+给定样本的索引序列，从序列中随机获取索引对数据集进行采样。
+
+mindspore.dataset.SubsetSampler
+
+给定样本的索引序列，对数据集采样指定索引的样本。
+
+mindspore.dataset.WeightedRandomSampler
+
+给定样本的权重列表，根据权重决定样本的采样概率，随机采样[0，len(weights) - 1]中的样本。
+
+其他
+mindspore.dataset.BatchInfo
+
+此类提供了两种方法获取数据集的批处理数量（batch size）和迭代数（epoch）属性。
+
+mindspore.dataset.DatasetCache
+
+创建数据缓存客户端实例。
+
+mindspore.dataset.DSCallback
+
+数据处理回调类的抽象基类，用户可以基于此类实现自己的回调操作。
+
+mindspore.dataset.SamplingStrategy
+
+指定图数据采样策略的枚举类。
+
+mindspore.dataset.Schema
+
+用于解析和存储数据列属性的类。
+
+mindspore.dataset.Shuffle
+
+指定混洗模式的枚举类。
+
+mindspore.dataset.WaitedDSCallback
+
+阻塞式数据处理回调类的抽象基类，用于与训练回调类 mindspore.train.callback 的同步。
+
+mindspore.dataset.OutputFormat
+
+通过API get_all_neighbors 获取所有相邻节点时，指定节点的存储格式。
+
+mindspore.dataset.compare
+
+比较两个数据处理管道是否相同。
+
+mindspore.dataset.deserialize
+
+数据处理管道反序列化，支持输入Python字典或使用 mindspore.dataset.serialize() 接口生成的JSON文件。
+
+mindspore.dataset.serialize
+
+将数据处理管道序列化成JSON文件。
+
+mindspore.dataset.show
+
+将数据处理管道图写入MindSpore的INFO级别日志文件。
+
+mindspore.dataset.sync_wait_for_dataset
+
+等待所有的卡需要的数据集文件下载完成。
+
+mindspore.dataset.utils.imshow_det_bbox
+
+使用给定的边界框和类别置信度绘制图像。
+
+mindspore.dataset.zip
+
+将多个dataset对象按列进行合并压缩。

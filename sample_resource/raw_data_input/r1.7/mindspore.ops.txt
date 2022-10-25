@@ -1,0 +1,2232 @@
+mindspore.ops
+可用于Cell的构造函数的算子。
+
+import mindspore.ops as ops
+MindSpore中 mindspore.ops 接口与上一版本相比，新增、删除和支持平台的变化信息请参考 API Updates 。
+
+算子原语
+mindspore.ops.Primitive
+
+Primitive是Python中算子原语的基类。
+
+mindspore.ops.PrimitiveWithCheck
+
+PrimitiveWithCheck是Python中原语的基类，定义了检查算子输入参数的函数，但是使用了C++源码中注册的推理方法。
+
+mindspore.ops.PrimitiveWithInfer
+
+PrimitiveWithInfer是Python中的原语基类，在python中定义了跟踪推理的函数。
+
+装饰器
+mindspore.ops.constexpr
+
+创建PrimiveWithInfer算子，用于在编译时推断值。
+
+mindspore.ops.custom_info_register
+
+A decorator which is used to bind the registration information to the func parameter of mindspore.ops.Custom.
+
+mindspore.ops.ms_hybrid
+
+用于MindSpore Hybrid DSL函数书写的装饰器。
+
+mindspore.ops.op_info_register
+
+用于注册算子的装饰器。
+
+mindspore.ops.prim_attr_register
+
+Primitive属性的注册器。
+
+神经网络层算子
+神经网络
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.AvgPool
+
+对输入的多维数据进行二维平均池化运算。
+
+Ascend GPU CPU
+
+mindspore.ops.AvgPool3D
+
+对输入的多维数据进行三维的平均池化运算。
+
+Ascend CPU
+
+mindspore.ops.BasicLSTMCell
+
+It’s similar to operator mindspore.ops.DynamicRNN.
+
+弃用
+
+mindspore.ops.BatchNorm
+
+对输入数据进行归一化(Batch Normalization)和更新参数。
+
+Ascend CPU GPU
+
+mindspore.ops.Conv2D
+
+2D convolution layer.
+
+Ascend GPU CPU
+
+mindspore.ops.Conv2DBackpropInput
+
+The Conv2DBackpropInput interface is deprecated, please refer to mindspore.ops.Conv2DTranspose if you want to do unsampling.
+
+弃用
+
+mindspore.ops.Conv2DTranspose
+
+Compute a 2D transposed convolution, which is also known as a deconvolution (although it is not an actual deconvolution).
+
+Ascend GPU CPU
+
+mindspore.ops.Conv3D
+
+3D convolution layer.
+
+Ascend GPU CPU
+
+mindspore.ops.Conv3DTranspose
+
+Computes a 3D transposed convolution, which is also known as a deconvolution (although it is not an actual deconvolution).
+
+Ascend GPU
+
+mindspore.ops.CTCGreedyDecoder
+
+Performs greedy decoding on the logits given in inputs.
+
+Ascend
+
+mindspore.ops.DepthwiseConv2dNative
+
+DepthwiseConv2dNative will be deprecated in the future.
+
+弃用
+
+mindspore.ops.Dropout
+
+Dropout是一种正则化手段，通过在训练中以 1−keep_prob 的概率随机将神经元输出设置为0，起到减少神经元相关性的作用，避免过拟合。
+
+Ascend GPU CPU
+
+mindspore.ops.Dropout2D
+
+在训练期间，根据概率 1 - keep_prob ，随机的将一些通道设置为0，且服从伯努利分布。
+
+Ascend
+
+mindspore.ops.Dropout3D
+
+随机丢弃层。
+
+Ascend GPU
+
+mindspore.ops.DropoutDoMask
+
+The DropoutDoMask interface is deprecated, please use the mindspore.ops.Dropout instead.
+
+弃用
+
+mindspore.ops.DropoutGenMask
+
+The DropoutGenMask interface is deprecated, please use the mindspore.ops.Dropout instead.
+
+弃用
+
+mindspore.ops.DynamicGRUV2
+
+Applies a single-layer gated recurrent unit (GRU) to an input sequence.
+
+Ascend
+
+mindspore.ops.DynamicRNN
+
+Applies a recurrent neural network to the input.
+
+Ascend
+
+mindspore.ops.Flatten
+
+扁平化（Flatten）输入Tensor，不改变0轴的size。
+
+Ascend GPU CPU
+
+mindspore.ops.LayerNorm
+
+在输入Tensor上应用层归一化（Layer Normalization）。
+
+Ascend GPU CPU
+
+mindspore.ops.LRN
+
+Local Response Normalization.
+
+Ascend GPU
+
+mindspore.ops.LSTM
+
+Performs the Long Short-Term Memory (LSTM) on the input.
+
+GPU CPU
+
+mindspore.ops.MaxPool
+
+对输入的多维数据进行二维的最大池化运算。
+
+Ascend GPU CPU
+
+mindspore.ops.MaxPool3D
+
+对输入的多维数据进行三维的最大池化运算。
+
+Ascend GPU CPU
+
+mindspore.ops.MaxPoolWithArgmax
+
+对输入Tensor执行最大池化运算，并返回最大值和索引。
+
+Ascend GPU
+
+mindspore.ops.MirrorPad
+
+Pads the input tensor according to the paddings and mode.
+
+Ascend GPU CPU
+
+mindspore.ops.Pad
+
+根据参数 paddings 对输入进行填充。
+
+Ascend GPU CPU
+
+mindspore.ops.EmbeddingLookup
+
+根据指定的索引，返回输入Tensor的切片。
+
+Ascend CPU GPU
+
+mindspore.ops.Padding
+
+将输入Tensor的最后一个维度从1扩展到 pad_dim_size ，其填充值为0。
+
+Ascend
+
+mindspore.ops.ResizeNearestNeighbor
+
+使用最近邻插值算法调整输入Tensor为指定大小。
+
+Ascend GPU CPU
+
+mindspore.ops.ResizeBilinear
+
+使用双线性插值调整图像大小到指定的大小。
+
+Ascend CPU GPU
+
+损失函数
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.BCEWithLogitsLoss
+
+输入经过sigmoid激活函数后作为预测值，BCEWithLogitsLoss计算预测值和目标值之间的二值交叉熵损失。
+
+Ascend GPU
+
+mindspore.ops.BinaryCrossEntropy
+
+Computes the binary cross entropy between the logits and the labels.
+
+Ascend GPU CPU
+
+mindspore.ops.CTCLoss
+
+Calculates the CTC (Connectionist Temporal Classification) loss and the gradient.
+
+Ascend GPU CPU
+
+mindspore.ops.KLDivLoss
+
+Computes the Kullback-Leibler divergence between the logits and the labels.
+
+GPU
+
+mindspore.ops.L2Loss
+
+用于计算L2范数的一半，但不对结果进行开方操作。
+
+Ascend GPU CPU
+
+mindspore.ops.NLLLoss
+
+获取预测值和目标值之间的负对数似然损失。
+
+Ascend GPU CPU
+
+mindspore.ops.RNNTLoss
+
+Computes the RNNTLoss and its gradient with respect to the softmax outputs.
+
+Ascend
+
+mindspore.ops.SigmoidCrossEntropyWithLogits
+
+计算预测值与真实值之间的sigmoid交叉熵。
+
+Ascend GPU CPU
+
+mindspore.ops.SmoothL1Loss
+
+Computes smooth L1 loss, a robust L1 loss.
+
+Ascend GPU CPU
+
+mindspore.ops.SoftMarginLoss
+
+SoftMarginLoss operation.
+
+Ascend
+
+mindspore.ops.SoftmaxCrossEntropyWithLogits
+
+使用one-hot编码获取预测值和真实之间的softmax交叉熵。
+
+Ascend GPU CPU
+
+mindspore.ops.SparseSoftmaxCrossEntropyWithLogits
+
+Computes the softmax cross-entropy value between logits and sparse encoding labels.
+
+GPU CPU
+
+激活函数
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Elu
+
+指数线性单元激活函数（Exponential Linear Unit activation function）。
+
+Ascend GPU CPU
+
+mindspore.ops.FastGeLU
+
+Fast Gaussian Error Linear Units activation function.
+
+Ascend
+
+mindspore.ops.GeLU
+
+高斯误差线性单元激活函数（Gaussian Error Linear Units activation function）。
+
+Ascend GPU CPU
+
+mindspore.ops.HShrink
+
+Applies the hard shrinkage function element-wise, each element complies with the following function:
+
+Ascend
+
+mindspore.ops.HSigmoid
+
+Hard sigmoid activation function.
+
+Ascend GPU CPU
+
+mindspore.ops.HSwish
+
+Hard swish activation function.
+
+GPU CPU
+
+mindspore.ops.LogSoftmax
+
+LogSoftmax激活函数。
+
+Ascend GPU CPU
+
+mindspore.ops.Mish
+
+Computes MISH(A Self Regularized Non-Monotonic Neural Activation Function) of input tensors element-wise.
+
+Ascend
+
+mindspore.ops.PReLU
+
+带参数的线性修正单元激活函数（Parametric Rectified Linear Unit activation function）。
+
+Ascend GPU
+
+mindspore.ops.ReLU
+
+线性修正单元激活函数（Rectified Linear Unit）。
+
+Ascend GPU CPU
+
+mindspore.ops.ReLU6
+
+Computes ReLU (Rectified Linear Unit) upper bounded by 6 of input tensors element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.ReLUV2
+
+线性修正单元激活函数（Rectified Linear Unit activation function）。
+
+Ascend
+
+mindspore.ops.SeLU
+
+激活函数SeLU（Scaled exponential Linear Unit）。
+
+Ascend
+
+mindspore.ops.Sigmoid
+
+Sigmoid激活函数。
+
+Ascend GPU CPU
+
+mindspore.ops.Softmax
+
+Softmax函数。
+
+Ascend GPU CPU
+
+mindspore.ops.Softplus
+
+Softplus activation function.
+
+Ascend GPU CPU
+
+mindspore.ops.SoftShrink
+
+Applies the SoftShrink function element-wise.
+
+Ascend
+
+mindspore.ops.Softsign
+
+Softsign activation function.
+
+Ascend
+
+mindspore.ops.Tanh
+
+Tanh激活函数。
+
+Ascend GPU CPU
+
+优化器
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Adam
+
+Updates gradients by the Adaptive Moment Estimation (Adam) algorithm.
+
+Ascend GPU CPU
+
+mindspore.ops.AdamNoUpdateParam
+
+Updates gradients by the Adaptive Moment Estimation (Adam) algorithm.
+
+CPU
+
+mindspore.ops.AdamWeightDecay
+
+Updates gradients by the Adaptive Moment Estimation algorithm with weight decay (AdamWeightDecay).
+
+GPU CPU
+
+mindspore.ops.AdaptiveAvgPool2D
+
+AdaptiveAvgPool2D operation.
+
+GPU
+
+mindspore.ops.ApplyAdadelta
+
+Updates relevant entries according to the adadelta scheme.
+
+Ascend
+
+mindspore.ops.ApplyAdagrad
+
+Updates relevant entries according to the adagrad scheme.
+
+Ascend CPU GPU
+
+mindspore.ops.ApplyAdagradDA
+
+Update var according to the proximal adagrad scheme.
+
+Ascend
+
+mindspore.ops.ApplyAdagradV2
+
+Updates relevant entries according to the adagradv2 scheme.
+
+Ascend
+
+mindspore.ops.ApplyAdaMax
+
+Updates relevant entries according to the adamax scheme.
+
+Ascend
+
+mindspore.ops.ApplyAddSign
+
+Updates relevant entries according to the AddSign algorithm.
+
+Ascend
+
+mindspore.ops.ApplyCenteredRMSProp
+
+Optimizer that implements the centered RMSProp algorithm.
+
+Ascend GPU CPU
+
+mindspore.ops.ApplyFtrl
+
+Updates relevant entries according to the FTRL scheme.
+
+Ascend GPU
+
+mindspore.ops.ApplyGradientDescent
+
+Updates var by subtracting alpha * delta from it.
+
+Ascend GPU
+
+mindspore.ops.ApplyMomentum
+
+Optimizer that implements the Momentum algorithm.
+
+Ascend GPU CPU
+
+mindspore.ops.ApplyPowerSign
+
+Updates relevant entries according to the AddSign algorithm.
+
+Ascend
+
+mindspore.ops.ApplyProximalAdagrad
+
+Updates relevant entries according to the proximal adagrad algorithm.
+
+Ascend
+
+mindspore.ops.ApplyProximalGradientDescent
+
+Updates relevant entries according to the FOBOS(Forward Backward Splitting) algorithm.
+
+Ascend
+
+mindspore.ops.ApplyRMSProp
+
+Optimizer that implements the Root Mean Square prop(RMSProp) algorithm.
+
+Ascend GPU CPU
+
+mindspore.ops.FusedSparseAdam
+
+Merges the duplicate value of the gradient and then updates parameters by the Adaptive Moment Estimation (Adam) algorithm.
+
+Ascend CPU
+
+mindspore.ops.FusedSparseFtrl
+
+Merges the duplicate value of the gradient and then updates relevant entries according to the FTRL-proximal scheme.
+
+Ascend CPU
+
+mindspore.ops.FusedSparseLazyAdam
+
+Merges the duplicate value of the gradient and then updates parameters by the Adaptive Moment Estimation (Adam) algorithm.
+
+Ascend CPU
+
+mindspore.ops.FusedSparseProximalAdagrad
+
+Merges the duplicate value of the gradient and then updates relevant entries according to the proximal adagrad algorithm.
+
+Ascend CPU
+
+mindspore.ops.LARSUpdate
+
+Conducts LARS (layer-wise adaptive rate scaling) update on the sum of squares of gradient.
+
+Ascend
+
+mindspore.ops.SparseApplyAdagrad
+
+Updates relevant entries according to the adagrad scheme.
+
+Ascend
+
+mindspore.ops.SparseApplyAdagradV2
+
+Updates relevant entries according to the adagrad scheme, one more epsilon attribute than SparseApplyAdagrad.
+
+Ascend
+
+mindspore.ops.SparseApplyProximalAdagrad
+
+Updates relevant entries according to the proximal adagrad algorithm.
+
+Ascend GPU
+
+mindspore.ops.SGD
+
+Computes the stochastic gradient descent.
+
+Ascend GPU CPU
+
+mindspore.ops.SparseApplyFtrl
+
+Updates relevant entries according to the FTRL-proximal scheme.
+
+Ascend GPU
+
+mindspore.ops.SparseApplyFtrlV2
+
+Updates relevant entries according to the FTRL-proximal scheme.
+
+Ascend
+
+距离函数
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Cdist
+
+Computes batched the p-norm distance between each pair of the two collections of row vectors.
+
+Ascend
+
+mindspore.ops.EditDistance
+
+Computes the Levenshtein Edit Distance.
+
+Ascend
+
+mindspore.ops.LpNorm
+
+Returns the matrix norm or vector norm of a given tensor.
+
+Ascend
+
+采样算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.ComputeAccidentalHits
+
+计算与目标类完全匹配的抽样样本的位置id。
+
+Ascend
+
+mindspore.ops.LogUniformCandidateSampler
+
+使用log-uniform(Zipfian)分布对一组类别进行采样。
+
+Ascend
+
+mindspore.ops.UniformCandidateSampler
+
+使用均匀分布对一组类别进行采样。
+
+GPU
+
+图像处理
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.BoundingBoxDecode
+
+Decodes bounding boxes locations.
+
+Ascend GPU CPU
+
+mindspore.ops.BoundingBoxEncode
+
+Encodes bounding boxes locations.
+
+Ascend GPU CPU
+
+mindspore.ops.CheckValid
+
+Checks bounding box.
+
+Ascend GPU CPU
+
+mindspore.ops.CropAndResize
+
+Extracts crops from the input image tensor and resizes them.
+
+Ascend GPU CPU
+
+mindspore.ops.ExtractVolumePatches
+
+Extract patches from input and put them in the “depth” output dimension.
+
+Ascend
+
+mindspore.ops.IOU
+
+计算矩形的IOU，即真实区域和预测区域的交并比。
+
+Ascend GPU CPU
+
+mindspore.ops.L2Normalize
+
+L2范数归一化算子。
+
+Ascend GPU CPU
+
+mindspore.ops.NMSWithMask
+
+When object detection problem is performed in the computer vision field, object detection algorithm generates a plurality of bounding boxes.
+
+Ascend GPU CPU
+
+mindspore.ops.ROIAlign
+
+Computes the Region of Interest (RoI) Align operator.
+
+Ascend GPU CPU
+
+文本处理
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.NoRepeatNGram
+
+Updates log_probs with repeat n-grams.
+
+Ascend
+
+数学运算算子
+逐元素运算
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Abs
+
+Returns absolute value of a tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.AccumulateNV2
+
+Computes accumulation of all input tensors element-wise.
+
+Ascend
+
+mindspore.ops.ACos
+
+Computes arccosine of input tensors element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Acosh
+
+Computes inverse hyperbolic cosine of the inputs element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Add
+
+两个输入Tensor逐元素相加。
+
+Ascend GPU CPU
+
+mindspore.ops.Addcdiv
+
+Performs the element-wise division of tensor x1 by tensor x2, multiply the result by the scalar value and add it to input_data.
+
+Ascend
+
+mindspore.ops.Addcmul
+
+Performs the element-wise product of tensor x1 and tensor x2, multiply the result by the scalar value and add it to input_data.
+
+Ascend
+
+mindspore.ops.AddN
+
+逐元素将所有输入的Tensor相加。
+
+Ascend GPU CPU
+
+mindspore.ops.Asin
+
+Computes arcsine of input tensors element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Asinh
+
+Computes inverse hyperbolic sine of the input element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Atan
+
+Computes the trigonometric inverse tangent of the input element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Atan2
+
+Returns arctangent of x/y element-wise.
+
+Ascend CPU GPU
+
+mindspore.ops.Atanh
+
+Computes inverse hyperbolic tangent of the input element-wise.
+
+Ascend CPU
+
+mindspore.ops.BesselI0e
+
+Computes BesselI0e of input element-wise.
+
+Ascend
+
+mindspore.ops.BesselI1e
+
+Computes BesselI1e of input element-wise.
+
+Ascend
+
+mindspore.ops.BitwiseAnd
+
+Returns bitwise and of two tensors element-wise.
+
+Ascend
+
+mindspore.ops.BitwiseOr
+
+Returns bitwise or of two tensors element-wise.
+
+Ascend
+
+mindspore.ops.BitwiseXor
+
+Returns bitwise xor of two tensors element-wise.
+
+Ascend
+
+mindspore.ops.Ceil
+
+向上取整函数。
+
+Ascend
+
+mindspore.ops.Conj
+
+Returns a tensor of complex numbers that are the complex conjugate of each element in input.
+
+CPU GPU
+
+mindspore.ops.Cos
+
+Computes cosine of input element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Cosh
+
+Computes hyperbolic cosine of input element-wise.
+
+Ascend CPU
+
+mindspore.ops.Div
+
+逐元素计算第一输入Tensor除以第二输入Tensor的商。
+
+Ascend GPU CPU
+
+mindspore.ops.DivNoNan
+
+Computes a safe divide and returns 0 if the y is zero.
+
+Ascend GPU
+
+mindspore.ops.Einsum
+
+This operator uses equation to represent a tuple of tensors operations, you can use this operator to perform diagonal/reducesum/transpose/matmul/mul/inner product operations, etc.
+
+GPU
+
+mindspore.ops.Erf
+
+逐元素计算 x 的高斯误差函数。
+
+Ascend GPU
+
+mindspore.ops.Erfc
+
+Computes the complementary error function of x element-wise.
+
+Ascend GPU
+
+mindspore.ops.Erfinv
+
+Computes the inverse error function of input.
+
+Ascend
+
+mindspore.ops.Exp
+
+Returns exponential of a tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Expm1
+
+Returns exponential then minus 1 of a tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Floor
+
+向下取整函数。
+
+Ascend GPU CPU
+
+mindspore.ops.FloorDiv
+
+Divides the first input tensor by the second input tensor element-wise and round down to the closest integer.
+
+Ascend GPU CPU
+
+mindspore.ops.FloorMod
+
+Computes the remainder of division element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Imag
+
+Returns a new tensor containing imaginary value of the input.
+
+CPU GPU
+
+mindspore.ops.Inv
+
+按元素计算输入Tensor的倒数。
+
+Ascend
+
+mindspore.ops.Invert
+
+Flips all bits of input tensor element-wise.
+
+Ascend
+
+mindspore.ops.Lerp
+
+Does a linear interpolation of two tensors start and end based on a float or tensor weight.
+
+Ascend
+
+mindspore.ops.Log
+
+逐元素返回Tensor的自然对数。
+
+Ascend GPU CPU
+
+mindspore.ops.Log1p
+
+Returns the natural logarithm of one plus the input tensor element-wise.
+
+Ascend GPU
+
+mindspore.ops.LogicalAnd
+
+Computes the “logical AND” of two tensors element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.LogicalNot
+
+Computes the “logical NOT” of a tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.LogicalOr
+
+Computes the “logical OR” of two tensors element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Mod
+
+Computes the remainder of dividing the first input tensor by the second input tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Mul
+
+两个Tensor逐元素相乘。
+
+Ascend GPU CPU
+
+mindspore.ops.MulNoNan
+
+Computes x * y element-wise.
+
+Ascend CPU
+
+mindspore.ops.Neg
+
+计算输入x的相反数并返回。
+
+Ascend GPU CPU
+
+mindspore.ops.Pow
+
+计算 x 中每个元素的 y 次幂。
+
+Ascend GPU CPU
+
+mindspore.ops.Real
+
+Returns a Tensor that is the real part of the input.
+
+CPU GPU
+
+mindspore.ops.RealDiv
+
+Divides the first input tensor by the second input tensor in floating-point type element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Reciprocal
+
+Returns reciprocal of a tensor element-wise.
+
+Ascend GPU
+
+mindspore.ops.Rint
+
+Returns an integer that is closest to x element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Round
+
+对输入数据进行四舍五入到最接近的整数数值。
+
+Ascend GPU CPU
+
+mindspore.ops.Rsqrt
+
+Computes reciprocal of square root of input tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Sign
+
+Performs sign on the tensor element-wise.
+
+Ascend CPU GPU
+
+mindspore.ops.Sin
+
+Computes sine of the input element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.Sinh
+
+Computes hyperbolic sine of the input element-wise.
+
+Ascend CPU
+
+mindspore.ops.Sqrt
+
+计算输入Tensor的平方根。
+
+Ascend GPU CPU
+
+mindspore.ops.Square
+
+Returns square of a tensor element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.SquaredDifference
+
+Subtracts the second input tensor from the first input tensor element-wise and returns square of it.
+
+Ascend GPU CPU
+
+mindspore.ops.SquareSumAll
+
+Returns the square sum of a tensor element-wise
+
+Ascend GPU
+
+mindspore.ops.Sub
+
+逐元素用第一个输入Tensor减去第二个输入Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.Tan
+
+Computes tangent of x element-wise.
+
+Ascend CPU
+
+mindspore.ops.TruncateDiv
+
+Divides the first input tensor by the second input tensor element-wise for integer types, negative numbers will round fractional quantities towards zero.
+
+Ascend GPU
+
+mindspore.ops.TruncateMod
+
+Returns the remainder of division element-wise.
+
+Ascend GPU
+
+mindspore.ops.Xdivy
+
+Divides the first input tensor by the second input tensor element-wise.
+
+Ascend
+
+mindspore.ops.Xlogy
+
+Computes the first input tensor multiplied by the logarithm of second input tensor element-wise.
+
+Ascend
+
+Reduction算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Argmax
+
+返回输入Tensor在指定轴上的最大值索引。
+
+Ascend GPU CPU
+
+mindspore.ops.ArgMaxWithValue
+
+根据指定的索引计算最大值，并返回索引和值。
+
+Ascend GPU CPU
+
+mindspore.ops.Argmin
+
+返回输入Tensor在指定轴上的最小值索引。
+
+Ascend
+
+mindspore.ops.ArgMinWithValue
+
+根据指定的索引计算最小值，并返回索引和值。
+
+Ascend GPU CPU
+
+mindspore.ops.ReduceAll
+
+Reduces a dimension of a tensor by the “logicalAND” of all elements in the dimension, by default.
+
+Ascend GPU CPU
+
+mindspore.ops.ReduceAny
+
+Reduces a dimension of a tensor by the “logical OR” of all elements in the dimension, by default.
+
+Ascend GPU CPU
+
+mindspore.ops.ReduceMax
+
+默认情况下，输出张量各维度上的最大值，以达到对所有维度进行归约的目的。
+
+Ascend GPU CPU
+
+mindspore.ops.ReduceMean
+
+默认情况下，输出Tensor各维度上的平均值，以达到对所有维度进行归约的目的。
+
+Ascend GPU CPU
+
+mindspore.ops.ReduceMin
+
+Reduces a dimension of a tensor by the minimum value in the dimension, by default.
+
+Ascend GPU CPU
+
+mindspore.ops.ReduceProd
+
+Reduces a dimension of a tensor by multiplying all elements in the dimension, by default.
+
+Ascend GPU
+
+mindspore.ops.ReduceSum
+
+默认情况下，输出Tensor各维度上的和，以达到对所有维度进行归约的目的。
+
+Ascend GPU CPU
+
+比较算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.ApproximateEqual
+
+Returns True if abs(x-y) is smaller than tolerance element-wise, otherwise False.
+
+Ascend
+
+mindspore.ops.CheckBprop
+
+Checks whether the data type and the shape of corresponding elements from tuples x and y are the same.
+
+Ascend GPU CPU
+
+mindspore.ops.Equal
+
+逐元素比较两个输入Tensor是否相等。
+
+Ascend GPU CPU
+
+mindspore.ops.EqualCount
+
+Computes the number of the same elements of two tensors.
+
+GPU CPU
+
+mindspore.ops.Greater
+
+按元素比较输入参数 x,y 的值，输出结果为bool值。
+
+Ascend GPU CPU
+
+mindspore.ops.GreaterEqual
+
+输入两个数据，逐元素比较第一个数据是否大于等于第二个数据。
+
+Ascend GPU CPU
+
+mindspore.ops.InTopK
+
+Determines whether the targets are in the top k predictions.
+
+Ascend GPU
+
+mindspore.ops.IsFinite
+
+Determines which elements are finite for each position.
+
+Ascend GPU CPU
+
+mindspore.ops.IsInf
+
+Determines which elements are inf or -inf for each position
+
+GPU CPU
+
+mindspore.ops.IsInstance
+
+Checks whether an object is an instance of a target type.
+
+Ascend GPU CPU
+
+mindspore.ops.IsNan
+
+判断输入数据每个位置上的值是否是Nan。
+
+GPU CPU
+
+mindspore.ops.IsSubClass
+
+Checks whether this type is a sub-class of another type.
+
+Ascend GPU CPU
+
+mindspore.ops.Less
+
+Computes the boolean value of x<y element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.LessEqual
+
+逐元素计算 x<=y 的bool值。
+
+Ascend GPU CPU
+
+mindspore.ops.Maximum
+
+计算输入Tensor的最大值。
+
+Ascend GPU CPU
+
+mindspore.ops.Minimum
+
+Computes the minimum of input tensors element-wise.
+
+Ascend GPU CPU
+
+mindspore.ops.NotEqual
+
+计算两个Tensor是否不相等。
+
+Ascend GPU CPU
+
+mindspore.ops.SameTypeShape
+
+Checks whether the data type and shape of two tensors are the same.
+
+Ascend GPU CPU
+
+mindspore.ops.TopK
+
+Finds values and indices of the k largest entries along the last dimension.
+
+Ascend GPU CPU
+
+线性代数算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.BatchMatMul
+
+两个batch后的Tensor之间的矩阵乘法。
+
+Ascend GPU CPU
+
+mindspore.ops.BiasAdd
+
+返回输入Tensor与偏置Tensor之和。
+
+Ascend GPU CPU
+
+mindspore.ops.Ger
+
+Ger product of x1 and x2.
+
+Ascend
+
+mindspore.ops.MatMul
+
+将矩阵 a 和矩阵 b 相乘。
+
+Ascend GPU CPU
+
+mindspore.ops.MatrixInverse
+
+计算输入矩阵的逆矩阵，如果输入矩阵不可逆，将产生错误或者返回一个未知结果。
+
+GPU CPU
+
+Tensor操作算子
+Tensor创建
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Eps
+
+创建一个与输入数据类型和shape都相同的Tensor，元素值为对应数据类型能表达的最小值。
+
+Ascend GPU CPU
+
+mindspore.ops.Eye
+
+创建一个主对角线上元素为1，其余元素为0的Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.Fill
+
+创建一个指定shape的Tensor，并用指定值填充。
+
+Ascend GPU CPU
+
+mindspore.ops.LinSpace
+
+Returns a Tensor whose value is num evenly spaced in the interval start and stop (including start and stop), and the length of the output Tensor is num.
+
+Ascend GPU
+
+mindspore.ops.OneHot
+
+返回一个one-hot类型的Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.Ones
+
+创建一个值全为1的Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.OnesLike
+
+返回值为1的Tensor，shape和数据类型与输入相同。
+
+Ascend GPU CPU
+
+mindspore.ops.Zeros
+
+创建一个值全为0的Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.ZerosLike
+
+返回值为0的Tensor，其shape和数据类型与输入Tensor相同。
+
+Ascend GPU CPU
+
+随机生成算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Gamma
+
+根据概率密度函数分布生成随机正值浮点数x。
+
+Ascend
+
+mindspore.ops.Multinomial
+
+Returns a tensor sampled from the multinomial probability distribution located in the corresponding row of tensor input.
+
+GPU
+
+mindspore.ops.Poisson
+
+Produces random non-negative integer values i, distributed according to discrete probability function:
+
+Ascend
+
+mindspore.ops.RandomCategorical
+
+Generates random samples from a given categorical distribution tensor.
+
+Ascend GPU
+
+mindspore.ops.RandomChoiceWithMask
+
+Generates a random sample as index tensor with a mask tensor from a given tensor.
+
+Ascend GPU CPU
+
+mindspore.ops.Randperm
+
+Generates n random samples from 0 to n-1 without repeating.
+
+Ascend GPU
+
+mindspore.ops.StandardLaplace
+
+Generates random numbers according to the Laplace random number distribution (mean=0, lambda=1).
+
+Ascend
+
+mindspore.ops.StandardNormal
+
+Generates random numbers according to the standard Normal (or Gaussian) random number distribution.
+
+Ascend GPU CPU
+
+mindspore.ops.UniformInt
+
+Produces random integer values i, uniformly distributed on the closed interval [minval, maxval), that is, distributed according to the discrete probability function:
+
+Ascend GPU CPU
+
+mindspore.ops.UniformReal
+
+产生随机的浮点数，均匀分布在[0，1)范围内。
+
+Ascend GPU CPU
+
+Array操作
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.BatchToSpace
+
+Divides batch dimension with blocks and interleaves these blocks back into spatial dimensions.
+
+Ascend GPU
+
+mindspore.ops.BatchToSpaceND
+
+Divides batch dimension with blocks and interleaves these blocks back into spatial dimensions.
+
+Ascend
+
+mindspore.ops.BroadcastTo
+
+将输入shape广播到目标shape。
+
+Ascend GPU CPU
+
+mindspore.ops.Cast
+
+转换输入Tensor的数据类型。
+
+Ascend GPU CPU
+
+mindspore.ops.Concat
+
+在指定轴上拼接输入Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.CumProd
+
+Computes the cumulative product of the tensor x along axis.
+
+Ascend GPU
+
+mindspore.ops.CumSum
+
+计算输入Tensor在指定轴上的累加和。
+
+Ascend GPU CPU
+
+mindspore.ops.DataFormatDimMap
+
+Returns the dimension index in the destination data format given in the source data format.
+
+Ascend
+
+mindspore.ops.DepthToSpace
+
+Rearrange blocks of depth data into spatial dimensions.
+
+Ascend GPU CPU
+
+mindspore.ops.DType
+
+Returns the data type of the input tensor as mindspore.dtype.
+
+Ascend GPU CPU
+
+mindspore.ops.DynamicShape
+
+与 TensorShape 相同， DynamicShape 将会被 TensorShape 替换，请使用 TensorShape 。
+
+Deprecated
+
+mindspore.ops.ExpandDims
+
+Adds an additional dimension to input_x at the given axis.
+
+Ascend GPU CPU
+
+mindspore.ops.FloatStatus
+
+Determines if the elements contain Not a Number(NaN), infinite or negative infinite.
+
+GPU
+
+mindspore.ops.Gather
+
+返回输入Tensor在指定 axis 上 input_indices 索引对应的元素组成的切片。
+
+Ascend GPU CPU
+
+mindspore.ops.GatherD
+
+获取指定轴的元素。
+
+Ascend GPU CPU
+
+mindspore.ops.GatherNd
+
+根据索引获取输入Tensor指定位置上的元素。
+
+Ascend GPU CPU
+
+mindspore.ops.HistogramFixedWidth
+
+Returns a rank 1 histogram counting the number of entries in values that fall into every bin.
+
+Ascend
+
+mindspore.ops.Identity
+
+返回与输入具有相同shape和值的Tensor。
+
+Ascend CPU GPU
+
+mindspore.ops.IndexAdd
+
+Adds tensor y to specified axis and indices of tensor x.
+
+Ascend GPU
+
+mindspore.ops.InplaceAdd
+
+Adds v into specified rows of x.
+
+Ascend
+
+mindspore.ops.InplaceSub
+
+Subtracts v into specified rows of x.
+
+Ascend
+
+mindspore.ops.InplaceUpdate
+
+Updates specified rows with values in v.
+
+Ascend
+
+mindspore.ops.InvertPermutation
+
+Computes the inverse of an index permutation.
+
+Ascend GPU CPU
+
+mindspore.ops.MaskedFill
+
+将掩码位置为True的位置填充指定的值。
+
+Ascend
+
+mindspore.ops.MaskedSelect
+
+使用布尔掩码对输入进行选择得到一个新的一维Tensor。
+
+Ascend CPU
+
+mindspore.ops.Meshgrid
+
+从给定的Tensor生成网格矩阵。
+
+Ascend GPU
+
+mindspore.ops.ParallelConcat
+
+Concats tensor in the first dimension.
+
+Ascend
+
+mindspore.ops.PopulationCount
+
+Computes element-wise population count(a.k.a bitsum, bitcount).
+
+Ascend
+
+mindspore.ops.Rank
+
+Returns the rank of a tensor.
+
+Ascend GPU CPU
+
+mindspore.ops.Reshape
+
+基于给定的shape，对输入Tensor进行重新排列。
+
+Ascend GPU CPU
+
+mindspore.ops.ReverseSequence
+
+对输入序列进行部分反转。
+
+Ascend GPU
+
+mindspore.ops.ReverseV2
+
+对输入Tensor按指定维度反转。
+
+Ascend GPU
+
+mindspore.ops.ScatterNd
+
+根据指定的索引将更新值散布到新Tensor上。
+
+Ascend GPU CPU
+
+mindspore.ops.Select
+
+Returns the selected elements, either from input x or input y, depending on the condition.
+
+Ascend GPU CPU
+
+mindspore.ops.Shape
+
+Returns the shape of the input tensor.
+
+Ascend GPU CPU
+
+mindspore.ops.Size
+
+返回一个Scalar，类型为整数，表示输入Tensor的大小，即Tensor中元素的总数。
+
+Ascend GPU CPU
+
+mindspore.ops.Slice
+
+根据指定shape对输入Tensor进行切片。
+
+Ascend GPU CPU
+
+mindspore.ops.Sort
+
+根据指定的轴对输入Tensor的元素进行排序。
+
+Ascend GPU CPU
+
+mindspore.ops.SpaceToBatch
+
+SpaceToBatch is deprecated.
+
+弃用
+
+mindspore.ops.SpaceToBatchND
+
+Divides spatial dimensions into blocks and combines the block size with the original batch.
+
+Ascend
+
+mindspore.ops.SpaceToDepth
+
+Rearrange blocks of spatial data into depth.
+
+Ascend GPU CPU
+
+mindspore.ops.SparseGatherV2
+
+Returns a slice of input tensor based on the specified indices and axis.
+
+Ascend GPU
+
+mindspore.ops.Split
+
+根据指定的轴和分割数量对输入Tensor进行分割。
+
+Ascend GPU CPU
+
+mindspore.ops.SplitV
+
+Splits the input tensor into num_split tensors along the given dimension.
+
+Ascend
+
+mindspore.ops.Squeeze
+
+返回删除指定 axis 中大小为1的维度后的Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.Stack
+
+在指定轴上对输入Tensor序列进行堆叠。
+
+Ascend GPU CPU
+
+mindspore.ops.StridedSlice
+
+输入Tensor根据步长和索引进行切片提取。
+
+Ascend GPU CPU
+
+mindspore.ops.TensorScatterAdd
+
+根据指定的更新值和输入索引，通过相加运算更新输入Tensor的值。
+
+GPU
+
+mindspore.ops.TensorScatterMax
+
+根据指定的更新值和输入索引，通过最大值运算更新输入Tensor的值。
+
+GPU
+
+mindspore.ops.TensorScatterMin
+
+根据指定的更新值和输入索引，通过最小值运算更新输入Tensor的值。
+
+GPU
+
+mindspore.ops.TensorScatterSub
+
+根据指定的更新值和输入索引，通过减法运算更新输入Tensor的值。
+
+GPU
+
+mindspore.ops.TensorScatterUpdate
+
+根据指定的更新值和输入索引，通过更新操作更新输入Tensor的值。
+
+Ascend GPU CPU
+
+mindspore.ops.TensorShape
+
+返回输入Tensor的Shape。
+
+Ascend GPU CPU
+
+mindspore.ops.Tile
+
+按照给定的次数复制输入Tensor。
+
+Ascend GPU CPU
+
+mindspore.ops.Transpose
+
+根据指定的排列对输入的Tensor进行数据重排。
+
+Ascend GPU CPU
+
+mindspore.ops.Unique
+
+Returns the unique elements of input tensor and also return a tensor containing the index of each value of input tensor corresponding to the output unique tensor.
+
+Ascend GPU CPU
+
+mindspore.ops.UniqueWithPad
+
+Returns unique elements and relative indexes in 1-D tensor, filled with padding num.
+
+Ascend CPU
+
+mindspore.ops.UnsortedSegmentMax
+
+Computes the maximum along segments of a tensor.
+
+Ascend GPU
+
+mindspore.ops.UnsortedSegmentMin
+
+Computes the minimum of a tensor along segments.
+
+Ascend GPU
+
+mindspore.ops.UnsortedSegmentProd
+
+Computes the product of a tensor along segments.
+
+Ascend
+
+mindspore.ops.UnsortedSegmentSum
+
+Computes the sum of a tensor along segments.
+
+Ascend GPU CPU
+
+mindspore.ops.Unstack
+
+根据指定轴对输入矩阵进行分解。
+
+Ascend GPU CPU
+
+类型转换
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.ScalarCast
+
+Casts the input scalar to another type.
+
+Ascend GPU CPU
+
+mindspore.ops.ScalarToArray
+
+将Scalar转换为 Tensor 。
+
+Ascend GPU CPU
+
+mindspore.ops.ScalarToTensor
+
+将Scalar转换为指定数据类型的 Tensor 。
+
+Ascend GPU CPU
+
+mindspore.ops.TupleToArray
+
+将tuple转换为Tensor。
+
+Ascend GPU CPU
+
+Parameter操作算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Assign
+
+Assigns Parameter with a value.
+
+Ascend GPU CPU
+
+mindspore.ops.AssignAdd
+
+Updates a Parameter by adding a value to it.
+
+Ascend GPU CPU
+
+mindspore.ops.AssignSub
+
+Updates a Parameter by subtracting a value from it.
+
+Ascend
+
+mindspore.ops.ScatterAdd
+
+根据指定更新值和输入索引通过加法运算更新输入数据的值。
+
+Ascend GPU CPU
+
+mindspore.ops.ScatterDiv
+
+根据指定更新值和输入索引通过除法运算更新输入数据的值。
+
+Ascend CPU
+
+mindspore.ops.ScatterMax
+
+根据指定更新值和输入索引通过最大值运算更新输入数据的值。
+
+Ascend CPU
+
+mindspore.ops.ScatterMin
+
+根据指定更新值和输入索引通过最小值运算更新输入数据的值。
+
+Ascend CPU
+
+mindspore.ops.ScatterMul
+
+根据指定更新值和输入索引通过乘法运算更新输入数据的值。
+
+Ascend CPU
+
+mindspore.ops.ScatterNdAdd
+
+使用给定值通过加法运算和输入索引更新Tensor值。
+
+Ascend GPU
+
+mindspore.ops.ScatterNdSub
+
+使用给定值通过减法运算和输入索引更新Tensor值。
+
+Ascend GPU
+
+mindspore.ops.ScatterNdUpdate
+
+使用给定值以及输入索引更新输入数据的值。
+
+Ascend GPU CPU
+
+mindspore.ops.ScatterNonAliasingAdd
+
+使用给定值通过加法操作和输入索引来更新Tensor值。
+
+Ascend
+
+mindspore.ops.ScatterSub
+
+使用给定更新值通过减法操作和输入索引来更新Tensor值。
+
+Ascend CPU GPU
+
+mindspore.ops.ScatterUpdate
+
+使用给定的更新值和输入索引更新输入Tensor的值。
+
+Ascend GPU CPU
+
+数据操作算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.GetNext
+
+返回数据集队列中的下一个元素。
+
+Ascend GPU
+
+通信算子
+注意，以下列表中的接口需要先配置好通信环境变量。
+
+针对Ascend设备，用户需要准备rank表，设置rank_id和device_id，详见 Ascend指导文档 。
+
+针对GPU设备，用户需要准备host文件和mpi，详见 GPU指导文档 。
+
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.AllGather
+
+在指定的通信组中汇聚Tensor。
+
+Ascend GPU
+
+mindspore.ops.AllReduce
+
+使用指定方式对通信组内的所有设备的Tensor数据进行规约操作，所有设备都得到相同的结果。
+
+Ascend GPU
+
+mindspore.ops.AlltoAll
+
+AlltoAll is a collective operation.
+
+Ascend
+
+mindspore.ops.Broadcast
+
+对输入数据整组广播。
+
+Ascend GPU
+
+mindspore.ops.NeighborExchange
+
+NeighborExchange is a collective operation.
+
+Ascend
+
+mindspore.ops.NeighborExchangeV2
+
+NeighborExchangeV2 is a collective operation.
+
+Ascend
+
+mindspore.ops.ReduceOp
+
+Operation options for reducing tensors.
+
+Ascend GPU
+
+mindspore.ops.ReduceScatter
+
+Reduces and scatters tensors from the specified communication group.
+
+Ascend GPU
+
+调试算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.HistogramSummary
+
+Outputs the tensor to protocol buffer through histogram summary operator.
+
+Ascend GPU CPU
+
+mindspore.ops.ImageSummary
+
+Outputs the image tensor to protocol buffer through image summary operator.
+
+Ascend GPU CPU
+
+mindspore.ops.ScalarSummary
+
+Outputs a scalar to a protocol buffer through a scalar summary operator.
+
+Ascend GPU CPU
+
+mindspore.ops.TensorSummary
+
+Outputs a tensor to a protocol buffer through a tensor summary operator.
+
+Ascend GPU CPU
+
+mindspore.ops.Print
+
+将输入Tensor或string进行打印输出。
+
+Ascend GPU
+
+mindspore.ops.NPUAllocFloatStatus
+
+Allocates a flag to store the overflow status.
+
+Ascend
+
+mindspore.ops.NPUClearFloatStatus
+
+Clears the flag which stores the overflow status.
+
+Ascend
+
+mindspore.ops.NPUGetFloatStatus
+
+Updates the flag which is the output tensor of NPUAllocFloatStatus with the latest overflow status.
+
+Ascend
+
+稀疏算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.SparseTensorDenseMatmul
+
+Multiplies sparse matrix A by dense matrix B.
+
+CPU
+
+mindspore.ops.SparseToDense
+
+Converts a sparse representation into a dense tensor.
+
+CPU
+
+其他算子
+接口名
+
+概述
+
+支持平台
+
+mindspore.ops.Depend
+
+Depend is used for processing dependency operations.
+
+Ascend GPU CPU
+
+mindspore.ops.GradOperation
+
+一个高阶函数，为输入函数生成梯度函数。
+
+Ascend GPU CPU
+
+mindspore.ops.HookBackward
+
+This operation is used as a tag to hook gradient in intermediate variables.
+
+Ascend GPU CPU
+
+mindspore.ops.HyperMap
+
+对输入序列做集合运算。
+
+Ascend GPU CPU
+
+mindspore.ops.InsertGradientOf
+
+Attaches callback to the graph node that will be invoked on the node’s gradient.
+
+Ascend GPU CPU
+
+mindspore.ops.Map
+
+Map will apply the set operation on input sequences.
+
+Ascend GPU CPU
+
+mindspore.ops.MultitypeFuncGraph
+
+Generates overloaded functions.
+
+Ascend GPU CPU
+
+mindspore.ops.Partial
+
+Makes a partial function instance.
+
+Ascend GPU CPU
+
+算子信息注册
+mindspore.ops.AiCPURegOp
+
+Class for AiCPU operator information register.
+
+mindspore.ops.CustomRegOp
+
+Class used for generating the registration information for the func parameter of mindspore.ops.Custom.
+
+mindspore.ops.DataType
+
+Ascend算子的dtype和format的多种组合。
+
+mindspore.ops.TBERegOp
+
+Class for TBE operator information register.
+
+mindspore.ops.get_vm_impl_fn
+
+通过Primitive对象或Primitive名称，获取虚拟实现函数。
+
+自定义算子
+mindspore.ops.Custom
+
+Custom 算子是MindSpore自定义算子的统一接口。

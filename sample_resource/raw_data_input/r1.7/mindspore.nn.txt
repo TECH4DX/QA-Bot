@@ -1,0 +1,1177 @@
+mindspore.nn
+神经网络Cell。
+
+用于构建神经网络中的预定义构建块或计算单元。
+
+MindSpore中 mindspore.nn 接口与上一版本相比，新增、删除和支持平台的变化信息请参考 API Updates。
+
+基本构成单元
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Cell
+
+MindSpore中神经网络的基本构成单元。
+
+Ascend GPU CPU
+
+mindspore.nn.GraphCell
+
+运行从MindIR加载的计算图。
+
+Ascend GPU CPU
+
+mindspore.nn.LossBase
+
+损失函数的基类。
+
+Ascend GPU CPU
+
+mindspore.nn.Optimizer
+
+用于参数更新的优化器基类。
+
+Ascend GPU CPU
+
+容器
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.CellList
+
+构造Cell列表。
+
+Ascend GPU CPU
+
+mindspore.nn.SequentialCell
+
+构造Cell顺序容器。
+
+Ascend GPU CPU
+
+封装层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.DistributedGradReducer
+
+分布式优化器。
+
+Ascend GPU
+
+mindspore.nn.DynamicLossScaleUpdateCell
+
+用于动态更新损失缩放系数(loss scale)的神经元。
+
+Ascend GPU
+
+mindspore.nn.FixedLossScaleUpdateCell
+
+固定损失缩放系数的神经元。
+
+Ascend GPU
+
+mindspore.nn.ForwardValueAndGrad
+
+训练网络的封装。
+
+Ascend GPU CPU
+
+mindspore.nn.GetNextSingleOp
+
+用于获取下一条数据的Cell。
+
+Ascend GPU
+
+mindspore.nn.MicroBatchInterleaved
+
+Wrap the network with Batch Size.
+
+Ascend GPU
+
+mindspore.nn.ParameterUpdate
+
+更新参数的Cell。
+
+Ascend GPU CPU
+
+mindspore.nn.PipelineCell
+
+将MiniBatch切分成更细粒度的MicroBatch，用于流水线并行的训练中。
+
+Ascend GPU
+
+mindspore.nn.TimeDistributed
+
+The time distributed layer.
+
+Ascend GPU CPU
+
+mindspore.nn.TrainOneStepCell
+
+训练网络封装类。
+
+Ascend GPU CPU
+
+mindspore.nn.TrainOneStepWithLossScaleCell
+
+使用混合精度功能的训练网络。
+
+Ascend GPU
+
+mindspore.nn.WithEvalCell
+
+封装前向网络和损失函数，返回用于计算评估指标的损失函数值、前向输出和标签。
+
+Ascend GPU CPU
+
+mindspore.nn.WithGradCell
+
+Cell that returns the gradients.
+
+Ascend GPU CPU
+
+mindspore.nn.WithLossCell
+
+包含损失函数的Cell。
+
+Ascend GPU CPU
+
+卷积神经网络层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Conv1d
+
+一维卷积层。
+
+Ascend GPU CPU
+
+mindspore.nn.Conv1dTranspose
+
+一维转置卷积层。
+
+Ascend GPU CPU
+
+mindspore.nn.Conv2d
+
+二维卷积层。
+
+Ascend GPU CPU
+
+mindspore.nn.Conv2dTranspose
+
+二维转置卷积层。
+
+Ascend GPU CPU
+
+mindspore.nn.Conv3d
+
+三维卷积层。
+
+Ascend GPU CPU
+
+mindspore.nn.Conv3dTranspose
+
+三维转置卷积层。
+
+Ascend GPU
+
+mindspore.nn.Unfold
+
+从图像中提取滑窗的区域块。
+
+Ascend GPU
+
+循环神经网络层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.RNN
+
+循环神经网络（RNN）层，其使用的激活函数为tanh或relu。
+
+Ascend GPU CPU
+
+mindspore.nn.RNNCell
+
+循环神经网络单元，激活函数是tanh或relu。
+
+Ascend GPU CPU
+
+mindspore.nn.GRU
+
+GRU（Gate Recurrent Unit）称为门控循环单元网络，是循环神经网络（Recurrent Neural Network, RNN）的一种。
+
+Ascend GPU CPU
+
+mindspore.nn.GRUCell
+
+GRU（Gate Recurrent Unit）称为门控循环单元。
+
+Ascend GPU CPU
+
+mindspore.nn.LSTM
+
+长短期记忆（LSTM）网络，根据输出序列和给定的初始状态计算输出序列和最终状态。
+
+Ascend GPU CPU
+
+mindspore.nn.LSTMCell
+
+长短期记忆网络单元（LSTMCell）。
+
+Ascend GPU CPU
+
+嵌入层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Embedding
+
+嵌入层。
+
+Ascend GPU CPU
+
+mindspore.nn.EmbeddingLookup
+
+嵌入查找层。
+
+Ascend GPU CPU
+
+mindspore.nn.MultiFieldEmbeddingLookup
+
+Returns a slice of input tensor based on the specified indices and the field ids.
+
+Ascend GPU
+
+非线性激活函数层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.CELU
+
+Continuously differentiable exponential linear units activation function.
+
+Ascend
+
+mindspore.nn.ELU
+
+指数线性单元激活函数（Exponential Linear Unit activation function）。
+
+Ascend GPU CPU
+
+mindspore.nn.FastGelu
+
+快速高斯误差线性单元激活函数（Fast Gaussian Error Linear Units activation function）。
+
+Ascend
+
+mindspore.nn.GELU
+
+高斯误差线性单元激活函数（Gaussian error linear unit activation function）。
+
+Ascend GPU CPU
+
+mindspore.nn.HShrink
+
+Hard Shrink激活函数，按输入元素计算输出，公式定义如下：。
+
+Ascend
+
+mindspore.nn.HSigmoid
+
+Hard Sigmoid激活函数，按元素计算输出。
+
+Ascend GPU CPU
+
+mindspore.nn.HSwish
+
+Hard Swish激活函数。
+
+GPU CPU
+
+mindspore.nn.LeakyReLU
+
+Leaky ReLU激活函数。
+
+Ascend GPU CPU
+
+mindspore.nn.LogSigmoid
+
+Log Sigmoid激活函数。
+
+Ascend GPU
+
+mindspore.nn.LogSoftmax
+
+Log Softmax激活函数。
+
+Ascend GPU CPU
+
+mindspore.nn.PReLU
+
+PReLU激活层（PReLU Activation Operator）。
+
+Ascend GPU
+
+mindspore.nn.ReLU
+
+修正线性单元激活函数（Rectified Linear Unit activation function）。
+
+Ascend GPU CPU
+
+mindspore.nn.ReLU6
+
+ReLU6激活函数。
+
+Ascend GPU CPU
+
+mindspore.nn.Sigmoid
+
+Sigmoid激活函数。
+
+Ascend GPU CPU
+
+mindspore.nn.Softmax
+
+Softmax函数，它是二分类函数 mindspore.nn.Sigmoid 在多分类上的推广，目的是将多分类的结果以概率的形式展现出来。
+
+Ascend GPU CPU
+
+mindspore.nn.SoftShrink
+
+Applies the SoftShrink function element-wise.
+
+Ascend
+
+mindspore.nn.Tanh
+
+Tanh激活函数。
+
+Ascend GPU CPU
+
+线性层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Dense
+
+全连接层。
+
+Ascend GPU CPU
+
+Dropout层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Dropout
+
+随机丢弃层。
+
+Ascend GPU CPU
+
+归一化层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.BatchNorm1d
+
+对输入的二维数据进行批归一化(Batch Normalization Layer)。
+
+Ascend GPU CPU
+
+mindspore.nn.BatchNorm2d
+
+对输入的四维数据进行批归一化(Batch Normalization Layer)。
+
+Ascend GPU CPU
+
+mindspore.nn.BatchNorm3d
+
+对输入的五维数据进行批归一化(Batch Normalization Layer)。
+
+Ascend GPU CPU
+
+mindspore.nn.GlobalBatchNorm
+
+The GlobalBatchNorm interface is deprecated, please use the mindspore.nn.SyncBatchNorm instead.
+
+弃用
+
+mindspore.nn.GroupNorm
+
+在mini-batch输入上进行组归一化。
+
+Ascend GPU CPU
+
+mindspore.nn.InstanceNorm2d
+
+对四维输入实现实例归一化（Instance Normalization Layer）。
+
+GPU
+
+mindspore.nn.LayerNorm
+
+在mini-batch输入上应用层归一化（Layer Normalization）。
+
+Ascend GPU CPU
+
+mindspore.nn.SyncBatchNorm
+
+Sync Batch Normalization layer over a N-dimension input.
+
+Ascend
+
+池化层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.AvgPool1d
+
+对输入的多维数据进行一维平面上的平均池化运算。
+
+Ascend GPU CPU
+
+mindspore.nn.AvgPool2d
+
+对输入的多维数据进行二维的平均池化运算。
+
+Ascend GPU CPU
+
+mindspore.nn.MaxPool1d
+
+对输入的多维数据进行一维平面上的最大池化运算。
+
+Ascend GPU CPU
+
+mindspore.nn.MaxPool2d
+
+对输入的多维数据进行二维的最大池化运算。
+
+Ascend GPU CPU
+
+填充层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Pad
+
+根据 paddings 和 mode 对输入进行填充。
+
+Ascend GPU CPU
+
+损失函数
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.BCELoss
+
+计算目标值和预测值之间的二值交叉熵损失值。
+
+Ascend GPU CPU
+
+mindspore.nn.BCEWithLogitsLoss
+
+输入经过sigmoid激活函数后作为预测值，BCEWithLogitsLoss计算预测值和目标值之间的二值交叉熵损失。
+
+Ascend GPU CPU
+
+mindspore.nn.CosineEmbeddingLoss
+
+CosineEmbeddingLoss creates a criterion to measure the similarity between two tensors using cosine distance.
+
+Ascend GPU CPU
+
+mindspore.nn.DiceLoss
+
+Dice系数是一个集合相似性loss,用于计算两个样本之间的相似性。
+
+Ascend GPU CPU
+
+mindspore.nn.FocalLoss
+
+FocalLoss函数。
+
+Ascend
+
+mindspore.nn.L1Loss
+
+L1Loss用于计算预测值和目标值之间的平均绝对误差。
+
+Ascend GPU CPU
+
+mindspore.nn.MSELoss
+
+用于计算预测值与标签值之间的均方误差。
+
+Ascend GPU CPU
+
+mindspore.nn.MultiClassDiceLoss
+
+When there are multiple classifications, label is transformed into multiple binary classifications by one hot.
+
+Ascend GPU CPU
+
+mindspore.nn.RMSELoss
+
+RMSELoss用来测量 x 和 y 元素之间的均方根误差，其中 x 是输入Tensor， y 是目标值。
+
+Ascend GPU CPU
+
+mindspore.nn.SampledSoftmaxLoss
+
+抽样交叉熵损失函数。
+
+GPU
+
+mindspore.nn.SmoothL1Loss
+
+SmoothL1损失函数，如果预测值和目标值的逐个元素绝对误差小于设定阈值 beta 则用平方项，否则用绝对误差项。
+
+Ascend GPU CPU
+
+mindspore.nn.SoftMarginLoss
+
+针对二分类问题的损失函数。
+
+Ascend
+
+mindspore.nn.SoftmaxCrossEntropyWithLogits
+
+计算预测值与真实值之间的交叉熵。
+
+Ascend GPU CPU
+
+优化器
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Adagrad
+
+Adagrad算法的实现。
+
+Ascend CPU GPU
+
+mindspore.nn.Adam
+
+Adaptive Moment Estimation (Adam)算法的实现。
+
+Ascend GPU CPU
+
+mindspore.nn.AdamOffload
+
+此优化器在主机CPU上运行Adam优化算法，设备上仅执行网络参数的更新，最大限度地降低内存成本。
+
+Ascend GPU CPU
+
+mindspore.nn.AdamWeightDecay
+
+权重衰减Adam算法的实现。
+
+Ascend GPU CPU
+
+mindspore.nn.AdaSumByDeltaWeightWrapCell
+
+Adaptive Summation (AdaSum)算法的实现，根据更新前后的参数差计算。
+
+Ascend GPU
+
+mindspore.nn.AdaSumByGradWrapCell
+
+Adaptive Summation (AdaSum)算法的实现，根据梯度计算。
+
+Ascend GPU
+
+mindspore.nn.ASGD
+
+Implements Average Stochastic Gradient Descent.
+
+Ascend GPU CPU
+
+mindspore.nn.FTRL
+
+FTRL算法实现。
+
+Ascend GPU
+
+mindspore.nn.Lamb
+
+LAMB（Layer-wise Adaptive Moments optimizer for Batching training，用于批训练的分层自适应矩优化器）算法的实现。
+
+Ascend GPU
+
+mindspore.nn.LARS
+
+LARS算法的实现。
+
+Ascend
+
+mindspore.nn.LazyAdam
+
+Adaptive Moment Estimation (Adam)算法的实现。
+
+Ascend GPU CPU
+
+mindspore.nn.Momentum
+
+Momentum算法的实现。
+
+Ascend GPU CPU
+
+mindspore.nn.ProximalAdagrad
+
+ProximalAdagrad算法的实现。
+
+Ascend
+
+mindspore.nn.RMSProp
+
+均方根传播（RMSProp）算法的实现。
+
+Ascend GPU CPU
+
+mindspore.nn.Rprop
+
+Implements Resilient backpropagation.
+
+Ascend GPU CPU
+
+mindspore.nn.SGD
+
+随机梯度下降的实现。
+
+Ascend GPU CPU
+
+mindspore.nn.thor
+
+通过二阶算法THOR更新参数。
+
+Ascend GPU
+
+评价指标
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Accuracy
+
+计算数据分类的正确率，包括二分类和多分类。
+
+Ascend GPU CPU
+
+mindspore.nn.auc
+
+使用梯形法则计算曲线下面积AUC（Area Under the Curve，AUC）。
+
+Ascend GPU CPU
+
+mindspore.nn.BleuScore
+
+计算具有一个或多个引用的机器翻译文本的BLEU分数。
+
+Ascend GPU CPU
+
+mindspore.nn.ConfusionMatrix
+
+计算混淆矩阵(confusion matrix)，通常用于评估分类模型的性能，包括二分类和多分类场景。
+
+Ascend GPU CPU
+
+mindspore.nn.ConfusionMatrixMetric
+
+计算与混淆矩阵相关的度量。
+
+Ascend GPU CPU
+
+mindspore.nn.CosineSimilarity
+
+计算余弦相似度。
+
+Ascend GPU CPU
+
+mindspore.nn.Dice
+
+集合相似性度量。
+
+Ascend GPU CPU
+
+mindspore.nn.F1
+
+计算F1 score。
+
+Ascend GPU CPU
+
+mindspore.nn.Fbeta
+
+计算Fbeta评分。
+
+Ascend GPU CPU
+
+mindspore.nn.HausdorffDistance
+
+计算Hausdorff距离。
+
+Ascend GPU CPU
+
+mindspore.nn.get_metric_fn
+
+根据输入的 name 获取metric的方法。
+
+Ascend GPU CPU
+
+mindspore.nn.Loss
+
+计算loss的平均值。
+
+Ascend GPU CPU
+
+mindspore.nn.MAE
+
+计算平均绝对误差MAE（Mean Absolute Error）。
+
+Ascend GPU CPU
+
+mindspore.nn.MeanSurfaceDistance
+
+计算从 y_pred 到 y 的平均表面距离。
+
+Ascend GPU CPU
+
+mindspore.nn.Metric
+
+用于计算评估指标的基类。
+
+Ascend GPU CPU
+
+mindspore.nn.MSE
+
+测量均方差MSE（Mean Squared Error）。
+
+Ascend GPU CPU
+
+mindspore.nn.names
+
+获取所有metric的名称。
+
+Ascend GPU CPU
+
+mindspore.nn.OcclusionSensitivity
+
+用于计算神经网络对给定图像的遮挡灵敏度（Occlusion Sensitivity），表示了图像的哪些部分对神经网络的分类决策最重要。
+
+Ascend GPU CPU
+
+mindspore.nn.Perplexity
+
+计算困惑度（perplexity）。
+
+Ascend GPU CPU
+
+mindspore.nn.Precision
+
+计算数据分类的精度，包括单标签场景和多标签场景。
+
+Ascend GPU CPU
+
+mindspore.nn.Recall
+
+计算数据分类的召回率，包括单标签场景和多标签场景。
+
+Ascend GPU CPU
+
+mindspore.nn.ROC
+
+计算ROC曲线。
+
+Ascend GPU CPU
+
+mindspore.nn.RootMeanSquareDistance
+
+计算从 y_pred 到 y 的均方根表面距离。
+
+Ascend GPU CPU
+
+mindspore.nn.rearrange_inputs
+
+此装饰器用于根据类的 indexes 属性对输入重新排列。
+
+Ascend GPU CPU
+
+mindspore.nn.Top1CategoricalAccuracy
+
+计算top-1分类正确率。
+
+Ascend GPU CPU
+
+mindspore.nn.Top5CategoricalAccuracy
+
+计算top-5分类正确率。
+
+Ascend GPU CPU
+
+mindspore.nn.TopKCategoricalAccuracy
+
+计算top-k分类正确率。
+
+Ascend GPU CPU
+
+动态学习率
+LearningRateSchedule类
+本模块中的动态学习率都是LearningRateSchedule的子类，将LearningRateSchedule的实例传递给优化器。在训练过程中，优化器以当前step为输入调用该实例，得到当前的学习率。
+
+import mindspore.nn as nn
+
+min_lr = 0.01
+max_lr = 0.1
+decay_steps = 4
+cosine_decay_lr = nn.CosineDecayLR(min_lr, max_lr, decay_steps)
+
+net = Net()
+optim = nn.Momentum(net.trainable_params(), learning_rate=cosine_decay_lr, momentum=0.9)
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.CosineDecayLR
+
+基于余弦衰减函数计算学习率。
+
+Ascend GPU
+
+mindspore.nn.ExponentialDecayLR
+
+基于指数衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.InverseDecayLR
+
+基于逆时衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.NaturalExpDecayLR
+
+基于自然指数衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.PolynomialDecayLR
+
+基于多项式衰减函数计算学习率。
+
+Ascend GPU
+
+mindspore.nn.WarmUpLR
+
+预热学习率。
+
+Ascend GPU
+
+Dynamic LR函数
+本模块中的动态学习率都是function，调用function并将结果传递给优化器。在训练过程中，优化器将result[current step]作为当前学习率。
+
+import mindspore.nn as nn
+
+min_lr = 0.01
+max_lr = 0.1
+total_step = 6
+step_per_epoch = 1
+decay_epoch = 4
+
+lr= nn.cosine_decay_lr(min_lr, max_lr, total_step, step_per_epoch, decay_epoch)
+
+net = Net()
+optim = nn.Momentum(net.trainable_params(), learning_rate=lr, momentum=0.9)
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.cosine_decay_lr
+
+基于余弦衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.exponential_decay_lr
+
+基于指数衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.inverse_decay_lr
+
+基于逆时衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.natural_exp_decay_lr
+
+基于自然指数衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.piecewise_constant_lr
+
+获取分段常量学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.polynomial_decay_lr
+
+基于多项式衰减函数计算学习率。
+
+Ascend GPU CPU
+
+mindspore.nn.warmup_lr
+
+预热学习率。
+
+Ascend GPU CPU
+
+稀疏层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.SparseTensorDenseMatmul
+
+Multiplies sparse matrix a and dense matrix b.
+
+CPU
+
+mindspore.nn.SparseToDense
+
+Converts a sparse tensor(COOTensor) into dense.
+
+CPU
+
+图像处理层
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.CentralCrop
+
+Crops the central region of the images with the central_fraction.
+
+Ascend GPU CPU
+
+mindspore.nn.ImageGradients
+
+Returns two tensors, the first is along the height dimension and the second is along the width dimension.
+
+Ascend GPU CPU
+
+mindspore.nn.MSSSIM
+
+Returns MS-SSIM index between two images.
+
+Ascend GPU
+
+mindspore.nn.PSNR
+
+Returns Peak Signal-to-Noise Ratio of two image batches.
+
+Ascend GPU CPU
+
+mindspore.nn.ResizeBilinear
+
+使用双线性插值调整输入Tensor为指定的大小。
+
+Ascend CPU GPU
+
+mindspore.nn.SSIM
+
+Returns SSIM index between two images.
+
+Ascend GPU CPU
+
+矩阵处理
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.MatrixDiag
+
+Returns a batched diagonal tensor with a given batched diagonal values.
+
+Ascend
+
+mindspore.nn.MatrixDiagPart
+
+Returns the batched diagonal part of a batched tensor.
+
+Ascend
+
+mindspore.nn.MatrixSetDiag
+
+Modifies the batched diagonal part of a batched tensor.
+
+Ascend
+
+工具
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.ClipByNorm
+
+对输入Tensor的值进行裁剪，使用 L2 范数控制梯度。
+
+Ascend GPU CPU
+
+mindspore.nn.Flatten
+
+对输入Tensor的第0维之外的维度进行展平操作。
+
+Ascend GPU CPU
+
+mindspore.nn.get_activation
+
+获取激活函数。
+
+Ascend GPU CPU
+
+mindspore.nn.L1Regularizer
+
+对权重计算L1正则化。
+
+Ascend GPU CPU
+
+mindspore.nn.Norm
+
+Computes the norm of vectors, currently including Euclidean norm, i.e., L2-norm.
+
+Ascend GPU CPU
+
+mindspore.nn.OneHot
+
+对输入进行one-hot编码并返回。
+
+Ascend GPU CPU
+
+mindspore.nn.Range
+
+Creates a sequence of numbers in range [start, limit) with step size delta.
+
+Ascend GPU CPU
+
+mindspore.nn.Roll
+
+Rolls the elements of a tensor along an axis.
+
+Ascend
+
+mindspore.nn.Tril
+
+返回一个Tensor，指定主对角线以上的元素被置为零。
+
+Ascend GPU CPU
+
+mindspore.nn.Triu
+
+返回一个Tensor，指定主对角线以下的元素被置为0。
+
+Ascend GPU CPU
+
+数学运算
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.MatMul
+
+The nn.MatMul interface is deprecated, please use the mindspore.ops.matmul instead.
+
+弃用
+
+mindspore.nn.Moments
+
+沿指定轴 axis 计算输入 x 的均值和方差。
+
+Ascend GPU CPU
+
+mindspore.nn.ReduceLogSumExp
+
+Reduces a dimension of a tensor by calculating exponential for all elements in the dimension, then calculate logarithm of the sum.
+
+Ascend GPU CPU
+
+梯度
+接口名
+
+概述
+
+支持平台
+
+mindspore.nn.Jvp
+
+计算给定网络的雅可比向量积(Jacobian-vector product, JVP)。
+
+Ascend GPU CPU
+
+mindspore.nn.Vjp
+
+计算给定网络的向量雅可比积(vector-Jacobian product, VJP)。
+
+Ascend GPU CPU

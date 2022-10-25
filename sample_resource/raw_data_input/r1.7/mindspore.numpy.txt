@@ -1,0 +1,1726 @@
+mindspore.numpy
+MindSpore NumPy工具包提供了一系列类NumPy接口。用户可以使用类NumPy语法在MindSpore上进行模型的搭建。
+
+MindSpore Numpy具有四大功能模块：Array生成、Array操作、逻辑运算和数学运算。
+
+在API示例中，常用的模块导入方法如下：
+
+import mindspore.numpy as np
+Array生成
+生成类算子用来生成和构建具有指定数值、类型和形状的数组(Tensor)。
+
+构建数组代码示例：
+
+import mindspore.numpy as np
+import mindspore.ops as ops
+input_x = np.array([1, 2, 3], np.float32)
+print("input_x =", input_x)
+print("type of input_x =", ops.typeof(input_x))
+运行结果如下：
+
+input_x = [1. 2. 3.]
+type of input_x = Tensor[Float32]
+除了使用上述方法来创建外，也可以通过以下几种方式创建。
+
+生成具有相同元素的数组
+
+生成具有相同元素的数组代码示例：
+
+input_x = np.full((2, 3), 6, np.float32)
+print(input_x)
+运行结果如下：
+
+[[6. 6. 6.]
+ [6. 6. 6.]]
+生成指定形状的全1数组，示例：
+
+input_x = np.ones((2, 3), np.float32)
+print(input_x)
+运行结果如下：
+
+[[1. 1. 1.]
+ [1. 1. 1.]]
+生成具有某个范围内的数值的数组
+
+生成指定范围内的等差数组代码示例：
+
+input_x = np.arange(0, 5, 1)
+print(input_x)
+运行结果如下：
+
+[0 1 2 3 4]
+生成特殊类型的数组
+
+生成给定对角线处下方元素为1，上方元素为0的矩阵，示例：
+
+input_x = np.tri(3, 3, 1)
+print(input_x)
+运行结果如下：
+
+[[1. 1. 0.]
+ [1. 1. 1.]
+ [1. 1. 1.]]
+生成对角线为1，其他元素为0的二维矩阵，示例：
+
+input_x = np.eye(2, 2)
+print(input_x)
+运行结果如下：
+
+[[1. 0.]
+ [0. 1.]]
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.numpy.arange
+
+Returns evenly spaced values within a given interval.
+
+Ascend GPU CPU
+
+mindspore.numpy.array
+
+Creates a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.asarray
+
+Converts the input to tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.asfarray
+
+Similar to asarray, converts the input to a float tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.bartlett
+
+Returns the Bartlett window.
+
+Ascend GPU CPU
+
+mindspore.numpy.blackman
+
+Returns the Blackman window.
+
+Ascend GPU CPU
+
+mindspore.numpy.copy
+
+Returns a tensor copy of the given object.
+
+Ascend GPU CPU
+
+mindspore.numpy.diag
+
+Extracts a diagonal or construct a diagonal array.
+
+Ascend GPU CPU
+
+mindspore.numpy.diag_indices
+
+Returns the indices to access the main diagonal of an array.
+
+Ascend GPU CPU
+
+mindspore.numpy.diagflat
+
+Creates a two-dimensional array with the flattened input as a diagonal.
+
+Ascend GPU CPU
+
+mindspore.numpy.diagonal
+
+Returns specified diagonals.
+
+Ascend GPU CPU
+
+mindspore.numpy.empty
+
+Returns a new array of given shape and type, without initializing entries.
+
+Ascend GPU CPU
+
+mindspore.numpy.empty_like
+
+Returns a new array with the same shape and type as a given array.
+
+Ascend GPU CPU
+
+mindspore.numpy.eye
+
+Returns a 2-D tensor with ones on the diagonal and zeros elsewhere.
+
+Ascend GPU CPU
+
+mindspore.numpy.full
+
+Returns a new tensor of given shape and type, filled with fill_value.
+
+Ascend GPU CPU
+
+mindspore.numpy.full_like
+
+Returns a full array with the same shape and type as a given array.
+
+Ascend GPU CPU
+
+mindspore.numpy.geomspace
+
+Returns numbers spaced evenly on a log scale (a geometric progression).
+
+Ascend GPU CPU
+
+mindspore.numpy.hamming
+
+Returns the Hamming window.
+
+Ascend GPU CPU
+
+mindspore.numpy.hanning
+
+Returns the Hanning window.
+
+Ascend GPU CPU
+
+mindspore.numpy.histogram_bin_edges
+
+Function to calculate only the edges of the bins used by the histogram function.
+
+Ascend GPU CPU
+
+mindspore.numpy.identity
+
+Returns the identity tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.indices
+
+Returns an array representing the indices of a grid.
+
+Ascend GPU CPU
+
+mindspore.numpy.ix_
+
+Constructs an open mesh from multiple sequences.
+
+Ascend GPU CPU
+
+mindspore.numpy.linspace
+
+Returns evenly spaced values within a given interval.
+
+Ascend GPU CPU
+
+mindspore.numpy.logspace
+
+Returns numbers spaced evenly on a log scale.
+
+Ascend GPU CPU
+
+mindspore.numpy.meshgrid
+
+Returns coordinate matrices from coordinate vectors.
+
+Ascend GPU CPU
+
+mindspore.numpy.mgrid
+
+mgrid is an NdGrid instance with sparse=False.
+
+Ascend GPU CPU
+
+mindspore.numpy.ogrid
+
+ogrid is an NdGrid instance with sparse=True.
+
+Ascend GPU CPU
+
+mindspore.numpy.ones
+
+Returns a new tensor of given shape and type, filled with ones.
+
+Ascend GPU CPU
+
+mindspore.numpy.ones_like
+
+Returns an array of ones with the same shape and type as a given array.
+
+Ascend GPU CPU
+
+mindspore.numpy.pad
+
+Pads an array.
+
+Ascend GPU CPU
+
+mindspore.numpy.rand
+
+Returns a new Tensor with given shape and dtype, filled with random numbers from the uniform distribution on the interval [0,1).
+
+Ascend GPU CPU
+
+mindspore.numpy.randint
+
+Return random integers from minval (inclusive) to maxval (exclusive).
+
+Ascend GPU CPU
+
+mindspore.numpy.randn
+
+Returns a new Tensor with given shape and dtype, filled with a sample (or samples) from the standard normal distribution.
+
+Ascend GPU CPU
+
+mindspore.numpy.trace
+
+Returns the sum along diagonals of the array.
+
+Ascend GPU CPU
+
+mindspore.numpy.tri
+
+Returns a tensor with ones at and below the given diagonal and zeros elsewhere.
+
+Ascend GPU CPU
+
+mindspore.numpy.tril
+
+Returns a lower triangle of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.tril_indices
+
+Returns the indices for the lower-triangle of an (n, m) array.
+
+Ascend GPU CPU
+
+mindspore.numpy.tril_indices_from
+
+Returns the indices for the lower-triangle of arr.
+
+Ascend GPU CPU
+
+mindspore.numpy.triu
+
+Returns an upper triangle of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.triu_indices
+
+Returns the indices for the upper-triangle of an (n, m) array.
+
+Ascend GPU CPU
+
+mindspore.numpy.triu_indices_from
+
+Returns the indices for the upper-triangle of arr.
+
+Ascend GPU CPU
+
+mindspore.numpy.vander
+
+Generates a Vandermonde matrix.
+
+Ascend GPU CPU
+
+mindspore.numpy.zeros
+
+Returns a new tensor of given shape and type, filled with zeros.
+
+Ascend GPU CPU
+
+mindspore.numpy.zeros_like
+
+Returns an array of zeros with the same shape and type as a given array.
+
+Ascend GPU CPU
+
+Array操作
+操作类算子主要进行数组的维度变换，分割和拼接等。
+
+数组维度变换
+
+矩阵转置，代码示例：
+
+input_x = np.arange(10).reshape(5, 2)
+output = np.transpose(input_x)
+print(output)
+运行结果如下：
+
+[[0 2 4 6 8]
+ [1 3 5 7 9]]
+交换指定轴，代码示例：
+
+input_x = np.ones((1, 2, 3))
+output = np.swapaxes(input_x, 0, 1)
+print(output.shape)
+运行结果如下：
+
+(2, 1, 3)
+数组分割
+
+将输入数组平均切分为多个数组，代码示例：
+
+input_x = np.arange(9)
+output = np.split(input_x, 3)
+print(output)
+运行结果如下：
+
+(Tensor(shape=[3], dtype=Int32, value= [0, 1, 2]), Tensor(shape=[3], dtype=Int32, value= [3, 4, 5]), Tensor(shape=[3], dtype=Int32, value= [6, 7, 8]))
+数组拼接
+
+将两个数组按照指定轴进行拼接，代码示例：
+
+input_x = np.arange(0, 5)
+input_y = np.arange(10, 15)
+output = np.concatenate((input_x, input_y), axis=0)
+print(output)
+运行结果如下：
+
+[ 0  1  2  3  4 10 11 12 13 14]
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.numpy.append
+
+Appends values to the end of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.apply_along_axis
+
+Applies a function to 1-D slices along the given axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.apply_over_axes
+
+Applies a function repeatedly over multiple axes.
+
+Ascend GPU CPU
+
+mindspore.numpy.array_split
+
+Splits a tensor into multiple sub-tensors.
+
+Ascend GPU CPU
+
+mindspore.numpy.array_str
+
+Returns a string representation of the data in an array.
+
+Ascend GPU CPU
+
+mindspore.numpy.atleast_1d
+
+Converts inputs to arrays with at least one dimension.
+
+Ascend GPU CPU
+
+mindspore.numpy.atleast_2d
+
+Reshapes inputs as arrays with at least two dimensions.
+
+Ascend GPU CPU
+
+mindspore.numpy.atleast_3d
+
+Reshapes inputs as arrays with at least three dimensions.
+
+Ascend GPU CPU
+
+mindspore.numpy.broadcast_arrays
+
+Broadcasts any number of arrays against each other.
+
+Ascend GPU CPU
+
+mindspore.numpy.broadcast_to
+
+Broadcasts an array to a new shape.
+
+Ascend GPU CPU
+
+mindspore.numpy.choose
+
+Construct an array from an index array and a list of arrays to choose from.
+
+Ascend GPU CPU
+
+mindspore.numpy.column_stack
+
+Stacks 1-D tensors as columns into a 2-D tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.concatenate
+
+Joins a sequence of tensors along an existing axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.dsplit
+
+Splits a tensor into multiple sub-tensors along the 3rd axis (depth).
+
+Ascend GPU CPU
+
+mindspore.numpy.dstack
+
+Stacks tensors in sequence depth wise (along the third axis).
+
+Ascend GPU CPU
+
+mindspore.numpy.expand_dims
+
+Expands the shape of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.flip
+
+Reverses the order of elements in an array along the given axis.
+
+GPU CPU
+
+mindspore.numpy.fliplr
+
+Flips the entries in each row in the left/right direction.
+
+GPU CPU
+
+mindspore.numpy.flipud
+
+Flips the entries in each column in the up/down direction.
+
+GPU CPU
+
+mindspore.numpy.hsplit
+
+Splits a tensor into multiple sub-tensors horizontally (column-wise).
+
+Ascend GPU CPU
+
+mindspore.numpy.hstack
+
+Stacks tensors in sequence horizontally.
+
+Ascend GPU CPU
+
+mindspore.numpy.moveaxis
+
+Moves axes of an array to new positions.
+
+Ascend GPU CPU
+
+mindspore.numpy.piecewise
+
+Evaluates a piecewise-defined function.
+
+Ascend GPU CPU
+
+mindspore.numpy.ravel
+
+Returns a contiguous flattened tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.repeat
+
+Repeats elements of an array.
+
+Ascend GPU CPU
+
+mindspore.numpy.reshape
+
+Reshapes a tensor without changing its data.
+
+Ascend GPU CPU
+
+mindspore.numpy.roll
+
+Rolls a tensor along given axes.
+
+Ascend GPU CPU
+
+mindspore.numpy.rollaxis
+
+Rolls the specified axis backwards, until it lies in the given position.
+
+Ascend GPU CPU
+
+mindspore.numpy.rot90
+
+Rotates a tensor by 90 degrees in the plane specified by axes.
+
+GPU
+
+mindspore.numpy.select
+
+Returns an array drawn from elements in choicelist, depending on conditions.
+
+Ascend GPU CPU
+
+mindspore.numpy.size
+
+Returns the number of elements along a given axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.split
+
+Splits a tensor into multiple sub-tensors along the given axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.squeeze
+
+Removes single-dimensional entries from the shape of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.stack
+
+Joins a sequence of arrays along a new axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.swapaxes
+
+Interchanges two axes of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.take
+
+Takes elements from an array along an axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.take_along_axis
+
+Takes values from the input array by matching 1d index and data slices.
+
+Ascend GPU CPU
+
+mindspore.numpy.tile
+
+Constructs an array by repeating a the number of times given by reps.
+
+Ascend GPU CPU
+
+mindspore.numpy.transpose
+
+Reverses or permutes the axes of a tensor; returns the modified tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.unique
+
+Finds the unique elements of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.unravel_index
+
+Converts a flat index or array of flat indices into a tuple of coordinate arrays.
+
+Ascend GPU CPU
+
+mindspore.numpy.vsplit
+
+Splits a tensor into multiple sub-tensors vertically (row-wise).
+
+Ascend GPU CPU
+
+mindspore.numpy.vstack
+
+Stacks tensors in sequence vertically.
+
+Ascend GPU CPU
+
+mindspore.numpy.where
+
+Returns elements chosen from x or y depending on condition.
+
+Ascend GPU CPU
+
+逻辑运算
+逻辑运算类算子主要进行各类逻辑相关的运算。
+
+相等（equal）和小于（less）计算代码示例如下：
+
+input_x = np.arange(0, 5)
+input_y = np.arange(0, 10, 2)
+output = np.equal(input_x, input_y)
+print("output of equal:", output)
+output = np.less(input_x, input_y)
+print("output of less:", output)
+运行结果如下：
+
+output of equal: [ True False False False False]
+output of less: [False  True  True  True  True]
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.numpy.array_equal
+
+Returns True if input arrays have same shapes and all elements equal.
+
+GPU CPU Ascend
+
+mindspore.numpy.array_equiv
+
+Returns True if input arrays are shape consistent and all elements equal.
+
+Ascend GPU CPU
+
+mindspore.numpy.equal
+
+Returns the truth value of (x1 == x2) element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.greater
+
+Returns the truth value of (x1 > x2) element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.greater_equal
+
+Returns the truth value of (x1 >= x2) element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.in1d
+
+Tests whether each element of a 1-D array is also present in a second array.
+
+Ascend GPU CPU
+
+mindspore.numpy.isclose
+
+Returns a boolean tensor where two tensors are element-wise equal within a tolerance.
+
+Ascend GPU CPU
+
+mindspore.numpy.isfinite
+
+Tests element-wise for finiteness (not infinity or not Not a Number).
+
+Ascend GPU CPU
+
+mindspore.numpy.isin
+
+Calculates element in test_elements, broadcasting over element only.
+
+Ascend GPU CPU
+
+mindspore.numpy.isinf
+
+Tests element-wise for positive or negative infinity.
+
+GPU CPU
+
+mindspore.numpy.isnan
+
+Tests element-wise for NaN and return result as a boolean array.
+
+GPU CPU
+
+mindspore.numpy.isneginf
+
+Tests element-wise for negative infinity, returns result as bool array.
+
+GPU CPU
+
+mindspore.numpy.isposinf
+
+Tests element-wise for positive infinity, returns result as bool array.
+
+GPU CPU
+
+mindspore.numpy.isscalar
+
+Returns True if the type of element is a scalar type.
+
+Ascend GPU CPU
+
+mindspore.numpy.less
+
+Returns the truth value of (x1 < x2) element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.less_equal
+
+Returns the truth value of (x1 <= x2) element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.logical_and
+
+Computes the truth value of x1 AND x2 element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.logical_not
+
+Computes the truth value of NOT a element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.logical_or
+
+Computes the truth value of x1 OR x2 element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.logical_xor
+
+Computes the truth value of x1 XOR x2, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.not_equal
+
+Returns (x1 != x2) element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.signbit
+
+Returns element-wise True where signbit is set (less than zero).
+
+Ascend GPU CPU
+
+mindspore.numpy.sometrue
+
+Tests whether any array element along a given axis evaluates to True.
+
+Ascend GPU CPU
+
+数学运算
+数学运算类算子包括各类数学相关的运算：加减乘除乘方，以及指数、对数等常见函数等。
+
+数学计算支持类似NumPy的广播特性。
+
+加法
+
+以下代码实现了 input_x 和 input_y 两数组相加的操作：
+
+input_x = np.full((3, 2), [1, 2])
+input_y = np.full((3, 2), [3, 4])
+output = np.add(input_x, input_y)
+print(output)
+运行结果如下：
+
+[[4 6]
+ [4 6]
+ [4 6]]
+矩阵乘法
+
+以下代码实现了 input_x 和 input_y 两矩阵相乘的操作：
+
+input_x = np.arange(2*3).reshape(2, 3).astype('float32')
+input_y = np.arange(3*4).reshape(3, 4).astype('float32')
+output = np.matmul(input_x, input_y)
+print(output)
+运行结果如下：
+
+[[20. 23. 26. 29.]
+ [56. 68. 80. 92.]]
+求平均值
+
+以下代码实现了求 input_x 所有元素的平均值的操作：
+
+input_x = np.arange(6).astype('float32')
+output = np.mean(input_x)
+print(output)
+运行结果如下：
+
+2.5
+指数
+
+以下代码实现了自然常数 e 的 input_x 次方的操作：
+
+input_x = np.arange(5).astype('float32')
+output = np.exp(input_x)
+print(output)
+运行结果如下：
+
+[ 1.         2.7182817  7.389056  20.085537  54.59815  ]
+API Name
+
+Description
+
+Supported Platforms
+
+mindspore.numpy.absolute
+
+Calculates the absolute value element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.add
+
+Adds arguments element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.amax
+
+Returns the maximum of an array or maximum along an axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.amin
+
+Returns the minimum of an array or minimum along an axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.arccos
+
+Trigonometric inverse cosine, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.arccosh
+
+Inverse hyperbolic cosine, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.arcsin
+
+Inverse sine, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.arcsinh
+
+Inverse hyperbolic sine element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.arctan
+
+Trigonometric inverse tangent, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.arctan2
+
+Element-wise arc tangent of x1/x2 choosing the quadrant correctly.
+
+Ascend CPU GPU
+
+mindspore.numpy.arctanh
+
+Inverse hyperbolic tangent element-wise.
+
+Ascend CPU
+
+mindspore.numpy.argmax
+
+Returns the indices of the maximum values along an axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.argmin
+
+Returns the indices of the minimum values along an axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.around
+
+Evenly round to the given number of decimals.
+
+Ascend GPU CPU
+
+mindspore.numpy.average
+
+Computes the weighted average along the specified axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.bincount
+
+Count number of occurrences of each value in array of non-negative ints.
+
+Ascend GPU CPU
+
+mindspore.numpy.bitwise_and
+
+Computes the bit-wise AND of two arrays element-wise.
+
+Ascend
+
+mindspore.numpy.bitwise_or
+
+Computes the bit-wise OR of two arrays element-wise.
+
+Ascend
+
+mindspore.numpy.bitwise_xor
+
+Computes the bit-wise XOR of two arrays element-wise.
+
+Ascend
+
+mindspore.numpy.cbrt
+
+Returns the cube-root of a tensor, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.ceil
+
+Returns the ceiling of the input, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.clip
+
+Clips (limits) the values in an array.
+
+Ascend GPU CPU
+
+mindspore.numpy.convolve
+
+Returns the discrete, linear convolution of two one-dimensional sequences.
+
+GPU CPU
+
+mindspore.numpy.copysign
+
+Changes the sign of x1 to that of x2, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.corrcoef
+
+Returns Pearson product-moment correlation coefficients.
+
+Ascend GPU CPU
+
+mindspore.numpy.correlate
+
+Cross-correlation of two 1-dimensional sequences.
+
+GPU
+
+mindspore.numpy.cos
+
+Cosine element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.cosh
+
+Hyperbolic cosine, element-wise.
+
+Ascend CPU
+
+mindspore.numpy.count_nonzero
+
+Counts the number of non-zero values in the tensor x.
+
+Ascend GPU CPU
+
+mindspore.numpy.cov
+
+Estimates a covariance matrix, given data and weights.
+
+Ascend GPU CPU
+
+mindspore.numpy.cross
+
+Returns the cross product of two (arrays of) vectors.
+
+Ascend GPU CPU
+
+mindspore.numpy.cumprod
+
+Returns the cumulative product of elements along a given axis.
+
+Ascend GPU
+
+mindspore.numpy.cumsum
+
+Returns the cumulative sum of the elements along a given axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.deg2rad
+
+Converts angles from degrees to radians.
+
+Ascend GPU CPU
+
+mindspore.numpy.diff
+
+Calculates the n-th discrete difference along the given axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.digitize
+
+Returns the indices of the bins to which each value in input array belongs.
+
+Ascend GPU CPU
+
+mindspore.numpy.divide
+
+Returns a true division of the inputs, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.divmod
+
+Returns element-wise quotient and remainder simultaneously.
+
+Ascend GPU CPU
+
+mindspore.numpy.dot
+
+Returns the dot product of two arrays.
+
+Ascend GPU CPU
+
+mindspore.numpy.ediff1d
+
+The differences between consecutive elements of a tensor.
+
+Ascend GPU CPU
+
+mindspore.numpy.exp
+
+Calculates the exponential of all elements in the input array.
+
+Ascend GPU CPU
+
+mindspore.numpy.exp2
+
+Calculates 2**p for all p in the input array.
+
+Ascend GPU CPU
+
+mindspore.numpy.expm1
+
+Calculates exp(x) - 1 for all elements in the array.
+
+Ascend GPU CPU
+
+mindspore.numpy.fix
+
+Rounds to nearest integer towards zero.
+
+Ascend GPU CPU
+
+mindspore.numpy.float_power
+
+First array elements raised to powers from second array, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.floor
+
+Returns the floor of the input, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.floor_divide
+
+Returns the largest integer smaller or equal to the division of the inputs.
+
+Ascend GPU CPU
+
+mindspore.numpy.fmod
+
+Returns the element-wise remainder of division.
+
+Ascend GPU CPU
+
+mindspore.numpy.gcd
+
+Returns the greatest common divisor of |x1| and |x2|.
+
+Ascend GPU CPU
+
+mindspore.numpy.gradient
+
+Returns the gradient of a N-dimensional array.
+
+Ascend GPU CPU
+
+mindspore.numpy.heaviside
+
+Computes the Heaviside step function.
+
+Ascend GPU CPU
+
+mindspore.numpy.histogram
+
+Computes the histogram of a dataset.
+
+Ascend GPU CPU
+
+mindspore.numpy.histogram2d
+
+Computes the multidimensional histogram of some data.
+
+Ascend GPU CPU
+
+mindspore.numpy.histogramdd
+
+Computes the multidimensional histogram of some data.
+
+Ascend GPU CPU
+
+mindspore.numpy.hypot
+
+Given the “legs” of a right triangle, returns its hypotenuse.
+
+Ascend GPU CPU
+
+mindspore.numpy.inner
+
+Returns the inner product of two tensors.
+
+Ascend GPU CPU
+
+mindspore.numpy.interp
+
+One-dimensional linear interpolation for monotonically increasing sample points.
+
+Ascend GPU CPU
+
+mindspore.numpy.invert
+
+Computes bit-wise inversion, or bit-wise NOT, element-wise.
+
+Ascend
+
+mindspore.numpy.kron
+
+Kronecker product of two arrays.
+
+Ascend GPU CPU
+
+mindspore.numpy.lcm
+
+Returns the lowest common multiple of |x1| and |x2|.
+
+Ascend GPU CPU
+
+mindspore.numpy.log
+
+Returns the natural logarithm, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.log10
+
+Base-10 logarithm of x.
+
+Ascend GPU CPU
+
+mindspore.numpy.log1p
+
+Returns the natural logarithm of one plus the input array, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.log2
+
+Base-2 logarithm of x.
+
+Ascend GPU CPU
+
+mindspore.numpy.logaddexp
+
+Logarithm of the sum of exponentiations of the inputs.
+
+Ascend GPU CPU
+
+mindspore.numpy.logaddexp2
+
+Logarithm of the sum of exponentiations of the inputs in base of 2.
+
+Ascend GPU CPU
+
+mindspore.numpy.matmul
+
+Returns the matrix product of two arrays.
+
+Ascend GPU CPU
+
+mindspore.numpy.matrix_power
+
+Raises a square matrix to the (integer) power n.
+
+Ascend GPU CPU
+
+mindspore.numpy.maximum
+
+Returns the element-wise maximum of array elements.
+
+Ascend GPU CPU
+
+mindspore.numpy.mean
+
+Computes the arithmetic mean along the specified axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.minimum
+
+Element-wise minimum of tensor elements.
+
+Ascend GPU CPU
+
+mindspore.numpy.multi_dot
+
+Computes the dot product of two or more arrays in a single function call, while automatically selecting the fastest evaluation order.
+
+Ascend GPU CPU
+
+mindspore.numpy.multiply
+
+Multiplies arguments element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.nancumsum
+
+Return the cumulative sum of array elements over a given axis treating Not a Numbers (NaNs) as zero.
+
+GPU CPU
+
+mindspore.numpy.nanmax
+
+Return the maximum of an array or maximum along an axis, ignoring any NaNs.
+
+GPU CPU
+
+mindspore.numpy.nanmean
+
+Computes the arithmetic mean along the specified axis, ignoring NaNs.
+
+GPU CPU
+
+mindspore.numpy.nanmin
+
+Returns the minimum of array elements over a given axis, ignoring any NaNs.
+
+GPU CPU
+
+mindspore.numpy.nanstd
+
+Computes the standard deviation along the specified axis, while ignoring NaNs.
+
+GPU CPU
+
+mindspore.numpy.nansum
+
+Returns the sum of array elements over a given axis treating Not a Numbers (NaNs) as zero.
+
+GPU CPU
+
+mindspore.numpy.nanvar
+
+Computes the variance along the specified axis, while ignoring NaNs.
+
+GPU CPU
+
+mindspore.numpy.negative
+
+Numerical negative, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.norm
+
+Matrix or vector norm.
+
+Ascend GPU CPU
+
+mindspore.numpy.outer
+
+Computes the outer product of two vectors.
+
+Ascend GPU CPU
+
+mindspore.numpy.polyadd
+
+Finds the sum of two polynomials.
+
+Ascend GPU CPU
+
+mindspore.numpy.polyder
+
+Returns the derivative of the specified order of a polynomial.
+
+Ascend GPU CPU
+
+mindspore.numpy.polyint
+
+Returns an antiderivative (indefinite integral) of a polynomial.
+
+Ascend GPU CPU
+
+mindspore.numpy.polymul
+
+Finds the product of two polynomials.
+
+GPU
+
+mindspore.numpy.polysub
+
+Difference (subtraction) of two polynomials.
+
+Ascend GPU CPU
+
+mindspore.numpy.polyval
+
+Evaluates a polynomial at specific values.
+
+Ascend GPU CPU
+
+mindspore.numpy.positive
+
+Numerical positive, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.power
+
+First array elements raised to powers from second array, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.promote_types
+
+Returns the data type with the smallest size and smallest scalar kind.
+
+Ascend GPU CPU
+
+mindspore.numpy.ptp
+
+Range of values (maximum - minimum) along an axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.rad2deg
+
+Converts angles from radians to degrees.
+
+Ascend GPU CPU
+
+mindspore.numpy.radians
+
+Converts angles from degrees to radians.
+
+Ascend GPU CPU
+
+mindspore.numpy.ravel_multi_index
+
+Converts a tuple of index arrays into an array of flat indices, applying boundary modes to the multi-index.
+
+GPU
+
+mindspore.numpy.reciprocal
+
+Returns the reciprocal of the argument, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.remainder
+
+Returns element-wise remainder of division.
+
+Ascend GPU CPU
+
+mindspore.numpy.result_type
+
+Returns the type that results from applying the type promotion rules to the arguments.
+
+Ascend GPU CPU
+
+mindspore.numpy.rint
+
+Rounds elements of the array to the nearest integer.
+
+Ascend GPU CPU
+
+mindspore.numpy.searchsorted
+
+Finds indices where elements should be inserted to maintain order.
+
+Ascend GPU CPU
+
+mindspore.numpy.sign
+
+Returns an element-wise indication of the sign of a number.
+
+Ascend GPU CPU
+
+mindspore.numpy.sin
+
+Trigonometric sine, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.sinh
+
+Hyperbolic sine, element-wise.
+
+Ascend CPU
+
+mindspore.numpy.sqrt
+
+Returns the non-negative square-root of an array, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.square
+
+Returns the element-wise square of the input.
+
+Ascend GPU CPU
+
+mindspore.numpy.std
+
+Computes the standard deviation along the specified axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.subtract
+
+Subtracts arguments, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.sum
+
+Returns sum of array elements over a given axis.
+
+Ascend GPU CPU
+
+mindspore.numpy.tan
+
+Computes tangent element-wise.
+
+Ascend CPU
+
+mindspore.numpy.tanh
+
+Computes hyperbolic tangent element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.tensordot
+
+Computes tensor dot product along specified axes.
+
+Ascend GPU CPU
+
+mindspore.numpy.trapz
+
+Integrates along the given axis using the composite trapezoidal rule.
+
+Ascend GPU CPU
+
+mindspore.numpy.true_divide
+
+Returns a true division of the inputs, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.trunc
+
+Returns the truncated value of the input, element-wise.
+
+Ascend GPU CPU
+
+mindspore.numpy.unwrap
+
+Unwraps by changing deltas between values to 2*pi complement.
+
+Ascend GPU CPU
+
+mindspore.numpy.var
+
+Computes the variance along the specified axis.
+
+Ascend GPU CPU
+
+MindSpore Numpy与MindSpore特性结合
+mindspore.numpy能够充分利用MindSpore的强大功能，实现算子的自动微分，并使用图模式加速运算，帮助用户快速构建高效的模型。同时，MindSpore还支持多种后端设备，包括Ascend、GPU和CPU等，用户可以根据自己的需求灵活设置。以下提供了几种常用方法：
+
+ms_function: 将代码包裹进图模式，用于提高代码运行效率。
+
+GradOperation: 用于自动求导。
+
+mindspore.context: 用于设置运行模式和后端设备等。
+
+mindspore.nn.Cell: 用于建立深度学习模型。
+
+使用示例如下：
+
+ms_function使用示例
+
+首先，以神经网络里经常使用到的矩阵乘与矩阵加算子为例：
+
+import mindspore.numpy as np
+
+x = np.arange(8).reshape(2, 4).astype('float32')
+w1 = np.ones((4, 8))
+b1 = np.zeros((8,))
+w2 = np.ones((8, 16))
+b2 = np.zeros((16,))
+w3 = np.ones((16, 4))
+b3 = np.zeros((4,))
+
+def forward(x, w1, b1, w2, b2, w3, b3):
+    x = np.dot(x, w1) + b1
+    x = np.dot(x, w2) + b2
+    x = np.dot(x, w3) + b3
+    return x
+
+print(forward(x, w1, b1, w2, b2, w3, b3))
+运行结果如下：
+
+[[ 768.  768.  768.  768.]
+ [2816. 2816. 2816. 2816.]]
+对上述示例，我们可以借助 ms_function 将所有算子编译到一张静态图里以加快运行效率，示例如下：
+
+from mindspore import ms_function
+
+forward_compiled = ms_function(forward)
+print(forward(x, w1, b1, w2, b2, w3, b3))
+运行结果如下：
+
+[[ 768.  768.  768.  768.]
+ [2816. 2816. 2816. 2816.]]
+Note
+
+目前静态图不支持在Python交互式模式下运行，并且有部分语法限制。ms_function 的更多信息可参考 API ms_function 。
+
+GradOperation使用示例
+
+GradOperation 可以实现自动求导。以下示例可以实现对上述没有用 ms_function 修饰的 forward 函数定义的计算求导。
+
+from mindspore import ops
+
+grad_all = ops.composite.GradOperation(get_all=True)
+print(grad_all(forward)(x, w1, b1, w2, b2, w3, b3))
+运行结果如下：
+
+(Tensor(shape=[2, 4], dtype=Float32, value=
+ [[ 5.12000000e+02,  5.12000000e+02,  5.12000000e+02,  5.12000000e+02],
+  [ 5.12000000e+02,  5.12000000e+02,  5.12000000e+02,  5.12000000e+02]]),
+ Tensor(shape=[4, 8], dtype=Float32, value=
+ [[ 2.56000000e+02,  2.56000000e+02,  2.56000000e+02 ...  2.56000000e+02,  2.56000000e+02,  2.56000000e+02],
+  [ 3.84000000e+02,  3.84000000e+02,  3.84000000e+02 ...  3.84000000e+02,  3.84000000e+02,  3.84000000e+02],
+  [ 5.12000000e+02,  5.12000000e+02,  5.12000000e+02 ...  5.12000000e+02,  5.12000000e+02,  5.12000000e+02]
+  [ 6.40000000e+02,  6.40000000e+02,  6.40000000e+02 ...  6.40000000e+02,  6.40000000e+02,  6.40000000e+02]]),
+  ...
+ Tensor(shape=[4], dtype=Float32, value= [ 2.00000000e+00,  2.00000000e+00,  2.00000000e+00,  2.00000000e+00]))
+如果要对 ms_function 修饰的 forward 计算求导，需要提前使用 context 设置运算模式为图模式，示例如下：
+
+from mindspore import ms_function, context
+
+context.set_context(mode=context.GRAPH_MODE)
+grad_all = ops.composite.GradOperation(get_all=True)
+print(grad_all(ms_function(forward))(x, w1, b1, w2, b2, w3, b3))
+运行结果如下：
+
+(Tensor(shape=[2, 4], dtype=Float32, value=
+ [[ 5.12000000e+02,  5.12000000e+02,  5.12000000e+02,  5.12000000e+02],
+  [ 5.12000000e+02,  5.12000000e+02,  5.12000000e+02,  5.12000000e+02]]),
+ Tensor(shape=[4, 8], dtype=Float32, value=
+ [[ 2.56000000e+02,  2.56000000e+02,  2.56000000e+02 ...  2.56000000e+02,  2.56000000e+02,  2.56000000e+02],
+  [ 3.84000000e+02,  3.84000000e+02,  3.84000000e+02 ...  3.84000000e+02,  3.84000000e+02,  3.84000000e+02],
+  [ 5.12000000e+02,  5.12000000e+02,  5.12000000e+02 ...  5.12000000e+02,  5.12000000e+02,  5.12000000e+02]
+  [ 6.40000000e+02,  6.40000000e+02,  6.40000000e+02 ...  6.40000000e+02,  6.40000000e+02,  6.40000000e+02]]),
+  ...
+ Tensor(shape=[4], dtype=Float32, value= [ 2.00000000e+00,  2.00000000e+00,  2.00000000e+00,  2.00000000e+00]))
+更多细节可参考 API GradOperation 。
+
+mindspore.context使用示例
+
+MindSpore支持多后端运算，可以通过 mindspore.context 进行设置。mindspore.numpy 的多数算子可以使用图模式或者PyNative模式运行，也可以运行在CPU，CPU或者Ascend等多种后端设备上。
+
+from mindspore import context
+
+# Execucation in static graph mode
+context.set_context(mode=context.GRAPH_MODE)
+
+# Execucation in PyNative mode
+context.set_context(mode=context.PYNATIVE_MODE)
+
+# Execucation on CPU backend
+context.set_context(device_target="CPU")
+
+# Execucation on GPU backend
+context.set_context(device_target="GPU")
+
+# Execucation on Ascend backend
+context.set_context(device_target="Ascend")
+...
+更多细节可参考 API mindspore.context 。
+
+mindspore.numpy使用示例
+
+这里提供一个使用 mindspore.numpy 构建网络模型的示例。
+
+mindspore.numpy 接口可以定义在 nn.Cell 代码块内进行网络的构建，示例如下：
+
+import mindspore.numpy as np
+from mindspore import context
+from mindspore.nn import Cell
+
+context.set_context(mode=context.GRAPH_MODE)
+
+x = np.arange(8).reshape(2, 4).astype('float32')
+w1 = np.ones((4, 8))
+b1 = np.zeros((8,))
+w2 = np.ones((8, 16))
+b2 = np.zeros((16,))
+w3 = np.ones((16, 4))
+b3 = np.zeros((4,))
+
+class NeuralNetwork(Cell):
+    def construct(self, x, w1, b1, w2, b2, w3, b3):
+        x = np.dot(x, w1) + b1
+        x = np.dot(x, w2) + b2
+        x = np.dot(x, w3) + b3
+        return x
+
+net = NeuralNetwork()
+
+print(net(x, w1, b1, w2, b2, w3, b3))
+运行结果如下：
+
+[[ 768.  768.  768.  768.]
+ [2816. 2816. 2816. 2816.]]
