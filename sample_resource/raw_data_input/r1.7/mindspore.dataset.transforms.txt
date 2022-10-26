@@ -1,0 +1,93 @@
+mindspore.dataset.transforms
+此模块用于通用数据增强，包括 c_transforms 和 py_transforms 两个子模块。
+
+c_transforms 是一个高性能数据增强模块，基于C++实现。
+
+而 py_transforms 提供了一种基于Python和NumPy的实现方式。
+
+在API示例中，常用的模块导入方法如下：
+
+import mindspore.dataset as ds
+import mindspore.dataset.vision.c_transforms as c_vision
+import mindspore.dataset.vision.py_transforms as py_vision
+from mindspore.dataset.transforms import c_transforms
+from mindspore.dataset.transforms import py_transforms
+常用数据处理术语说明如下：
+
+TensorOperation，所有C++实现的数据处理操作的基类。
+
+PyTensorOperation，所有Python实现的数据处理操作的基类。
+
+mindspore.dataset.transforms.c_transforms
+mindspore.dataset.transforms.c_transforms.Compose
+
+将多个数据增强算子组合使用。
+
+mindspore.dataset.transforms.c_transforms.Concatenate
+
+在Tensor的某一个轴上进行元素拼接。
+
+mindspore.dataset.transforms.c_transforms.Duplicate
+
+将输入的数据列复制得到新的数据列，每次仅可以输入1个数据列进行复制。
+
+mindspore.dataset.transforms.c_transforms.Fill
+
+将Tensor的所有元素都赋值为指定的值，输出Tensor将与输入Tensor具有与具有相同的shape和数据类型。
+
+mindspore.dataset.transforms.c_transforms.Mask
+
+用给条件判断输入Tensor的内容，并返回一个掩码Tensor。
+
+mindspore.dataset.transforms.c_transforms.OneHot
+
+将Tensor进行OneHot编码。
+
+mindspore.dataset.transforms.c_transforms.PadEnd
+
+对输入Tensor进行填充，要求 pad_shape 与输入Tensor的维度保持一致。
+
+mindspore.dataset.transforms.c_transforms.RandomApply
+
+指定一组数据增强处理及其被应用的概率，在运算时按概率随机应用其中的增强处理。
+
+mindspore.dataset.transforms.c_transforms.RandomChoice
+
+在一组数据增强中随机选择部分增强处理进行应用。
+
+mindspore.dataset.transforms.c_transforms.Relational
+
+关系操作符，可以取值为Relational.EQ、Relational.NE、Relational.GT、Relational.GE、Relational.LT、Relational.LE。
+
+mindspore.dataset.transforms.c_transforms.Slice
+
+对Tensor进行切片操作，功能类似于NumPy的索引(目前只支持1D形状的Tensor)。
+
+mindspore.dataset.transforms.c_transforms.TypeCast
+
+将输入的Tensor转换为指定的数据类型。
+
+mindspore.dataset.transforms.c_transforms.Unique
+
+对输入张量进行唯一运算，每次只支持对一个数据列进行变换。
+
+mindspore.dataset.transforms.py_transforms
+mindspore.dataset.transforms.py_transforms.Compose
+
+将多个数据增强算子组合使用。
+
+mindspore.dataset.transforms.py_transforms.OneHotOp
+
+将Tensor进行OneHot编码，可以进一步对标签进行平滑处理。
+
+mindspore.dataset.transforms.py_transforms.RandomApply
+
+指定一组数据增强处理及其被应用的概率，在运算时按概率随机应用其中的增强处理。
+
+mindspore.dataset.transforms.py_transforms.RandomChoice
+
+在一组数据增强中随机选择部分增强处理进行应用。
+
+mindspore.dataset.transforms.py_transforms.RandomOrder
+
+给一个数据增强的列表，随机打乱数据增强处理的顺序。

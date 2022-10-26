@@ -1,0 +1,156 @@
+mindspore.dataset.text
+此模块用于文本数据增强，包括 transforms 和 utils 两个子模块。
+
+transforms 是一个高性能文本数据增强模块，支持常见的文本数据增强处理。
+
+utils 提供了一些文本处理的工具方法。
+
+在API示例中，常用的模块导入方法如下：
+
+import mindspore.dataset as ds
+from mindspore.dataset import text
+常用数据处理术语说明如下：
+
+TensorOperation，所有C++实现的数据处理操作的基类。
+
+TextTensorOperation，所有文本数据处理操作的基类，派生自TensorOperation。
+
+mindspore.dataset.text.transforms
+接口名
+
+概述
+
+说明
+
+mindspore.dataset.text.transforms.BasicTokenizer
+
+按照指定规则对输入的UTF-8编码字符串进行分词。
+
+Windows平台尚不支持 BasicTokenizer
+
+mindspore.dataset.text.transforms.BertTokenizer
+
+使用Bert分词器对字符串进行分词。
+
+Windows平台尚不支持 BertTokenizer
+
+mindspore.dataset.text.transforms.CaseFold
+
+将UTF-8编码字符串中的字符规范化为小写，相比 str.lower() 支持更多字符。
+
+Windows平台尚不支持 CaseFold
+
+mindspore.dataset.text.transforms.JiebaTokenizer
+
+使用Jieba分词器对中文字符串进行分词。
+
+必须保证隐式马尔科夫模型分词（HMMSEgment）和最大概率法分词（MPSegment）所使用的词典文件的完整性
+
+mindspore.dataset.text.transforms.Lookup
+
+根据词表，将分词标记(token)映射到其索引值(id)。
+
+mindspore.dataset.text.transforms.Ngram
+
+从1-D的字符串生成N-gram。
+
+mindspore.dataset.text.transforms.NormalizeUTF8
+
+对UTF-8编码的字符串进行规范化处理。
+
+Windows平台尚不支持 NormalizeUTF8
+
+mindspore.dataset.text.transforms.PythonTokenizer
+
+使用用户自定义的分词器对输入字符串进行分词。
+
+mindspore.dataset.text.transforms.RegexReplace
+
+根据正则表达式对UTF-8编码格式的字符串内容进行正则替换。
+
+Windows平台尚不支持 RegexReplace
+
+mindspore.dataset.text.transforms.RegexTokenizer
+
+根据正则表达式对字符串进行分词。
+
+Windows平台尚不支持 RegexTokenizer
+
+mindspore.dataset.text.transforms.SentencePieceTokenizer
+
+使用SentencePiece分词器对字符串进行分词。
+
+mindspore.dataset.text.transforms.SlidingWindow
+
+在输入数据的某个维度上进行滑窗切分处理，当前仅支持处理1-D的Tensor。
+
+mindspore.dataset.text.transforms.ToNumber
+
+将字符串的每个元素转换为数字。
+
+mindspore.dataset.text.transforms.TruncateSequencePair
+
+截断一对 1-D 字符串的内容，使其总长度小于给定长度。
+
+mindspore.dataset.text.transforms.UnicodeCharTokenizer
+
+使用Unicode分词器将字符串分词为Unicode字符。
+
+mindspore.dataset.text.transforms.UnicodeScriptTokenizer
+
+使用UnicodeScript分词器对UTF-8编码的字符串进行分词。
+
+Windows平台尚不支持 UnicodeScriptTokenizer
+
+mindspore.dataset.text.transforms.WhitespaceTokenizer
+
+基于ICU4C定义的空白字符（’ ‘, ‘\t’, ‘\r’, ‘\n’）对输入的UTF-8字符串进行分词。
+
+Windows平台尚不支持 WhitespaceTokenizer
+
+mindspore.dataset.text.transforms.WordpieceTokenizer
+
+将输入的字符串切分为子词。
+
+mindspore.dataset.text.utils
+接口名
+
+概述
+
+说明
+
+mindspore.dataset.text.JiebaMode
+
+mindspore.dataset.text.transforms.JiebaTokenizer 的枚举值。
+
+mindspore.dataset.text.NormalizeForm
+
+Unicode规范化模式 枚举类。
+
+mindspore.dataset.text.SentencePieceModel
+
+SentencePiece分词方法的枚举类。
+
+mindspore.dataset.text.SentencePieceVocab
+
+用于执行分词的SentencePiece对象。
+
+mindspore.dataset.text.SPieceTokenizerLoadType
+
+mindspore.dataset.text.transforms.SentencePieceTokenizer 加载类型的枚举值。
+
+mindspore.dataset.text.SPieceTokenizerOutType
+
+mindspore.dataset.text.transforms.SentencePieceTokenizer 输出类型的枚举值。
+
+mindspore.dataset.text.to_str
+
+基于 encoding 字符集对每个元素进行解码，借此将 bytes 的NumPy数组转换为 string 的数组。
+
+mindspore.dataset.text.to_bytes
+
+基于 encoding 字符集对每个元素进行编码，将 string 的NumPy数组转换为 bytes 的数组。
+
+mindspore.dataset.text.Vocab
+
+用于查找单词的Vocab对象。

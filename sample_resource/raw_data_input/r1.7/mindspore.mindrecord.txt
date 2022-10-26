@@ -1,0 +1,594 @@
+mindspore.mindrecord
+MindRecord是MindSpore开发的一种高效数据格式，此模块提供了一些方法帮助用户将不同数据集转换为MindRecord格式， 也提供了一些操作MindRecord数据文件的方法如读取、写入、检索等。 用户可以使用FileWriter API生成MindRecord格式数据集，并使用MindDataset API加载MindRecord格式数据集。
+
+用户还可以通过相应的子模块将其他格式数据集转换为MindRecord格式数据集。
+
+classmindspore.mindrecord.FileWriter(file_name, shard_num=1, overwrite=False)[源代码]
+将用户自定义的数据转为MindRecord格式数据集的类。
+
+Note
+
+生成MindRecord文件后，如果修改文件名，可能会导致读取文件失败。
+
+参数：
+
+file_name (str) - 转换生成的MindRecord文件路径。
+
+shard_num (int，可选) - 生成MindRecord的文件个数。取值范围为[1, 1000]。默认值：1。
+
+overwrite (bool，可选) - 当指定目录存在同名文件时是否覆盖写。默认值：False。
+
+异常：
+
+ParamValueError - file_name 或 shard_num 无效。
+
+样例：
+
+from mindspore.mindrecord import FileWriter
+schema_json = {"file_name": {"type": "string"}, "label": {"type": "int32"}, "data": {"type": "bytes"}}
+indexes = ["file_name", "label"]
+data = [{"file_name": "1.jpg", "label": 0,
+         "data": b"\x10c\xb3w\xa8\xee$o&<q\x8c\x8e(\xa2\x90\x90\x96\xbc\xb1\x1e\xd4QER\x13?\xff"},
+        {"file_name": "2.jpg", "label": 56,
+         "data": b"\xe6\xda\xd1\xae\x07\xb8>\xd4\x00\xf8\x129\x15\xd9\xf2q\xc0\xa2\x91YFUO\x1dsE1"},
+        {"file_name": "3.jpg", "label": 99,
+         "data": b"\xaf\xafU<\xb8|6\xbd}\xc1\x99[\xeaj+\x8f\x84\xd3\xcc\xa0,i\xbb\xb9-\xcdz\xecp{T\xb1"}]
+writer = FileWriter(file_name="test.mindrecord", shard_num=1, overwrite=True)
+writer.add_schema(schema_json, "test_schema")
+
+writer.add_index(indexes)
+
+writer.write_raw_data(data)
+
+writer.commit()
+
+add_index(index_fields)[源代码]
+指定schema中的字段作为索引来加速MindRecord文件的读取。schema可以通过 add_schema 来添加。
+
+Note
+
+索引字段应为Primitive类型，例如 int 、float 、str 。
+
+如果不调用该函数，则默认将schema中所有的Primitive类型的字段设置为索引。 请参考类的示例 mindspore.mindrecord.FileWriter 。
+
+参数：
+
+index_fields (list[str]) - schema中的字段。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+异常：
+
+ParamTypeError - 索引字段无效。
+
+MRMDefineIndexError - 索引字段不是Primitive类型。
+
+MRMAddIndexError - 无法添加索引字段。
+
+MRMGetMetaError - 未设置schema或无法获取schema。
+
+add_schema(content, desc=None)[源代码]
+增加描述用户自定义数据的schema。
+
+Note
+
+请参考类的示例 mindspore.mindrecord.FileWriter 。
+
+参数：
+
+content (dict) - schema内容的字典。
+
+desc (str，可选) - schema的描述。默认值：None。
+
+返回：
+
+int，schema ID。
+
+异常：
+
+MRMInvalidSchemaError - schema无效。
+
+MRMBuildSchemaError - 构建schema失败。
+
+MRMAddSchemaError - 添加schema失败。
+
+commit()[源代码]
+将内存中的数据同步到磁盘，并生成相应的数据库文件。
+
+Note
+
+请参考类的示例 mindspore.mindrecord.FileWriter 。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+异常：
+
+MRMOpenError - 打开MindRecord文件失败。
+
+MRMSetHeaderError - 设置MindRecord文件的header失败。
+
+MRMIndexGeneratorError - 创建索引Generator失败。
+
+MRMGenerateIndexError - 写入数据库失败。
+
+MRMCommitError - 数据同步到磁盘失败。
+
+open_and_set_header()[源代码]
+打开MindRecord文件准备写入并且设置描述其meta信息的头部，该函数仅用于并行写入，并在 write_raw_data 函数之前调用。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+异常：
+
+MRMOpenError - 打开MindRecord文件失败。
+
+MRMSetHeaderError - 设置MindRecord文件的header失败。
+
+open_for_append(file_name)[源代码]
+打开MindRecord文件，准备追加数据。
+
+参数：
+
+file_name (str) - MindRecord格式的数据集文件的路径。
+
+返回：
+
+FileWriter，MindRecord文件的写对象。
+
+异常：
+
+ParamValueError - file_name 无效。
+
+FileNameError - MindRecord文件路径中包含无效字符。
+
+MRMOpenError - 打开MindRecord文件失败。
+
+MRMOpenForAppendError - 打开MindRecord文件追加数据失败。
+
+样例：
+
+from mindspore.mindrecord import FileWriter
+schema_json = {"file_name": {"type": "string"}, "label": {"type": "int32"}, "data": {"type": "bytes"}}
+data = [{"file_name": "1.jpg", "label": 0,
+         "data": b"\x10c\xb3w\xa8\xee$o&<q\x8c\x8e(\xa2\x90\x90\x96\xbc\xb1\x1e\xd4QER\x13?\xff"}]
+writer = FileWriter(file_name="test.mindrecord", shard_num=1, overwrite=True)
+writer.add_schema(schema_json, "test_schema")
+
+writer.write_raw_data(data)
+
+writer.commit()
+
+write_append = FileWriter.open_for_append("test.mindrecord")
+write_append.write_raw_data(data)
+
+write_append.commit()
+
+set_header_size(header_size)[源代码]
+设置MindRecord文件的header，其中包含shard信息、schema信息、page的元信息等。 header越大，MindRecord文件可以存储更多的元信息。如果header大于默认大小（16MB），需要调用本函数来设置合适的大小。
+
+参数：
+
+header_size (int) - header大小，可设置范围为16*1024(16KB)到128*1024*1024(128MB)。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+异常：
+
+MRMInvalidHeaderSizeError - 设置header大小失败。
+
+样例：
+
+from mindspore.mindrecord import FileWriter
+writer = FileWriter(file_name="test.mindrecord", shard_num=1)
+writer.set_header_size(1 << 25) # 32MB
+
+set_page_size(page_size)[源代码]
+设置存储数据的page大小，page分为两种类型：raw page和blob page。 page越大，page可以存储更多的数据。如果单个样本大于默认大小（32MB），需要调用本函数来设置合适的大小。
+
+参数：
+
+page_size (int) - page大小，可设置范围为32*1024(32KB)到256*1024*1024(256MB)。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+异常：
+
+MRMInvalidPageSizeError - 设置page大小失败。
+
+样例：
+
+from mindspore.mindrecord import FileWriter
+writer = FileWriter(file_name="test.mindrecord", shard_num=1)
+writer.set_page_size(1 << 26) # 128MB
+
+write_raw_data(raw_data, parallel_writer=False)[源代码]
+根据schema校验用户自定义数据后，将数据转换为一系列连续的MindRecord格式的数据集文件。
+
+Note
+
+请参考类的示例 mindspore.mindrecord.FileWriter 。
+
+参数：
+
+raw_data (list[dict]) - 用户自定义数据的列表。
+
+parallel_writer (bool，可选) - 如果为True，则并行写入用户自定义数据。默认值：False。。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+异常：
+
+ParamTypeError - 索引字段无效。
+
+MRMOpenError - 打开MindRecord文件失败。
+
+MRMValidateDataError - 数据校验失败。
+
+MRMSetHeaderError - 设置MindRecord文件的header失败。
+
+MRMWriteDatasetError - 写入MindRecord格式的数据集失败。
+
+classmindspore.mindrecord.FileReader(file_name, num_consumer=4, columns=None, operator=None)[源代码]
+读取MindRecord格式数据集。
+
+Note
+
+如果 file_name 是文件路径的字符串，则会尝试加载同一批转换生成的所有MindRecord文件，如果缺少其中某个MindRecord文件，则会引发异常。
+
+如果 file_name 是文件路径组成的列表，则只加载列表中指定的MindRecord文件。
+
+参数：
+
+file_name (str, list[str]) - MindRecord格式的数据集文件路径或文件路径组成的列表。
+
+num_consumer (int，可选) - 加载数据的并发数。默认值：4。不应小于1或大于处理器的核数。
+
+columns (list[str]，可选) - MindRecord中待读取数据列的列表。默认值：None，读取所有的数据列。
+
+operator (int，可选) - 保留参数。默认值：None。
+
+异常：
+
+ParamValueError - file_name 、num_consumer 或 columns 无效。
+
+close()[源代码]
+停止数据集加载并且关闭文件句柄。
+
+get_next()[源代码]
+按列名一次返回下一批的数据。
+
+返回：
+
+dict，下一批数据，键值与数据列名相同。
+
+异常：
+
+MRMUnsupportedSchemaError - 当schema无效。
+
+classmindspore.mindrecord.MindPage(file_name, num_consumer=4)[源代码]
+以分页方式读取MindRecord文件的类。
+
+参数：
+
+file_name (Union[str, list[str]]) - MindRecord格式的数据集文件或文件列表。
+
+num_consumer (int，可选) - 加载数据的并发数。默认值：4。不应小于1或大于处理器的核数。
+
+异常：
+
+ParamValueError - file_name 、num_consumer 或 columns 无效。
+
+MRMInitSegmentError - 初始化ShardSegment失败。
+
+get_category_fields()[源代码]
+返回用于数据分组的候选category字段。
+
+返回：
+
+list[str]，候选category字段。
+
+read_at_page_by_id(category_id, page, num_row)[源代码]
+以分页方式按category ID进行查询。
+
+参数：
+
+category_id (int) - category ID，参考 read_category_info 函数的返回值。
+
+page (int) - 分页的索引。
+
+num_row (int) - 每个分页的行数。
+
+返回：
+
+list[dict]，根据category ID查询的数据。
+
+异常：
+
+ParamValueError - 参数无效。
+
+MRMFetchDataError - 无法按category ID获取数据。
+
+MRMUnsupportedSchemaError - schema无效。
+
+read_at_page_by_name(category_name, page, num_row)[源代码]
+以分页方式按category字段进行查询。
+
+参数：
+
+category_name (str) - category字段对应的字符，参考 read_category_info 函数的返回值。
+
+page (int) - 分页的索引。
+
+num_row (int) - 每个分页的行数。
+
+返回：
+
+list[dict]，根据category字段查询的数据。
+
+read_category_info()[源代码]
+当数据按指定的category字段进行分组时，返回category信息。
+
+返回：
+
+str，分组信息的描述。
+
+异常：
+
+MRMReadCategoryInfoError - 读取category信息失败。
+
+set_category_field(category_field)[源代码]
+设置category字段。
+
+Note
+
+必须是候选category字段。
+
+参数：
+
+category_field (str) - category字段名称。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED
+
+classmindspore.mindrecord.Cifar10ToMR(source, destination)[源代码]
+将CIFAR-10数据集转换为MindRecord格式数据集。
+
+Note
+
+示例的详细信息，请参见 转换CIFAR-10数据集。
+
+参数：
+
+source (str) - 待转换的CIFAR-10数据集文件所在目录的路径。
+
+destination (str) - 转换生成的MindRecord文件路径，需提前创建目录并且目录下不能存在同名文件。
+
+异常：
+
+ValueError - source 或 destination 无效。
+
+run(fields=None)[源代码]
+执行从CIFAR-10数据集到MindRecord格式数据集的转换。
+
+参数：
+
+fields (list[str]，可选) - 索引字段的列表。默认值：None。 索引字段的设置请参考函数 mindspore.mindrecord.FileWriter.add_index() 。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+transform(fields=None)[源代码]
+mindspore.mindrecord.Cifar10ToMR.run() 的包装函数来保证异常时正常退出。
+
+参数：
+
+fields (list[str]，可选) - 索引字段的列表。默认值：None。 索引字段的设置请参考函数 mindspore.mindrecord.FileWriter.add_index() 。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+classmindspore.mindrecord.Cifar100ToMR(source, destination)[源代码]
+将CIFAR-100数据集转换为MindRecord格式数据集。
+
+Note
+
+示例的详细信息，请参见 转换CIFAR-10数据集。
+
+参数：
+
+source (str) - 待转换的CIFAR-100数据集文件所在目录的路径。
+
+destination (str) - 转换生成的MindRecord文件路径，需提前创建目录并且目录下不能存在同名文件。
+
+异常：
+
+ValueError - 参数 source 或 destination 无效。
+
+run(fields=None)[源代码]
+执行从CIFAR-100数据集到MindRecord格式数据集的转换。
+
+参数：
+
+fields (list[str]，可选) - 索引字段的列表，例如[‘fine_label’, ‘coarse_label’]。默认值：None。 索引字段的设置请参考函数 mindspore.mindrecord.FileWriter.add_index() 。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+transform(fields=None)[源代码]
+mindspore.mindrecord.Cifar100ToMR.run() 的包装函数来保证异常时正常退出。
+
+参数：
+
+fields (list[str]，可选) - 索引字段的列表，例如[‘fine_label’, ‘coarse_label’]。默认值：None。 索引字段的设置请参考函数 mindspore.mindrecord.FileWriter.add_index() 。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+classmindspore.mindrecord.CsvToMR(source, destination, columns_list=None, partition_number=1)[源代码]
+将CSV格式数据集转换为MindRecord格式数据集。
+
+Note
+
+示例的详细信息，请参见 转换CSV数据集。
+
+参数：
+
+source (str) - 待转换的CSV文件路径。
+
+destination (str) - 转换生成的MindRecord文件路径，需提前创建目录并且目录下不能存在同名文件。
+
+columns_list (list[str]，可选) - CSV中待读取数据列的列表。默认值：None，读取所有的数据列。
+
+partition_number (int，可选) - 生成MindRecord的文件个数。默认值：1。
+
+异常：
+
+ValueError - 参数 source 、destination 、partition_number 无效。
+
+RuntimeError - 参数 columns_list 无效。
+
+run()[源代码]
+执行从CSV格式数据集到MindRecord格式数据集的转换。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+transform()[源代码]
+mindspore.mindrecord.CsvToMR.run() 的包装函数来保证异常时正常退出。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+classmindspore.mindrecord.ImageNetToMR(map_file, image_dir, destination, partition_number=1)[源代码]
+将ImageNet数据集转换为MindRecord格式数据集。
+
+参数：
+
+map_file (str) - 标签映射文件的路径。映射文件内容如下：
+
+n02119789 0
+n02100735 1
+n02110185 2
+n02096294 3
+image_dir (str) - ImageNet数据集的目录路径，目录中包含类似n02119789、n02100735、n02110185和n02096294的子目录。
+
+destination (str) - 转换生成的MindRecord文件路径，需提前创建目录并且目录下不能存在同名文件。
+
+partition_number (int，可选) - 生成MindRecord的文件个数。默认值：1。
+
+异常：
+
+ValueError - 参数 map_file 、image_dir 或 destination 无效。
+
+run()[源代码]
+执行从ImageNet数据集到MindRecord格式数据集的转换。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+transform()[源代码]
+mindspore.mindrecord.ImageNetToMR.run() 的包装函数来保证异常时正常退出。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+classmindspore.mindrecord.MnistToMR(source, destination, partition_number=1)[源代码]
+将MNIST数据集转换为MindRecord格式数据集。
+
+参数：
+
+source (str) - 数据集目录路径，其包含t10k-images-idx3-ubyte.gz、train-images-idx3-ubyte.gz、t10k-labels-idx1-ubyte.gz和train-labels-idx1-ubyte.gz数据集文件。
+
+destination (str) - 转换生成的MindRecord文件路径，需提前创建目录并且目录下不能存在同名文件。
+
+partition_number (int，可选) - 生成MindRecord的文件个数。默认值：1。
+
+异常：
+
+ValueError - 参数 source 、 destination 、 partition_number 无效。
+
+run()[源代码]
+执行从MNIST数据集到MindRecord格式数据集的转换。
+
+返回：
+
+MSRStatus，MNIST数据集是否成功转换为MindRecord格式数据集。
+
+transform()[源代码]
+mindspore.mindrecord.MnistToMR.run() 函数的包装函数来保证异常时正常退出。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+classmindspore.mindrecord.TFRecordToMR(source, destination, feature_dict, bytes_fields=None)[源代码]
+将TFRecord格式数据集转换为MindRecord格式数据集。
+
+Note
+
+示例的详细信息，请参见 转换TFRecord数据集。
+
+参数：
+
+source (str) - 待转换的TFRecord文件路径。
+
+destination (str) - 转换生成的MindRecord文件路径，需提前创建目录并且目录下不能存在同名文件。
+
+feature_dict (dict[str, FixedLenFeature]) - TFRecord的feature类别的字典，当前支持 FixedLenFeature 类型。
+
+bytes_fields (list[str]，可选) - feature_dict 中的字节字段，可以为字节类型的图像字段。
+
+异常：
+
+ValueError - 无效参数。
+
+Exception - 找不到TensorFlow模块或其版本不正确。
+
+run()[源代码]
+执行从TFRecord格式数据集到MindRecord格式数据集的转换。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。
+
+tfrecord_iterator()[源代码]
+生成一个字典，其key是schema中的字段，value是数据。
+
+返回：
+
+Dict，key与schema中字段名相同的数据字典。
+
+tfrecord_iterator_oldversion()[源代码]
+生成一个字典，其中key是schema中的字段，value是数据。该函数适用于早于2.1.0版本的TensorFlow。
+
+返回：
+
+Dict，key与schema中字段名相同的数据字典。
+
+transform()[源代码]
+mindspore.mindrecord.TFRecordToMR.run() 的包装函数来保证异常时正常退出。
+
+返回：
+
+MSRStatus，SUCCESS或FAILED。

@@ -1,0 +1,276 @@
+mindspore.common.initializer
+初始化神经元参数。
+
+classmindspore.common.initializer.Initializer(**kwargs)[源代码]
+初始化器的抽象基类。
+
+参数：
+
+kwargs (dict) – Initializer 的关键字参数。
+
+mindspore.common.initializer.initializer(init, shape=None, dtype=mstype.float32)[源代码]
+创建并初始化一个Tensor。
+
+参数：
+
+init (Union[Tensor, str, Initializer, numbers.Number]) – 初始化方式。
+
+str - init 是继承自 Initializer 的类的别名，实际使用时会调用相应的类。init 的值可以是”normal”、”ones”或”zeros”等。
+
+Initializer - init 是继承自 Initializer ，用于初始化Tensor的类。
+
+numbers.Number - 用于初始化Tensor的常量。
+
+Tensor - 用于初始化Tensor的Tensor。
+
+shape (Union[tuple, list, int]) - 被初始化的Tensor的shape，默认值为None。
+
+dtype (mindspore.dtype) – 被初始化的Tensor的数据类型，默认值为 mindspore.float32 。
+
+返回：
+
+Tensor。
+
+异常：
+
+TypeError - 参数 init 的类型不正确。
+
+ValueError - 当 init 传入Tensor对象时， init 的shape与形参 shape 内的数值不一致。
+
+样例：
+
+import numpy as np
+import mindspore
+from mindspore import Tensor
+from mindspore.common.initializer import initializer, One
+data = Tensor(np.zeros([1, 2, 3]), mindspore.float32)
+tensor1 = initializer(data, [1, 2, 3], mindspore.float32)
+tensor2 = initializer('ones', [1, 2, 3], mindspore.float32)
+tensor3 = initializer(One(), [1, 2, 3], mindspore.float32)
+tensor4 = initializer(0, [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.TruncatedNormal(sigma=0.01)[源代码]
+生成一个服从截断正态（高斯）分布的随机数组用于初始化Tensor。
+
+参数：
+
+sigma (float) - 截断正态分布的标准差，默认值为0.01。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, TruncatedNormal
+tensor1 = initializer(TruncatedNormal(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('truncatedNormal', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.Normal(sigma=0.01, mean=0.0)[源代码]
+生成一个服从正态分布 N(sigma,mean) 的随机数组用于初始化Tensor。
+
+f(x)=12∗π−−−−√∗sigmaexp(−(x−mean)22∗sigma2)
+参数：
+
+sigma (float) - 正态分布的标准差，默认值为0.01。
+
+mean (float) - 正态分布的均值，默认值为0.0。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Normal
+tensor1 = initializer(Normal(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('normal', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.Uniform(scale=0.07)[源代码]
+生成一个服从均匀分布 U(−scale,scale) 的随机数组用于初始化Tensor。
+
+参数：
+
+scale (float) - 均匀分布的边界，默认值为0.07。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Uniform
+tensor1 = initializer(Uniform(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('uniform', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.HeUniform(negative_slope=0, mode='fan_in', nonlinearity='leaky_relu')[源代码]
+生成一个服从HeKaiming均匀分布 U(−boundary,boundary) 的随机数组用于初始化Tensor，其中：
+
+boundary=gain×3fan_mode−−−−−−−−−√
+gain 是一个可选的缩放因子。 fan_mode 是权重Tensor中输入或输出单元的数量，取决于 mode 是’fan_in’或是’fan_out’。
+
+参数：
+
+negative_slope (int, float, bool) - 本层激活函数的负数区间斜率（仅适用于非线性激活函数’leaky_relu’），默认值为0。
+
+mode (str) - 可选’fan_in’或’fan_out’，’fan_in’会保留前向传递中权重方差的量级，’fan_out’会保留反向传递的量级，默认为’fan_in’。
+
+nonlinearity (str) - 非线性激活函数，推荐使用’relu’或’leaky_relu’，默认为’leaky_relu’。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, HeUniform
+tensor1 = initializer(HeUniform(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('he_uniform', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.HeNormal(negative_slope=0, mode='fan_in', nonlinearity='leaky_relu')[源代码]
+生成一个服从HeKaiming正态分布 N(0,sigma2) 的随机数组用于初始化Tensor，其中：
+
+sigma=gainfan_mode−−−−−−−−−√
+其中， gain 是一个可选的缩放因子。如果 mode 是’fan_in’，则 fan_mode 是权重Tensor中输入单元的数量，如果 mode 是’fan_out’， fan_mode 是权重Tensor中输出单元的数量。
+
+HeUniform 算法的详细信息，请查看 https://arxiv.org/abs/1502.01852。
+
+参数：
+
+negative_slope (int, float, bool) - 本层激活函数的负数区间斜率（仅适用于非线性激活函数’leaky_relu’），默认值为0。
+
+mode (str) - 可选’fan_in’或’fan_out’，’fan_in’会保留前向传递中权重方差的量级，’fan_out’会保留反向传递的量级，默认为’fan_in’。
+
+nonlinearity (str) - 非线性激活函数，推荐使用’relu’或’leaky_relu’，默认为’leaky_relu’。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, HeNormal
+tensor1 = initializer(HeNormal(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('he_normal', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.XavierUniform(gain=1)[源代码]
+生成一个服从Xarvier均匀分布U(-boundary, boundary)的随机数组用于初始化Tensor，均匀分布的取值范围为[-boundary, boundary]，其中：
+
+boundary=gain∗6nin+nout−−−−−−−−−√
+gain 是一个可选的缩放因子。nin 为权重Tensor中输入单元的数量。nout 为权重Tensor中输出单元的数量。
+
+有关 XavierUniform 算法的详细信息，请查看 http://proceedings.mlr.press/v9/glorot10a.html。
+
+参数：
+
+gain (float) - 可选的缩放因子，默认值为1。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, XavierUniform
+tensor1 = initializer(XavierUniform(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('xavier_uniform', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.One(**kwargs)[源代码]
+生成一个值全为1的常量数组用于初始化Tensor。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, One
+tensor1 = initializer(One(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('ones', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.Zero(**kwargs)[源代码]
+生成一个值全为0的常量数组用于初始化Tensor。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Zero
+tensor1 = initializer(Zero(), [1, 2, 3], mindspore.float32)
+tensor2 = initializer('zeros', [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.Constant(value)[源代码]
+生成一个常量数组用于初始化Tensor。
+
+参数：
+
+value (Union[int, numpy.ndarray]) - 用于初始化的常数值或者数组。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer
+tensor1 = initializer(0, [1, 2, 3], mindspore.float32)
+tensor2 = initializer(5, [1, 2, 3], mindspore.float32)
+classmindspore.common.initializer.Identity(**kwargs)[源代码]
+生成一个2维的单位矩阵用于初始化Tensor。
+
+异常：
+
+ValueError - 被初始化的Tensor的维度不等于2。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Identity
+tensor1 = initializer(Identity(), [2, 3], mindspore.float32)
+tensor2 = initializer('identity', [2, 3], mindspore.float32)
+classmindspore.common.initializer.Sparse(sparsity, sigma=0.01)[源代码]
+生成一个2维的稀疏矩阵用于初始化Tensor。矩阵非0的位置的值服从正态分布 N(0,0.01) 。
+
+参数：
+
+sparsity (float) - 矩阵每列中元素被置0的比例。
+
+sigma (float) - 正态分布的标准差，默认值为0.01。
+
+异常：
+
+ValueError - 被初始化的Tensor的维度不等于2。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Sparse
+tensor1 = initializer(Sparse(sparsity=0.1, sigma=0.01), [5, 8], mindspore.float32)
+classmindspore.common.initializer.Dirac(groups=1)[源代码]
+利用Dirac delta函数生成一个矩阵用于初始化Tensor。这种初始化方式将会保留卷积层的输入。对于group 卷积，通道的每个分组会被分别保留。
+
+参数：
+
+groups (int) - 卷积层中的分组，默认值为1。
+
+异常：
+
+ValueError - 被初始化的Tensor的维度不在[3, 4, 5]的范围内。
+
+ValueError - 初始化的Tensor的第一个维度不能被groups整除。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Dirac
+tensor1 = initializer(Dirac(groups=2), [6, 4, 3, 3], mindspore.float32)
+tensor2 = initializer("dirac", [6, 4, 3, 3], mindspore.float32)
+classmindspore.common.initializer.Orthogonal(gain=1.)[源代码]
+生成一个正交或半正交矩阵用于初始化Tensor。被初始化的Tensor的维度至少为2。 如果维度大于2，多余的维度将会被展平。
+
+参数：
+
+gain (float) - 可选的比例因子，默认值为1。
+
+异常：
+
+ValueError - 被初始化的Tensor的维度小于2。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, Orthogonal
+tensor1 = initializer(Orthogonal(gain=2.), [2, 3, 4], mindspore.float32)
+tensor2 = initializer('orthogonal', [2, 3, 4], mindspore.float32)
+classmindspore.common.initializer.VarianceScaling(scale=1.0, mode='fan_in', distribution='truncated_normal')[源代码]
+生成一个随机的矩阵用于初始化Tensor。 当 distribution 是’truncated_normal’或者’untruncated_normal’时，矩阵中的值将服从均值为0，标准差 为 stddev=scalen−−−−√ 的截断或者非截断正太分布。如果 mode 是’fan_in’， n 是输入单元的数量； 如果 mode 是’fan_out’， n 是输出单元的数量；如果 mode 是’fan_avg’， n 是输入输出单元数量的均值。 当 distribution 是’uniform’时，矩阵中的值将服从均匀分布 [−3∗scalen−−−−−√,3∗scalen−−−−−√]。
+
+参数：
+
+scale (float) - 比例因子，默认值为1.0。
+
+mode (str) - 其值应为’fan_in’，’fan_out’或者’fan_avg’，默认值为’fan_in’。
+
+distribution (str) - 用于采样的分布类型。它可以是 ‘uniform’，’truncated_normal’或’untruncated_normal’，默认值为’truncated_normal’。
+
+异常：
+
+ValueError - scale 小于等于0。
+
+ValueError - mode 不是’fan_in’，’fan_out’或者’fan_avg’。
+
+ValueError - distribution 不是’truncated_normal’，’untruncated_normal’或者’uniform’。
+
+样例：
+
+import mindspore
+from mindspore.common.initializer import initializer, VarianceScaling
+tensor1 = initializer(VarianceScaling(scale=1.0, mode='fan_out',
+                                      distribution='untruncated_normal'), [2, 3], mindspore.float32)
+tensor2 = initializer('varianceScaling', [2, 3], mindspore.float32)
